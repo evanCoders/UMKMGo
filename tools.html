@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UMKMGo — Tools Non-AI untuk UMKM</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: "#F0FDFA",
+              100: "#CCFBF1",
+              500: "#14B8A6",
+              600: "#0D9488",
+              700: "#0F766E",
+              800: "#115E59",
+              900: "#134E4A",
+            },
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"DM Serif Display"', 'serif'],
+          },
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #f9fafb;
+      color: #374151;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .dark body {
+      background-color: #0f172a;
+      color: #e2e8f0;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .tab-btn {
+      transition: all 200ms ease;
+    }
+
+    .tab-btn.active {
+      background: #0D9488;
+      color: white;
+      box-shadow: 0 8px 20px rgba(13, 148, 136, 0.25);
+    }
+  </style>
+</head>
+
+<body class="relative">
+  <header id="navbar" class="fixed top-0 inset-x-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-brand-600 flex items-center justify-center">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <span class="font-display text-xl text-gray-900 dark:text-white">UMKMGo</span>
+        </a>
+
+        <div class="flex items-center gap-3">
+          <a href="index.html" class="hidden sm:inline-flex px-4 py-2 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-slate-800">Kembali</a>
+          <button id="theme-toggle" type="button" class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700" aria-label="Toggle Dark Mode">
+            <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+            </svg>
+            <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-20 pb-16 px-4">
+    <section class="max-w-6xl mx-auto">
+      <div class="text-center mb-10 reveal">
+        <span class="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-brand-600">Tools Non-AI untuk UMKM</span>
+        <h1 class="font-display text-3xl md:text-4xl text-gray-900 dark:text-white mt-3">Bantu kerja harian tanpa habis token</h1>
+        <p class="text-gray-600 dark:text-gray-300 mt-3">Kalkulator, checklist, planner konten, dan template respon chat.</p>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-2 mb-8 reveal" id="tools-tabs">
+        <button data-tab="kalkulator" class="tab-btn px-5 py-2.5 text-sm font-semibold rounded-full active bg-brand-600 text-white">Kalkulator UMKM</button>
+        <button data-tab="checklist" class="tab-btn px-5 py-2.5 text-sm font-semibold rounded-full bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-200">Checklist Siap Jual</button>
+        <button data-tab="planner" class="tab-btn px-5 py-2.5 text-sm font-semibold rounded-full bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-200">Planner 30 Hari</button>
+        <button data-tab="chat" class="tab-btn px-5 py-2.5 text-sm font-semibold rounded-full bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-200">Template Chat</button>
+      </div>
+
+      <!-- Kalkulator -->
+      <div id="tab-kalkulator" class="tool-tab">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700 shadow-sm p-6 md:p-10 reveal">
+          <h2 class="font-display text-2xl text-gray-900 dark:text-white mb-4">Kalkulator UMKM (HPP / Margin / Harga Jual / BEP)</h2>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-2">Biaya Produksi (HPP total)</label>
+                <input id="calc-hpp" type="number" min="0" step="1" placeholder="Contoh: 25000" class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white" />
+              </div>
+
+              <div>
+                <label class="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-2">Target Margin (%)</label>
+                <input id="calc-margin" type="number" min="0" step="0.1" placeholder="Contoh: 30" class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white" />
+              </div>
+
+              <div>
+                <label class="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-2">Biaya Tetap Bulanan (Rp)</label>
+                <input id="calc-fixed" type="number" min="0" step="1" placeholder="Contoh: 200000" class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white" />
+              </div>
+
+              <div>
+                <label class="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-2">Estimasi Volume per Bulan (unit)</label>
+                <input id="calc-volume" type="number" min="0" step="1" placeholder="Contoh: 100" class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white" />
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <div class="rounded-2xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 p-5">
+                <div class="flex items-center justify-between">
+                  <h3 class="font-bold text-gray-900 dark:text-white">Hasil</h3>
+                  <button id="calc-btn" class="px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold">Hitung</button>
+                </div>
+                <div class="mt-4 space-y-3 text-sm">
+                  <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-300">Harga Jual (rekomendasi)</span><span id="out-harga" class="font-bold text-gray-900 dark:text-white">-</span></div>
+                  <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-300">Margin (Rp)</span><span id="out-margin-rp" class="font-bold text-gray-900 dark:text-white">-</span></div>
+                  <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-300">BEP unit (kasar)</span><span id="out-bep" class="font-bold text-gray-900 dark:text-white">-</span></div>
+                  <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-300">Status (BEP vs volume)</span><span id="out-status" class="font-bold text-gray-900 dark:text-white">-</span></div>
+                </div>
+              </div>
+
+              <div class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                Catatan: BEP dihitung sederhana pakai pendekatan margin kontribusi. Untuk akurasi, gunakan data biaya produksi per unit yang konsisten.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checklist -->
+      <div id="tab-checklist" class="tool-tab hidden">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700 shadow-sm p-6 md:p-10 reveal">
+          <h2 class="font-display text-2xl text-gray-900 dark:text-white mb-4">Checklist Toko Siap Jual (Skor + Saran)</h2>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-4" id="checklist-form">
+              <div>
+                <label class="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-2">Nama Produk</label>
+                <input id="chk-nama" type="text" placeholder="Contoh: Keripik Singkong Pedas Manis" class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white" />
+              </div>
+
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <label class="text-sm font-semibold text-gray-800 dark:text-gray-200">Foto produk jelas</label>
+                  <input type="checkbox" id="chk-foto" class="w-5 h-5 accent-brand-600" />
+                </div>
+                <div class="flex items-center justify-between">
+                  <label class="text-sm font-semibold text-gray-800 dark:text-gray-200">Harga tertulis</label>
+                  <input type="checkbox" id="chk-harga" class="w-5 h-5 accent-brand-600" />
+                </div>
+                <div class="flex items-center justify-between">
+                  <label class="text-sm font-semibold text-gray-800 dark:text-gray-200">Ada varian (opsional)</label>
+                  <input type="checkbox" id="chk-varian" class="w-5 h-5 accent-brand-600" />
+                </div>
+                <div class="flex items-center justify-between">
+                  <label class="text-sm font-semibold text-gray-800 dark:text-gray-200">Deskripsi singkat (manfaat)</label>
+                  <input type="checkbox" id="chk-deskripsi" class="w-5 h-5 accent-brand-600" />
+                </div>
+                <div class="flex items-center justify-between">
+                  <label class="text-sm font-semibold text-gray-800 dark:text-gray-200">Info pengiriman/ongkir jelas</label>
+                  <input type="checkbox" id="chk-ongkir" class="w-5 h-5 accent-brand-600" />
+                </div>
+                <div class="flex items-center justify-between">
+                  <label class="text-sm font-semibold text-gray-800 dark:text-gray-200">Ada CTA (contoh: “Chat untuk order”)</label>
+                  <input type="checkbox" id="chk-cta" class="w-5 h-5 accent-brand-600" />
+                </div>
+              </div>
+
+              <button id="chk-btn" class="w-full px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold">Hitung Skor</button>
+            </div>
+
+            <div class="space-y-4">
+              <div class="rounded-2xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 p-5">
+                <div class="flex items-center justify-between">
+                  <h3 class="font-bold text-gray-900 dark:text-white">Ringkasan</h3>
+                  <span id="chk-badge" class="text-xs font-bold px-3 py-1 rounded-full bg-brand-100 text-brand-800 dark:bg-brand-900/30 dark:text-brand-300">-</span>
+                </div>
+                <div class="mt-4 text-sm space-y-2">
+                  <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-300">Skor</span><span id="chk-score" class="font-bold text-gray-900 dark:text-white">-</span></div>
+                  <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-300">Status</span><span id="chk-status" class="font-bold text-gray-900 dark:text-white">-</span></div>
+                </div>
+
+                <div class="mt-4">
+                  <p class="text-sm font-bold text-gray-900 dark:text-white">Saran Perbaikan</p>
+                  <ul id="chk-saran" class="mt-2 text-sm text-gray-700 dark:text-gray-200 list-disc pl-5 space-y-1"></ul>
+                </div>
+              </div>
+
+              <div class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                Skor berbasis checklist inti agar calon pembeli cepat paham, yakin, dan tahu langkah order.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Planner -->
+      <div id="tab-planner" class="tool-tab hidden">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700 shadow-sm p-6 md:p-10 reveal">
+          <h2 class="font-display text-2xl text-gray-900 dark:text-white mb-4">Planner Konten 30 Hari (Template)</h2>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-2">Kategori Usaha / Produk</label>
+                <input id="pl-kategori" type="text" placeholder="Contoh: Kuliner, Skincare, Kerajinan" class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white" />
+              </div>
+
+              <div>
+                <label class="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-2">Channel Utama</label>
+                <select id="pl-channel" class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white">
+                  <option value="instagram">Instagram</option>
+                  <option value="tiktok">TikTok</option>
+                  <option value="facebook">Facebook</option>
+                  <option value="wa">WhatsApp</option>
+                </select>
+              </div>
+
+              <div class="space-y-2">
+                <label class="block text-sm font-bold text-gray-700 dark:text-gray-200">Tujuan</label>
+                <div class="grid grid-cols-2 gap-3">
+                  <label class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-slate-700 p-3 bg-white dark:bg-slate-900">
+                    <input type="radio" name="pl-goal" value="jualan" class="accent-brand-600" checked />
+                    <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">Jualan</span>
+                  </label>
+                  <label class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-slate-700 p-3 bg-white dark:bg-slate-900">
+                    <input type="radio" name="pl-goal" value="brand" class="accent-brand-600" />
+                    <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">Brand</span>
+                  </label>
+                </div>
+              </div>
+
+              <button id="pl-btn" class="w-full px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold">Buat Jadwal 30 Hari</button>
+            </div>
+
+            <div class="space-y-3">
+              <div class="rounded-2xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 p-5">
+                <div class="flex items-center justify-between gap-3">
+                  <h3 class="font-bold text-gray-900 dark:text-white">Output</h3>
+                  <button id="pl-copy" class="px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-gray-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-slate-700">Salin</button>
+                </div>
+                <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">Pilih jadwal ini dan posting sesuai urutan. (Template non-AI)</div>
+                <pre id="pl-out" class="mt-3 whitespace-pre-wrap text-sm text-gray-800 dark:text-gray-200 max-h-[420px] overflow-y-auto bg-white/50 dark:bg-slate-800/50 rounded-xl p-4 border border-gray-200 dark:border-slate-700">-</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Template Chat -->
+      <div id="tab-chat" class="tool-tab hidden">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700 shadow-sm p-6 md:p-10 reveal">
+          <h2 class="font-display text-2xl text-gray-900 dark:text-white mb-4">Template Respon Chat Pelanggan (Keyword)</h2>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-2">Tulis Pesan Pelanggan</label>
+                <textarea id="chat-msg" rows="6" placeholder="Contoh: Berapa harganya? Ready stok? Ongkir ke Jakarta berapa?" class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white" ></textarea>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-2">Nama Toko</label>
+                  <input id="chat-toko" type="text" value="UMKMGo" class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white" />
+                </div>
+                <div>
+                  <label class="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-2">Produk (opsional)</label>
+                  <input id="chat-produk" type="text" placeholder="Contoh: Keripik Singkong" class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white" />
+                </div>
+              </div>
+
+              <button id="chat-btn" class="w-full px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold">Buat Balasan</button>
+            </div>
+
+            <div class="space-y-3">
+              <div class="rounded-2xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 p-5">
+                <div class="flex items-center justify-between">
+                  <h3 class="font-bold text-gray-900 dark:text-white">Balasan</h3>
+                  <button id="chat-copy" class="px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-gray-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-slate-700">Salin</button>
+                </div>
+                <pre id="chat-out" class="mt-3 whitespace-pre-wrap text-sm text-gray-800 dark:text-gray-200 max-h-[420px] overflow-y-auto bg-white/50 dark:bg-slate-800/50 rounded-xl p-4 border border-gray-200 dark:border-slate-700">-</pre>
+              </div>
+
+              <div class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                Template ini non-AI: cocok untuk respon cepat (harga/stok/ongkir/order/komplain) dan bisa Anda sesuaikan.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 text-white pt-10 pb-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="text-sm text-gray-400">© 2026 UMKMGo. Tools Non-AI untuk UMKM.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const THEME_KEY = 'umkmgo-theme';
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+
+    function applyTheme(theme) {
+      const isDark = theme === 'dark';
+      document.documentElement.classList.toggle('dark', isDark);
+      localStorage.setItem(THEME_KEY, theme);
+      if (isDark) {
+        lightIcon.classList.remove('hidden');
+        darkIcon.classList.add('hidden');
+      } else {
+        lightIcon.classList.add('hidden');
+        darkIcon.classList.remove('hidden');
+      }
+    }
+
+    function getInitialTheme() {
+      const stored = localStorage.getItem(THEME_KEY);
+      if (stored === 'dark' || stored === 'light') return stored;
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    if (themeToggleBtn) {
+      applyTheme(getInitialTheme());
+      themeToggleBtn.addEventListener('click', () => {
+        const current = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        applyTheme(current === 'dark' ? 'light' : 'dark');
+      });
+    }
+
+    // Reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Tabs
+    const tabButtons = document.querySelectorAll('#tools-tabs [data-tab]');
+    const tabPanels = {
+      kalkulator: document.getElementById('tab-kalkulator'),
+      checklist: document.getElementById('tab-checklist'),
+      planner: document.getElementById('tab-planner'),
+      chat: document.getElementById('tab-chat')
+    };
+
+    function setActiveTab(name) {
+      tabButtons.forEach(btn => {
+        const active = btn.getAttribute('data-tab') === name;
+        btn.classList.toggle('active', active);
+        if (active) {
+          btn.classList.add('bg-brand-600', 'text-white');
+        } else {
+          btn.classList.remove('bg-brand-600', 'text-white');
+          btn.classList.add('bg-white', 'dark:bg-slate-800', 'text-gray-700', 'dark:text-gray-200');
+        }
+      });
+
+      Object.keys(tabPanels).forEach(k => {
+        tabPanels[k].classList.toggle('hidden', k !== name);
+      });
+    }
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => setActiveTab(btn.getAttribute('data-tab')));
+    });
+
+    // Default
+    setActiveTab('kalkulator');
+
+    // Kalkulator
+    const calcBtn = document.getElementById('calc-btn');
+    function toNum(id) {
+      const v = document.getElementById(id).value;
+      const n = Number(v);
+      return Number.isFinite(n) ? n : 0;
+    }
+
+    function formatRp(n) {
+      if (!Number.isFinite(n)) return '-';
+      return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(n);
+    }
+
+    calcBtn?.addEventListener('click', () => {
+      const hpp = toNum('calc-hpp');
+      const marginPct = toNum('calc-margin');
+      const fixed = toNum('calc-fixed');
+      const volume = toNum('calc-volume');
+
+      if (hpp <= 0 || marginPct <= 0) {
+        document.getElementById('out-harga').textContent = '-';
+        document.getElementById('out-margin-rp').textContent = '-';
+        document.getElementById('out-bep').textContent = '-';
+        document.getElementById('out-status').textContent = 'Masukkan HPP & margin';
+        return;
+      }
+
+      const marginRp = hpp * (marginPct / 100);
+      const hargaJual = hpp + marginRp;
+
+      // BEP (kasar): fixed / (hargaJual - hpp) => fixed / margin kontribusi (marginRp)
+      const bepUnit = marginRp > 0 ? (fixed / marginRp) : Infinity;
+
+      const status = volume > 0 ? (volume >= Math.ceil(bepUnit) ? 'Potensi untung (di atas BEP)' : 'Potensi rugi (di bawah BEP)') : 'Isi volume untuk evaluasi';
+
+      document.getElementById('out-harga').textContent = formatRp(hargaJual);
+      document.getElementById('out-margin-rp').textContent = formatRp(marginRp);
+      document.getElementById('out-bep').textContent = Number.isFinite(bepUnit) ? `${Math.ceil(bepUnit)} unit` : '-';
+      document.getElementById('out-status').textContent = status;
+    });
+
+    // Checklist
+    const chkBtn = document.getElementById('chk-btn');
+    const chkItems = [
+      { id: 'chk-foto', label: 'Foto produk jelas', saran: 'Tambahkan foto close-up + pencahayaan terang (minimal 2 sudut).' },
+      { id: 'chk-harga', label: 'Harga tertulis', saran: 'Tulis harga (atau kisaran harga) agar pembeli tidak ragu bertanya dari awal.' },
+      { id: 'chk-varian', label: 'Ada varian (opsional)', saran: 'Kalau ada varian (rasa/ukuran/bahan), tampilkan daftar singkat biar pembeli mudah memilih.' },
+      { id: 'chk-deskripsi', label: 'Deskripsi singkat (manfaat)', saran: 'Tulis 3-5 kalimat manfaat: keunggulan utama, bahan, dan siapa yang cocok.' },
+      { id: 'chk-ongkir', label: 'Info pengiriman/ongkir jelas', saran: 'Cantumkan estimasi pengiriman/ongkir (atau cara hitung) agar proses order cepat.' },
+      { id: 'chk-cta', label: 'CTA (contoh: Chat untuk order)', saran: 'Tambahkan tombol/kalimat CTA: “Chat sekarang untuk cek stok & order”.' },
+    ];
+
+    function scoreBadge(score) {
+      if (score >= 5) return { badge: 'Siap Jual', cls: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' };
+      if (score >= 3) return { badge: 'Hampir Siap', cls: 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300' };
+      return { badge: 'Perlu Perbaikan', cls: 'bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-300' };
+    }
+
+    chkBtn?.addEventListener('click', () => {
+      const checked = chkItems.filter(it => document.getElementById(it.id).checked);
+      const score = checked.length;
+
+      const badge = scoreBadge(score);
+      const status = badge.badge;
+
+      const ul = document.getElementById('chk-saran');
+      ul.innerHTML = '';
+
+      const missing = chkItems.filter(it => !document.getElementById(it.id).checked);
+      if (missing.length === 0) {
+        const li = document.createElement('li');
+        li.textContent = 'Toko Anda sudah cukup siap. Fokus tingkatkan testimoni dan konsistensi konten.';
+        ul.appendChild(li);
+      } else {
+        missing.forEach(m => {
+          const li = document.createElement('li');
+          li.textContent = m.saran;
+          ul.appendChild(li);
+        });
+      }
+
+      const nama = document.getElementById('chk-nama').value.trim();
+      const badgeEl = document.getElementById('chk-badge');
+      badgeEl.textContent = status;
+      badgeEl.className = `text-xs font-bold px-3 py-1 rounded-full ${badge.cls}`;
+
+      document.getElementById('chk-score').textContent = `${score}/6`;
+      document.getElementById('chk-status').textContent = nama ? `Untuk: ${nama}` : status;
+    });
+
+    // Planner 30 hari (template)
+    const plBtn = document.getElementById('pl-btn');
+    const plCopy = document.getElementById('pl-copy');
+    const plOut = document.getElementById('pl-out');
+
+    const hookTemplates = {
+      jualan: [
+        'Hook: {produk} hari ini diskon ringan—buruan chat ya!',
+        'Hook: Rahasia {produk} laris karena ini…',
+        'Hook: 3 alasan kenapa {produk} bikin repeat order',
+        'Hook: Paket hemat {produk} untuk kamu yang suka praktis'
+      ],
+      brand: [
+        'Hook: Kenalan dulu yuk, di balik {produk} ada cerita ini',
+        'Hook: Proses pembuatan {produk} step-by-step',
+        'Hook: Nilai & komitmen kami untuk pelanggan {produk}',
+        'Hook: Kenapa kami konsisten dengan {produk}?'
+      ]
+    };
+
+    const captionCTA = {
+      instagram: 'CTA: Mau versi rasa/varian tertentu? Chat sekarang untuk cek stok & harga ya.',
+      tiktok: 'CTA: Klik follow dan komen “ORDER” biar kami bantu proses order!',
+      facebook: 'CTA: Tertarik? Chat admin + sebut varian yang kamu mau.',
+      wa: 'CTA: Balas pesan ini dengan nama produk + alamat (untuk estimasi ongkir).'
+    };
+
+    function buildPlanner(kategori, channel, goal) {
+      const produk = kategori?.trim() ? kategori.trim() : 'produk UMKM';
+      const hooks = hookTemplates[goal] || hookTemplates.jualan;
+
+      // Pola 30 hari: 5 konten edukasi, 5 testimoni, 5 behind the scene, 5 promo ringan, sisanya variasi
+      const plan = [];
+      const hari = [
+        'Edukasi singkat', 'Manfaat & problem-solution', 'Behind the scene', 'Testimoni/Review', 'Promo ringan',
+        'Cara pakai/step', 'Tips memilih', 'QnA kecil', 'Bikin penasaran', 'Promo bundle'
+      ];
+
+      for (let i = 1; i <= 30; i++) {
+        const slot = (i - 1) % hari.length;
+        const jenis = hari[slot];
+        const hook = hooks[(i - 1) % hooks.length].replaceAll('{produk}', produk);
+        const cta = captionCTA[channel] || captionCTA.instagram;
+
+        let isi = '';
+        switch (jenis) {
+          case 'Edukasi singkat':
+            isi = `Ide konten: 3 fakta cepat tentang ${produk}.
+Copy angle: “Yang sering orang salah paham tentang ${produk} adalah…”`;
+            break;
+          case 'Manfaat & problem-solution':
+            isi = `Ide konten: tampilkan masalah umum lalu solusinya pakai ${produk}.
+Struktur: Masalah → Solusi → Ajakan chat.`;
+            break;
+          case 'Behind the scene':
+            isi = `Ide konten: proses pembuatan/packing ${produk} (video/foto singkat).
+Tampilkan step penting dan higienitas.'`;
+            break;
+          case 'Testimoni/Review':
+            isi = `Ide konten: kutip testimoni pelanggan.
+Tambahkan: konteks singkat pelanggan + hasilnya.'`;
+            break;
+          case 'Promo ringan':
+            isi = `Ide konten: promo ringan (tanpa membahayakan margin).
+Contoh: “beli 2 bonus kemasan/varian mini”`;
+            break;
+          case 'Cara pakai/step':
+            isi = `Ide konten: cara pakai/step untuk hasil maksimal dari ${produk}.
+Bikin 3 langkah mudah.'`;
+            break;
+          case 'Tips memilih':
+            isi = `Ide konten: tips memilih varian ${produk} yang cocok.
+Buat checklist kecil.'`;
+            break;
+          case 'QnA kecil':
+            isi = `Ide konten: 5 pertanyaan yang sering ditanya tentang ${produk}.
+Jawab singkat dalam format carousel.`;
+            break;
+          case 'Bikin penasaran':
+            isi = `Ide konten: teaser—“besok ada varian baru ${produk}”.
+Akhiri dengan pertanyaan untuk engagement.'`;
+            break;
+          case 'Promo bundle':
+            isi = `Ide konten: bundle hemat ${produk}.
+Tampilkan perbandingan harga sederhana (versi hemat vs biasa).`;
+            break;
+        }
+
+        plan.push(`Hari ${i}: ${jenis}
+${hook}
+${isi}
+${cta}`);
+      }
+
+      return `Kategori: ${produk}
+Channel: ${channel}
+Tujuan: ${goal}
+
+--- Jadwal 30 Hari ---
+
+` + plan.join('\n\n');
+    }
+
+    plBtn?.addEventListener('click', () => {
+      const kategori = document.getElementById('pl-kategori').value;
+      const channel = document.getElementById('pl-channel').value;
+      const goal = document.querySelector('input[name="pl-goal"]:checked')?.value || 'jualan';
+
+      plOut.textContent = buildPlanner(kategori, channel, goal);
+    });
+
+    plCopy?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(plOut.textContent);
+      } catch {
+        // ignore
+      }
+    });
+
+    // Template chat (keyword-based)
+    const chatBtn = document.getElementById('chat-btn');
+    const chatCopy = document.getElementById('chat-copy');
+    const chatOut = document.getElementById('chat-out');
+
+    function normalize(s) {
+      return (s || '').toLowerCase();
+    }
+
+    function guessIntent(msg) {
+      const m = normalize(msg);
+
+      const has = (...words) => words.some(w => m.includes(w));
+
+      if (has('stok', 'ready')) return 'stok';
+      if (has('harga', 'berapa', 'price', 'biaya')) return 'harga';
+      if (has('ongkir', 'ongkos kirim', 'kirim', 'kiriman')) return 'ongkir';
+      if (has('order', 'pesan', 'beli', 'pemesanan')) return 'order';
+      if (has('komplain', 'rusak', 'tidak sesuai', 'salah', 'refund', 'tolak')) return 'komplain';
+      if (has('alamat', 'kota', 'jakarta', 'bandung', 'surabaya', 'medan', 'bekasi', 'bogor', 'depok')) return 'ongkir';
+      return 'umum';
+    }
+
+    function buildChatReply({ toko, produk, msg }) {
+      const intent = guessIntent(msg);
+      const p = produk?.trim() ? produk.trim() : '';
+
+      const opener = toko?.trim() ? `${toko.trim()} di sini 😊` : 'Halo! 😊';
+
+      const replies = {
+        stok: `${opener}\n\nSiap! Untuk ${p || 'produk'} saat ini statusnya: READY / MENUNGGU (sebutkan varian/ukuran yang Anda mau ya).\n\nBoleh info varian + jumlahnya? Nanti kami cekkan ketersediaannya.` ,
+        harga: `${opener}\n\nUntuk ${p || 'produk'} harganya mulai dari: (isi sesuai harga Anda).\n\nMau yang varian/ukuran mana? Sebutkan ya, biar kami hitungkan totalnya sekalian.` ,
+        ongkir: `${opener}\n\nBisa kak 👍\nUntuk estimasi ongkir, mohon info:\n1) Alamat tujuan (kota/kode pos)\n2) Pilihan produk + jumlah\n\nNanti kami bantu cekkan nominalnya.` ,
+        order: `${opener}\n\nBisa kak. Berikut langkah order: \n1) Pilih varian/ukuran & jumlah\n2) Konfirmasi alamat + no HP\n3) Kami kirim total pembayaran\n\nKakak mau order varian apa?` ,
+        komplain: `${opener}\n\nMohon maaf ya kak atas ketidaknyamanannya 😔\nBiar kami bantu cek cepat, mohon kirim: \n1) Foto / video kondisi produk\n2) Nomor pesanan (jika ada)\n3) Keluhan singkat\n\nSetelah itu kami tindaklanjuti solusinya.` ,
+        umum: `${opener}\n\nTerima kasih sudah chat 😊\nBoleh info yang Anda butuhkan terkait ${p || 'produk'}?\nContoh: harga, stok, ongkir, atau cara order.`
+      };
+
+      return replies[intent] || replies.umum;
+    }
+
+    chatBtn?.addEventListener('click', () => {
+      const msg = document.getElementById('chat-msg').value;
+      const toko = document.getElementById('chat-toko').value;
+      const produk = document.getElementById('chat-produk').value;
+
+      if (!msg.trim()) {
+        chatOut.textContent = 'Masukkan pesan pelanggan dulu.';
+        return;
+      }
+
+      chatOut.textContent = buildChatReply({ toko, produk, msg });
+    });
+
+    chatCopy?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(chatOut.textContent);
+      } catch {
+        // ignore
+      }
+    });
+  </script>
+</body>
+
+</html>
+

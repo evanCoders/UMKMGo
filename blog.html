@@ -45,6 +45,7 @@
         body {
             background-color: #F9FAFB;
             color: #374151;
+            -webkit-font-smoothing: antialiased;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
@@ -114,6 +115,11 @@
         .dark .tab-active {
             color: #14B8A6;
             border-bottom-color: #14B8A6;
+        }
+
+        /* Transition for filtered posts */
+        .post-card, .featured-post > div {
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
     </style>
 </head>
@@ -203,8 +209,8 @@
             </div>
         </section>
 
-        <!-- ==================== TAB SECTION (TANPA IKON) ==================== -->
-        <section class="pt-8 pb-4 px-4 border-b border-gray-200 dark:border-slate-800">
+        <!-- ==================== TAB SECTION ==================== -->
+        <section class="pt-8 pb-4 px-4 border-b border-gray-200 dark:border-slate-700">
             <div class="max-w-6xl mx-auto">
                 <div class="flex flex-wrap justify-center gap-1 md:gap-2">
                     <button data-tab="all"
@@ -227,16 +233,16 @@
         </section>
 
         <!-- ==================== BLOG POSTS ==================== -->
-        <section class="py-12 px-4">
+        <section class="py-12 px-4 bg-gray-50 dark:bg-slate-900">
             <div class="max-w-6xl mx-auto">
 
-                <!-- Featured Post (untuk tab Semua) -->
+                <!-- Featured Post (untuk tab Semua & Tips) -->
                 <div class="featured-post mb-16 reveal" data-category="tips">
                     <div
                         class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-slate-700 flex flex-col md:flex-row">
                         <div class="md:w-2/5">
-                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop"
-                                alt="UMKM Bekerja Sama" class="w-full h-64 md:h-full object-cover">
+                            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&h=400&fit=crop"
+                                alt="Rapat Bisnis UMKM" class="w-full h-64 md:h-full object-cover">
                         </div>
                         <div class="p-8 md:w-3/5">
                             <div class="flex items-center gap-2 mb-3">
@@ -255,7 +261,7 @@
                                         class="w-8 h-8 rounded-full" alt="Author">
                                     <span class="text-sm text-gray-600 dark:text-gray-400">Tim UMKMGo</span>
                                 </div>
-<a href="post.html?slug=strategi-digital-umkm-2026"
+                                <a href="post.html?slug=strategi-digital-umkm-2026"
                                     class="text-brand-600 dark:text-brand-400 font-semibold text-sm hover:underline">Baca
                                     Selengkapnya →</a>
                             </div>
@@ -269,8 +275,8 @@
                     <!-- Post 1 - Tips -->
                     <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
                         data-category="tips">
-                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=250&fit=crop"
-                            alt="UMKM Digital" class="w-full h-48 object-cover">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=250&fit=crop"
+                            alt="Tools UMKM" class="w-full h-48 object-cover">
                         <div class="p-5">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="text-xs text-gray-400">12 Mei 2026</span>
@@ -281,7 +287,7 @@
                             </h3>
                             <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">Temukan berbagai
                                 tools AI yang bisa membantu efisiensi bisnis Anda tanpa menguras kantong.</p>
-<a href="post.html?slug=dari-warung-ke-ekspor-batik-kenanga"
+                            <a href="post.html?slug=5-tools-ai-gratis-umkm"
                                 class="text-brand-600 dark:text-brand-400 text-sm font-semibold hover:underline">Baca
                                 →</a>
                         </div>
@@ -290,8 +296,8 @@
                     <!-- Post 2 - Kisah Sukses -->
                     <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
                         data-category="success">
-                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=250&fit=crop"
-                            alt="UMKM Sukses" class="w-full h-48 object-cover">
+                        <img src="https://images.unsplash.com/photo-1596568362037-1c6a8e11fd67?w=400&h=250&fit=crop"
+                            alt="Batik Sukses" class="w-full h-48 object-cover">
                         <div class="p-5">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="text-xs text-gray-400">10 Mei 2026</span>
@@ -303,7 +309,7 @@
                                 Kenanga</h3>
                             <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">Bagaimana UMKM
                                 batik asal Pekalongan ini menembus pasar internasional dengan bantuan AI.</p>
-<a href="post.html?slug=rumus-caption-instagram-umkm"
+                            <a href="post.html?slug=dari-warung-ke-ekspor-batik-kenanga"
                                 class="text-brand-600 dark:text-brand-400 text-sm font-semibold hover:underline">Baca
                                 →</a>
                         </div>
@@ -312,8 +318,8 @@
                     <!-- Post 3 - Pemasaran -->
                     <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
                         data-category="marketing">
-                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=400&h=250&fit=crop"
-                            alt="Copywriting" class="w-full h-48 object-cover">
+                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=250&fit=crop"
+                            alt="Instagram UMKM" class="w-full h-48 object-cover">
                         <div class="p-5">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="text-xs text-gray-400">8 Mei 2026</span>
@@ -324,7 +330,7 @@
                                 Bikin Produk Laris</h3>
                             <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">Kunci sukses
                                 berjualan di Instagram terletak pada caption. Pelajari rumusnya di sini!</p>
-<a href="post.html?slug=dari-warung-ke-ekspor-batik-kenanga"
+                            <a href="post.html?slug=rumus-caption-instagram-umkm"
                                 class="text-brand-600 dark:text-brand-400 text-sm font-semibold hover:underline">Baca
                                 →</a>
                         </div>
@@ -354,8 +360,8 @@
                     <!-- Post 5 - Teknologi -->
                     <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
                         data-category="technology">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop"
-                            alt="Chatbot" class="w-full h-48 object-cover">
+                        <img src="https://images.unsplash.com/photo-1531746790095-e5995aba4f58?w=400&h=250&fit=crop"
+                            alt="Chatbot AI" class="w-full h-48 object-cover">
                         <div class="p-5">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="text-xs text-gray-400">2 Mei 2026</span>
@@ -366,7 +372,7 @@
                                 Bisnis Online</h3>
                             <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">Layani pelanggan 24
                                 jam tanpa henti dengan chatbot AI. Ini manfaat yang bisa Anda dapatkan.</p>
-                            <a href="#"
+                            <a href="post.html?slug=keuntungan-chatbot-ai-bisnis-online"
                                 class="text-brand-600 dark:text-brand-400 text-sm font-semibold hover:underline">Baca
                                 →</a>
                         </div>
@@ -375,8 +381,8 @@
                     <!-- Post 6 - Pemasaran -->
                     <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
                         data-category="marketing">
-                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&h=250&fit=crop"
-                            alt="Marketing" class="w-full h-48 object-cover">
+                        <img src="https://images.unsplash.com/photo-1603796846097-bee99e4a601f?w=400&h=250&fit=crop"
+                            alt="Konten Viral" class="w-full h-48 object-cover">
                         <div class="p-5">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="text-xs text-gray-400">28 April 2026</span>
@@ -387,7 +393,7 @@
                                 2026</h3>
                             <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">Tips membuat konten
                                 yang engaging dan berpotensi viral di media sosial.</p>
-                            <a href="#"
+                            <a href="post.html?slug=strategi-konten-viral-umkm"
                                 class="text-brand-600 dark:text-brand-400 text-sm font-semibold hover:underline">Baca
                                 →</a>
                         </div>
@@ -396,8 +402,8 @@
                     <!-- Post 7 - Tips -->
                     <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
                         data-category="tips">
-                        <img src="https://images.unsplash.com/photo-1533750516457-a7f992034fec?w=400&h=250&fit=crop"
-                            alt="SEO" class="w-full h-48 object-cover">
+                        <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=400&h=250&fit=crop"
+                            alt="Kerajinan Tangan" class="w-full h-48 object-cover">
                         <div class="p-5">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="text-xs text-gray-400">25 April 2026</span>
@@ -408,7 +414,7 @@
                                 Online UMKM</h3>
                             <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">Pelajari cara mudah
                                 meningkatkan visibilitas toko online Anda di mesin pencari.</p>
-                            <a href="#"
+                            <a href="post.html?slug=optimasi-seo-toko-online-umkm"
                                 class="text-brand-600 dark:text-brand-400 text-sm font-semibold hover:underline">Baca
                                 →</a>
                         </div>
@@ -417,8 +423,8 @@
                     <!-- Post 8 - Kisah Sukses -->
                     <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
                         data-category="success">
-                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=250&fit=crop"
-                            alt="Restoran" class="w-full h-48 object-cover">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=250&fit=crop"
+                            alt="Restoran Sukses" class="w-full h-48 object-cover">
                         <div class="p-5">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="text-xs text-gray-400">20 April 2026</span>
@@ -430,7 +436,7 @@
                                 Lipat Pakai AI</h3>
                             <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">Kisah inspiratif
                                 warung makan sederhana yang berhasil meningkatkan penjualan dengan bantuan AI.</p>
-                            <a href="#"
+                            <a href="post.html?slug=warung-makan-omzet-2x-lipat-ai"
                                 class="text-brand-600 dark:text-brand-400 text-sm font-semibold hover:underline">Baca
                                 →</a>
                         </div>
@@ -439,8 +445,8 @@
                     <!-- Post 9 - Teknologi -->
                     <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
                         data-category="technology">
-                        <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=400&h=250&fit=crop"
-                            alt="AI UMKM" class="w-full h-48 object-cover">
+                        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=250&fit=crop"
+                            alt="Teknologi AI UMKM" class="w-full h-48 object-cover">
                         <div class="p-5">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="text-xs text-gray-400">15 April 2026</span>
@@ -451,7 +457,7 @@
                                 Pemula</h3>
                             <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">Panduan langkah
                                 demi langkah untuk memulai menggunakan AI di bisnis UMKM Anda.</p>
-                            <a href="#"
+                            <a href="post.html?slug=cara-memulai-ai-untuk-umkm-pemula"
                                 class="text-brand-600 dark:text-brand-400 text-sm font-semibold hover:underline">Baca
                                 →</a>
                         </div>
@@ -460,17 +466,22 @@
 
                 <!-- Empty State (tampil jika tidak ada konten) -->
                 <div id="empty-state" class="text-center py-16 hidden">
-                    <p class="text-gray-500 dark:text-gray-400">Belum ada artikel untuk kategori ini. Silakan cek
-                        kategori lain.</p>
+                    <div class="w-16 h-16 bg-gray-100 dark:bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                        </svg>
+                    </div>
+                    <p class="text-gray-500 dark:text-gray-400 font-medium">Belum ada artikel untuk kategori ini.</p>
+                    <p class="text-gray-400 dark:text-gray-500 text-sm mt-1">Silakan cek kategori lain.</p>
                 </div>
 
                 <!-- Pagination -->
                 <div class="flex justify-center gap-2 mt-12 reveal">
                     <button class="px-4 py-2 rounded-lg bg-brand-600 text-white font-semibold">1</button>
                     <button
-                        class="px-4 py-2 rounded-lg bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-300 font-semibold hover:bg-gray-200 dark:hover:bg-slate-700 transition">2</button>
+                        class="px-4 py-2 rounded-lg bg-white dark:bg-slate-800 text-gray-600 dark:text-gray-300 font-semibold border border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700 transition">2</button>
                     <button
-                        class="px-4 py-2 rounded-lg bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-300 font-semibold hover:bg-gray-200 dark:hover:bg-slate-700 transition">3</button>
+                        class="px-4 py-2 rounded-lg bg-white dark:bg-slate-800 text-gray-600 dark:text-gray-300 font-semibold border border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700 transition">3</button>
                 </div>
             </div>
         </section>
@@ -483,7 +494,7 @@
                     untuk UMKM Anda.</p>
                 <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
                     <input type="email" placeholder="Email Anda"
-                        class="flex-1 px-4 py-3 rounded-xl border-0 focus:outline-none focus:ring-2 focus:ring-white">
+                        class="flex-1 px-4 py-3 rounded-xl border-0 focus:outline-none focus:ring-2 focus:ring-white text-gray-900">
                     <button type="submit"
                         class="px-6 py-3 bg-white text-brand-600 font-bold rounded-xl hover:bg-gray-100 transition">Berlangganan</button>
                 </form>
@@ -547,11 +558,11 @@
             document.documentElement.classList.toggle('dark', isDark);
             localStorage.setItem(THEME_KEY, theme);
             if (isDark) {
-                lightIcon.classList.add('hidden');
-                darkIcon.classList.remove('hidden');
-            } else {
                 lightIcon.classList.remove('hidden');
                 darkIcon.classList.add('hidden');
+            } else {
+                lightIcon.classList.add('hidden');
+                darkIcon.classList.remove('hidden');
             }
         }
 
@@ -578,11 +589,12 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // ==================== TAB FILTER (TANPA IKON) ====================
+        // ==================== TAB FILTER ====================
         const tabBtns = document.querySelectorAll('.tab-btn');
         const allPosts = document.querySelectorAll('.post-card');
         const featuredPost = document.querySelector('.featured-post');
         const emptyState = document.getElementById('empty-state');
+        const postsContainer = document.getElementById('posts-container');
 
         function filterPosts(category) {
             let visibleCount = 0;
@@ -602,16 +614,19 @@
             if (featuredPost) {
                 if (category === 'all' || category === 'tips') {
                     featuredPost.style.display = '';
+                    visibleCount++;
                 } else {
                     featuredPost.style.display = 'none';
                 }
             }
 
-            // Show/hide empty state
-            if (visibleCount === 0 && emptyState) {
+            // Show/hide empty state & container border
+            if (visibleCount === 0) {
                 emptyState.classList.remove('hidden');
-            } else if (emptyState) {
+                postsContainer.classList.add('hidden');
+            } else {
                 emptyState.classList.add('hidden');
+                postsContainer.classList.remove('hidden');
             }
         }
 
