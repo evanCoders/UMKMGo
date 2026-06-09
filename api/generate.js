@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 export const config = {
     maxDuration: 60,
 };
@@ -83,7 +83,6 @@ export default async function handler(req, res) {
         console.error('Error:', error);
         res.status(500).json({ error: error.message || 'Terjadi kesalahan pada server' });
     }
-=======
 export const config = {
     maxDuration: 60,
 };
@@ -168,5 +167,4 @@ export default async function handler(req, res) {
         console.error('Error:', error);
         res.status(500).json({ error: error.message || 'Terjadi kesalahan pada server' });
     }
->>>>>>> 4c9cabc53e9b2d7a177805bee3661416ae5c2bc9
 }
