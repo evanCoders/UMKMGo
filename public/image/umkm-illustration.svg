@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+    <defs>
+        <linearGradient id="umkm-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#14B8A6"/>
+            <stop offset="100%" stop-color="#0D9488"/>
+        </linearGradient>
+    </defs>
+
+    <!-- Background circle -->
+    <circle cx="200" cy="200" r="180" fill="#F0FDFA" stroke="#CCFBF1" stroke-width="2"/>
+
+    <!-- Toko / Warung -->
+    <rect x="120" y="160" width="160" height="120" rx="6" fill="#14B8A6" opacity="0.15"/>
+    <rect x="120" y="160" width="160" height="120" rx="6" fill="none" stroke="#14B8A6" stroke-width="2"/>
+
+    <!-- Atap Toko -->
+    <polygon points="100,165 200,110 300,165" fill="#14B8A6" opacity="0.25"/>
+    <polygon points="100,165 200,110 300,165" fill="none" stroke="#14B8A6" stroke-width="2.5" stroke-linejoin="round"/>
+
+    <!-- Pintu Toko -->
+    <rect x="175" y="210" width="50" height="70" rx="4" fill="#0D9488" opacity="0.3"/>
+    <rect x="175" y="210" width="50" height="70" rx="4" fill="none" stroke="#0D9488" stroke-width="2"/>
+    <circle cx="215" cy="248" r="4" fill="#0D9488"/>
+
+    <!-- Etalase -->
+    <rect x="140" y="180" width="25" height="25" rx="3" fill="#14B8A6" opacity="0.2"/>
+    <rect x="235" y="180" width="25" height="25" rx="3" fill="#14B8A6" opacity="0.2"/>
+
+    <!-- Orang (Pembeli) -->
+    <!-- Kepala -->
+    <circle cx="80" cy="240" r="16" fill="#14B8A6" opacity="0.3"/>
+    <circle cx="80" cy="240" r="16" fill="none" stroke="#14B8A6" stroke-width="2"/>
+    <!-- Badan -->
+    <rect x="70" y="256" width="20" height="30" rx="4" fill="#14B8A6" opacity="0.2"/>
+    <rect x="70" y="256" width="20" height="30" rx="4" fill="none" stroke="#14B8A6" stroke-width="2"/>
+    <!-- Kaki -->
+    <line x1="75" y1="286" x2="75" y2="300" stroke="#14B8A6" stroke-width="2"/>
+    <line x1="85" y1="286" x2="85" y2="300" stroke="#14B8A6" stroke-width="2"/>
+    <!-- Tangan membawa tas -->
+    <path d="M70 265 Q55 275 55 290" fill="none" stroke="#14B8A6" stroke-width="2"/>
+    <rect x="48" y="275" width="14" height="18" rx="3" fill="#14B8A6" opacity="0.15"/>
+
+    <!-- Orang (Penjual) -->
+    <!-- Kepala -->
+    <circle cx="320" cy="220" r="16" fill="#0D9488" opacity="0.3"/>
+    <circle cx="320" cy="220" r="16" fill="none" stroke="#0D9488" stroke-width="2"/>
+    <!-- Badan -->
+    <rect x="310" y="236" width="20" height="30" rx="4" fill="#0D9488" opacity="0.2"/>
+    <rect x="310" y="236" width="20" height="30" rx="4" fill="none" stroke="#0D9488" stroke-width="2"/>
+    <!-- Kaki -->
+    <line x1="315" y1="266" x2="315" y2="280" stroke="#0D9488" stroke-width="2"/>
+    <line x1="325" y1="266" x2="325" y2="280" stroke="#0D9488" stroke-width="2"/>
+    <!-- Tangan memberi -->
+    <path d="M330 248 Q345 255 340 270" fill="none" stroke="#0D9488" stroke-width="2"/>
+
+    <!-- Kotak produk -->
+    <rect x="280" y="265" width="25" height="20" rx="2" fill="#14B8A6" opacity="0.15"/>
+    <rect x="280" y="265" width="25" height="20" rx="2" fill="none" stroke="#14B8A6" stroke-width="1.5"/>
+
+    <!-- Bintang / Poin Plus -->
+    <g fill="#F59E0B" opacity="0.8">
+        <polygon points="200,60 205,75 220,75 208,83 212,98 200,90 188,98 192,83 180,75 195,75" transform="scale(0.6) translate(140,20)"/>
+        <polygon points="200,60 205,75 220,75 208,83 212,98 200,90 188,98 192,83 180,75 195,75" transform="scale(0.4) translate(380,200)"/>
+        <polygon points="200,60 205,75 220,75 208,83 212,98 200,90 188,98 192,83 180,75 195,75" transform="scale(0.3) translate(80,380)"/>
+    </g>
+
+    <!-- Gelombang bawah -->
+    <path d="M0 380 Q50 365 100 380 Q150 395 200 380 Q250 365 300 380 Q350 395 400 380 L400 400 L0 400 Z" fill="#14B8A6" opacity="0.05"/>
+</svg>

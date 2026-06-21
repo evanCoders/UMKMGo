@@ -1,0 +1,131 @@
+body {
+    background-color: #F9FAFB;
+    color: #374151;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+}
+
+.dark body {
+    background-color: #0F172A;
+    color: #E2E8F0;
+}
+
+.dark .bg-white {
+    background-color: #1E293B !important;
+}
+
+.dark .bg-gray-50 {
+    background-color: #0F172A !important;
+}
+
+.dark .border-gray-100 {
+    border-color: #334155 !important;
+}
+
+.dark .border-gray-200 {
+    border-color: #334155 !important;
+}
+
+.dark .text-gray-900 {
+    color: #F1F5F9 !important;
+}
+
+.dark .text-gray-700 {
+    color: #CBD5E1 !important;
+}
+
+.dark .text-gray-600 {
+    color: #94A3B8 !important;
+}
+
+.dark .text-gray-500 {
+    color: #64748B !important;
+}
+
+.dark #navbar {
+    background-color: rgba(15, 23, 42, 0.9) !important;
+    border-bottom-color: #1E293B !important;
+}
+
+.card-hover {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Prose Styling for Article Content */
+.prose {
+    line-height: 1.75;
+    font-size: 1.05rem;
+}
+
+.prose h3 {
+    font-family: '"DM Serif Display"', serif;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #111827;
+}
+
+.dark .prose h3 {
+    color: #F1F5F9;
+}
+
+.prose p {
+    margin-bottom: 1.25rem;
+}
+
+.prose ul,
+.prose ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+}
+
+.prose ul {
+    list-style-type: disc;
+}
+
+.prose ol {
+    list-style-type: decimal;
+}
+
+.prose li {
+    margin-bottom: 0.5rem;
+}
+
+.prose a {
+    text-decoration: underline;
+    text-decoration-color: rgba(20, 184, 166, 0.4);
+    color: #0D9488;
+}
+
+.prose a:hover {
+    color: #0F766E;
+}
+
+.prose strong {
+    font-weight: 700;
+    color: #111827;
+}
+
+.dark .prose strong {
+    color: #F1F5F9;
+}
+
+.prose em {
+    font-style: italic;
+}

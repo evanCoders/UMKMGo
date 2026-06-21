@@ -418,3 +418,53 @@ slider.addEventListener('touchend', () => {
 
 // Recalculate on Resize
 window.addEventListener('resize', () => goToSlide(currentIndex));
+
+document.getElementById('contact-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const form = this;
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Mengirim pesan anda...';
+
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            // ✅ Redirect ke thanks.html setelah sukses
+            window.location.href = '../pages/thanks.html';
+        } else {
+            throw new Error('Gagal mengirim');
+        }
+    } catch (error) {
+        alert('⚠️ Gagal mengirim pesan. Silakan coba lagi.');
+        submitBtn.innerHTML = 'Kirim Pesan';
+        submitBtn.disabled = false;
+    }
+});
+
+// Fungsi global untuk menampilkan modal testimoni
+function showTestimonialModal() {
+    const modal = document.getElementById('testimonialModal');
+    if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Mencegah scroll di belakang modal
+        // Opsional: Anda juga bisa melacak berapa kali modal muncul
+    }
+}
+
+// Fungsi untuk menutup modal
+function closeTestimonialModal() {
+    const modal = document.getElementById('testimonialModal');
+    if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+}

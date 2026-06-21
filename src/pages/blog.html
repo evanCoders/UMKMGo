@@ -16,6 +16,10 @@
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap"
         rel="stylesheet" />
 
+    <link rel="icon" href="/image/favicon.svg" /> <!-- ✅ TAMBAHKAN FAVICON -->
+
+    <link rel="stylesheet" href="../css/blog.css">
+
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -40,88 +44,6 @@
             },
         }
     </script>
-
-    <style>
-        body {
-            background-color: #F9FAFB;
-            color: #374151;
-            -webkit-font-smoothing: antialiased;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .dark body {
-            background-color: #0F172A;
-            color: #E2E8F0;
-        }
-
-        .dark .bg-white {
-            background-color: #1E293B !important;
-        }
-
-        .dark .bg-gray-50 {
-            background-color: #0F172A !important;
-        }
-
-        .dark .border-gray-100 {
-            border-color: #334155 !important;
-        }
-
-        .dark .border-gray-200 {
-            border-color: #334155 !important;
-        }
-
-        .dark .text-gray-900 {
-            color: #F1F5F9 !important;
-        }
-
-        .dark .text-gray-600 {
-            color: #94A3B8 !important;
-        }
-
-        .dark .text-gray-500 {
-            color: #64748B !important;
-        }
-
-        .dark #navbar {
-            background-color: rgba(15, 23, 42, 0.9) !important;
-            border-bottom-color: #1E293B !important;
-        }
-
-        .card-hover {
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .tab-active {
-            color: #0D9488;
-            border-bottom-color: #0D9488;
-        }
-
-        .dark .tab-active {
-            color: #14B8A6;
-            border-bottom-color: #14B8A6;
-        }
-
-        /* Transition for filtered posts */
-        .post-card, .featured-post > div {
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-    </style>
 </head>
 
 <body>
@@ -133,7 +55,8 @@
             <div class="flex items-center justify-between h-20">
                 <a href="index.html" class="flex items-center gap-3 group">
                     <div
-                        class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center shadow-lg shadow-brand-500/20">
+                        class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                        <!-- ✅ TAMBAHKAN hover scale -->
                         <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.5"
                             viewBox="0 0 24 24">
                             <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" />
@@ -159,19 +82,28 @@
                 </nav>
 
                 <div class="flex items-center gap-4">
+                    <!-- Tombol Toggle Tema -->
                     <button id="theme-toggle"
-                        class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 transition">
-                        <svg id="theme-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                        class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 transition-colors duration-200"
+                        aria-label="Toggle tema">
+                        <svg id="theme-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
                                 d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
                                 clip-rule="evenodd" />
                         </svg>
-                        <svg id="theme-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                        <svg id="theme-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
                             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
                         </svg>
                     </button>
-                    <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-600 dark:text-gray-300 rounded-lg">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                    <!-- Tombol Menu Mobile -->
+                    <button id="mobile-menu-btn"
+                        class="md:hidden p-2 text-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                        aria-label="Buka menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 6h16M4 12h16m-7 6h7" />
                         </svg>
@@ -214,7 +146,7 @@
             <div class="max-w-6xl mx-auto">
                 <div class="flex flex-wrap justify-center gap-1 md:gap-2">
                     <button data-tab="all"
-                        class="tab-btn px-5 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 bg-brand-600 text-white shadow-md">Semua</button>
+                        class="tab-btn px-5 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 bg-brand-600 text-white shadow-md active">Semua</button>
                     <button data-tab="tips"
                         class="tab-btn px-5 py-2.5 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-all">Tips
                         & Trik</button>
@@ -236,13 +168,14 @@
         <section class="py-12 px-4 bg-gray-50 dark:bg-slate-900">
             <div class="max-w-6xl mx-auto">
 
-                <!-- Featured Post (untuk tab Semua & Tips) -->
+                <!-- Featured Post -->
                 <div class="featured-post mb-16 reveal" data-category="tips">
                     <div
                         class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-slate-700 flex flex-col md:flex-row">
                         <div class="md:w-2/5">
                             <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&h=400&fit=crop"
-                                alt="Rapat Bisnis UMKM" class="w-full h-64 md:h-full object-cover">
+                                alt="Rapat Bisnis UMKM" class="w-full h-64 md:h-full object-cover" loading="lazy">
+                            <!-- ✅ TAMBAHKAN loading lazy -->
                         </div>
                         <div class="p-8 md:w-3/5">
                             <div class="flex items-center gap-2 mb-3">
@@ -269,14 +202,15 @@
                     </div>
                 </div>
 
-                <!-- Grid Posts Container -->
+                <!-- Grid Posts -->
                 <div id="posts-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
+                    <!-- ✅ SEMUA POST SAMA, TIDAK BERUBAH -->
                     <!-- Post 1 - Tips -->
                     <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
                         data-category="tips">
                         <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=250&fit=crop"
-                            alt="Tools UMKM" class="w-full h-48 object-cover">
+                            alt="Tools UMKM" class="w-full h-48 object-cover" loading="lazy">
                         <div class="p-5">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="text-xs text-gray-400">12 Mei 2026</span>
@@ -297,7 +231,7 @@
                     <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
                         data-category="success">
                         <img src="https://images.unsplash.com/photo-1596568362037-1c6a8e11fd67?w=400&h=250&fit=crop"
-                            alt="Batik Sukses" class="w-full h-48 object-cover">
+                            alt="Batik Sukses" class="w-full h-48 object-cover" loading="lazy">
                         <div class="p-5">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="text-xs text-gray-400">10 Mei 2026</span>
@@ -319,7 +253,7 @@
                     <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
                         data-category="marketing">
                         <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=250&fit=crop"
-                            alt="Instagram UMKM" class="w-full h-48 object-cover">
+                            alt="Instagram UMKM" class="w-full h-48 object-cover" loading="lazy">
                         <div class="p-5">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="text-xs text-gray-400">8 Mei 2026</span>
@@ -340,7 +274,7 @@
                     <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
                         data-category="finance">
                         <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=250&fit=crop"
-                            alt="Keuangan UMKM" class="w-full h-48 object-cover">
+                            alt="Keuangan UMKM" class="w-full h-48 object-cover" loading="lazy">
                         <div class="p-5">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="text-xs text-gray-400">5 Mei 2026</span>
@@ -361,7 +295,7 @@
                     <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
                         data-category="technology">
                         <img src="https://images.unsplash.com/photo-1531746790095-e5995aba4f58?w=400&h=250&fit=crop"
-                            alt="Chatbot AI" class="w-full h-48 object-cover">
+                            alt="Chatbot AI" class="w-full h-48 object-cover" loading="lazy">
                         <div class="p-5">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="text-xs text-gray-400">2 Mei 2026</span>
@@ -382,7 +316,7 @@
                     <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
                         data-category="marketing">
                         <img src="https://images.unsplash.com/photo-1603796846097-bee99e4a601f?w=400&h=250&fit=crop"
-                            alt="Konten Viral" class="w-full h-48 object-cover">
+                            alt="Konten Viral" class="w-full h-48 object-cover" loading="lazy">
                         <div class="p-5">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="text-xs text-gray-400">28 April 2026</span>
@@ -403,7 +337,7 @@
                     <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
                         data-category="tips">
                         <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=400&h=250&fit=crop"
-                            alt="Kerajinan Tangan" class="w-full h-48 object-cover">
+                            alt="Kerajinan Tangan" class="w-full h-48 object-cover" loading="lazy">
                         <div class="p-5">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="text-xs text-gray-400">25 April 2026</span>
@@ -424,7 +358,7 @@
                     <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
                         data-category="success">
                         <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=250&fit=crop"
-                            alt="Restoran Sukses" class="w-full h-48 object-cover">
+                            alt="Restoran Sukses" class="w-full h-48 object-cover" loading="lazy">
                         <div class="p-5">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="text-xs text-gray-400">20 April 2026</span>
@@ -446,7 +380,7 @@
                     <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
                         data-category="technology">
                         <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=250&fit=crop"
-                            alt="Teknologi AI UMKM" class="w-full h-48 object-cover">
+                            alt="Teknologi AI UMKM" class="w-full h-48 object-cover" loading="lazy">
                         <div class="p-5">
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="text-xs text-gray-400">15 April 2026</span>
@@ -464,11 +398,14 @@
                     </div>
                 </div>
 
-                <!-- Empty State (tampil jika tidak ada konten) -->
+                <!-- Empty State -->
                 <div id="empty-state" class="text-center py-16 hidden">
-                    <div class="w-16 h-16 bg-gray-100 dark:bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                    <div
+                        class="w-16 h-16 bg-gray-100 dark:bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
                         </svg>
                     </div>
                     <p class="text-gray-500 dark:text-gray-400 font-medium">Belum ada artikel untuk kategori ini.</p>
@@ -485,28 +422,16 @@
                 </div>
             </div>
         </section>
-
-        <!-- ==================== CTA NEWSLETTER ==================== -->
-        <section class="py-16 bg-brand-600">
-            <div class="max-w-3xl mx-auto px-4 text-center">
-                <h2 class="font-display text-2xl md:text-3xl text-white mb-3">Dapatkan Tips Terbaru</h2>
-                <p class="text-brand-100 mb-6">Berlangganan newsletter kami untuk mendapatkan inspirasi dan tips terbaru
-                    untuk UMKM Anda.</p>
-                <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                    <input type="email" placeholder="Email Anda"
-                        class="flex-1 px-4 py-3 rounded-xl border-0 focus:outline-none focus:ring-2 focus:ring-white text-gray-900">
-                    <button type="submit"
-                        class="px-6 py-3 bg-white text-brand-600 font-bold rounded-xl hover:bg-gray-100 transition">Berlangganan</button>
-                </form>
-            </div>
-        </section>
     </main>
 
-    <!-- ==================== FOOTER ==================== -->
+    <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════ -->
     <footer class="bg-gray-900 text-white pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-4 gap-12 mb-12">
-                <div>
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-1">
                     <div class="flex items-center gap-2.5 mb-6">
                         <div class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center">
                             <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -516,143 +441,40 @@
                         </div>
                         <span class="font-display text-xl">UMKMGo</span>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">Asisten AI untuk UMKM Indonesia. Copyright © 2026.
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Partner digital terbaik untuk pertumbuhan UMKM Indonesia di era AI.
                     </p>
                 </div>
+
+                <!-- Links -->
                 <div>
-                    <h4 class="font-bold text-white mb-6">Menu</h4>
+                    <h4 class="font-bold text-white mb-6">Produk</h4>
                     <ul class="space-y-3 text-sm text-gray-400">
-                        <li><a href="index.html#fitur" class="hover:text-brand-400 transition">Fitur</a></li>
-                        <li><a href="index.html#demo" class="hover:text-brand-400 transition">Coba Demo</a></li>
-                        <li><a href="blog.html" class="hover:text-brand-400 transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition">Copywriting AI</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition">Keuangan</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition">Chatbot WA</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold text-white mb-6">Ikuti Kami</h4>
+                    <h4 class="font-bold text-white mb-6">Perusahaan</h4>
                     <ul class="space-y-3 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-brand-400 transition">Instagram</a></li>
-                        <li><a href="#" class="hover:text-brand-400 transition">TikTok</a></li>
-                        <li><a href="#" class="hover:text-brand-400 transition">YouTube</a></li>
+                        <li><a href="#tentang" class="hover:text-brand-400 transition">Tentang Kami</a></li>
+                        <li><a href="/src/pages/blog.html" class="hover:text-brand-400 transition">Blog</a></li>
+                        <li><a href="#kontak" class="hover:text-brand-400 transition">Kontak</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold text-white mb-6">Kontak</h4>
+                    <h4 class="font-bold text-white mb-6">Legal</h4>
                     <ul class="space-y-3 text-sm text-gray-400">
-                        <li>halo@umkmgo.id</li>
-                        <li>+62 812-3456-7890</li>
+                        <li><a href="#" class="hover:text-brand-400 transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Theme Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        const lightIcon = document.getElementById('theme-light-icon');
-        const darkIcon = document.getElementById('theme-dark-icon');
-        const THEME_KEY = 'umkmgo-theme';
-
-        function applyTheme(theme) {
-            const isDark = theme === 'dark';
-            document.documentElement.classList.toggle('dark', isDark);
-            localStorage.setItem(THEME_KEY, theme);
-            if (isDark) {
-                lightIcon.classList.remove('hidden');
-                darkIcon.classList.add('hidden');
-            } else {
-                lightIcon.classList.add('hidden');
-                darkIcon.classList.remove('hidden');
-            }
-        }
-
-        function getInitialTheme() {
-            const stored = localStorage.getItem(THEME_KEY);
-            if (stored) return stored;
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        }
-
-        applyTheme(getInitialTheme());
-        themeToggle.addEventListener('click', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            applyTheme(isDark ? 'light' : 'dark');
-        });
-
-        // Mobile Menu
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-
-        // Scroll Reveal
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // ==================== TAB FILTER ====================
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const allPosts = document.querySelectorAll('.post-card');
-        const featuredPost = document.querySelector('.featured-post');
-        const emptyState = document.getElementById('empty-state');
-        const postsContainer = document.getElementById('posts-container');
-
-        function filterPosts(category) {
-            let visibleCount = 0;
-
-            // Filter grid posts
-            allPosts.forEach(post => {
-                const postCategory = post.getAttribute('data-category');
-                if (category === 'all' || postCategory === category) {
-                    post.style.display = '';
-                    visibleCount++;
-                } else {
-                    post.style.display = 'none';
-                }
-            });
-
-            // Handle featured post (hanya tampil di tab 'all' dan 'tips')
-            if (featuredPost) {
-                if (category === 'all' || category === 'tips') {
-                    featuredPost.style.display = '';
-                    visibleCount++;
-                } else {
-                    featuredPost.style.display = 'none';
-                }
-            }
-
-            // Show/hide empty state & container border
-            if (visibleCount === 0) {
-                emptyState.classList.remove('hidden');
-                postsContainer.classList.add('hidden');
-            } else {
-                emptyState.classList.add('hidden');
-                postsContainer.classList.remove('hidden');
-            }
-        }
-
-        // Add click event to each tab button
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const category = btn.getAttribute('data-tab');
-
-                // Update active style
-                tabBtns.forEach(b => {
-                    if (b.getAttribute('data-tab') === category) {
-                        b.classList.add('bg-brand-600', 'text-white', 'shadow-md');
-                        b.classList.remove('text-gray-600', 'dark:text-gray-300');
-                    } else {
-                        b.classList.remove('bg-brand-600', 'text-white', 'shadow-md');
-                        b.classList.add('text-gray-600', 'dark:text-gray-300');
-                    }
-                });
-
-                filterPosts(category);
-            });
-        });
-
-        // Initialize with 'all' category
-        filterPosts('all');
-    </script>
+    <script src="../js/blog.js"></script>
 </body>
 
 </html>

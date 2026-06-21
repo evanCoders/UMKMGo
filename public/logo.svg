@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
+  <!-- Ikon petir -->
+  <rect x="0" y="0" width="50" height="50" rx="12" fill="#14B8A6"/>
+  <path d="M28 10 L38 28 L28 35 L32 22 L22 22 L28 10Z" fill="white" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+  
+  <!-- Teks UMKMGo -->
+  <text x="58" y="38" font-family="'DM Serif Display', serif" font-size="32" font-weight="700" fill="#111827">UMKMGo</text>
+</svg>
