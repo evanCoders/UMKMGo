@@ -1,116 +1,102 @@
-  body {
-      background-color: #F9FAFB;
-      color: #374151;
-      -webkit-font-smoothing: antialiased;
-      transition: background-color 0.3s ease, color 0.3s ease;
-  }
+body {
+  background-color: #f9fafb;
+  color: #374151;
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
 
-  .dark body {
-      background-color: #0F172A;
-      color: #E2E8F0;
-  }
+.dark body {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
 
-  .dark .bg-white {
-      background-color: #1E293B !important;
-  }
+.dark .bg-white {
+  background-color: #1e293b !important;
+}
 
-  .dark .bg-gray-50 {
-      background-color: #0F172A !important;
-  }
+.dark .bg-gray-50 {
+  background-color: #0f172a !important;
+}
 
-  .dark .border-gray-100 {
-      border-color: #334155 !important;
-  }
+.dark .border-gray-100 {
+  border-color: #334155 !important;
+}
 
-  .dark .border-gray-200 {
-      border-color: #334155 !important;
-  }
+.dark .border-gray-200 {
+  border-color: #334155 !important;
+}
 
-  .dark .text-gray-900 {
-      color: #F1F5F9 !important;
-  }
+.dark .text-gray-900 {
+  color: #f1f5f9 !important;
+}
 
-  .dark .text-gray-600 {
-      color: #94A3B8 !important;
-  }
+.dark .text-gray-600 {
+  color: #94a3b8 !important;
+}
 
-  .dark .text-gray-500 {
-      color: #64748B !important;
-  }
+.dark .text-gray-500 {
+  color: #64748b !important;
+}
 
-  .dark #navbar {
-      background-color: rgba(15, 23, 42, 0.9) !important;
-      border-bottom-color: #1E293B !important;
-  }
+.dark #navbar {
+  background-color: rgba(15, 23, 42, 0.9) !important;
+  border-bottom-color: #1e293b !important;
+}
 
-  .card-hover {
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  }
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-  .card-hover:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
-  }
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
 
-  .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-  }
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
 
-  .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-  }
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-  .tab-active {
-      color: #0D9488;
-      border-bottom-color: #0D9488;
-  }
+/* Transition for filtered posts */
+.post-card,
+.featured-post > div {
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
 
-  .dark .tab-active {
-      color: #14B8A6;
-      border-bottom-color: #14B8A6;
-  }
+.tab-active {
+  color: #0d9488;
+  border-bottom-color: #0d9488;
+}
 
-  /* Transition for filtered posts */
-  .post-card,
-  .featured-post>div {
-      transition: opacity 0.3s ease, transform 0.3s ease;
-  }
+.dark .tab-active {
+  color: #14b8a6;
+  border-bottom-color: #14b8a6;
+}
 
-  .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-  }
+.tab-btn.active {
+  background-color: #0d9488;
+  color: white;
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.3);
+}
 
-  .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-  }
+.tab-btn:not(.active):hover {
+  background-color: #f0fdfa;
+  color: #0d9488;
+}
 
-  .card-hover {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
+.dark .tab-btn:not(.active):hover {
+  background-color: #134e4a;
+  color: #14b8a6;
+}
 
-  .card-hover:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  }
-
-  .tab-btn.active {
-      background-color: #0D9488;
-      color: white;
-      box-shadow: 0 4px 14px rgba(13, 148, 136, 0.3);
-  }
-
-  .tab-btn:not(.active):hover {
-      background-color: #F0FDFA;
-      color: #0D9488;
-  }
-
-  .dark .tab-btn:not(.active):hover {
-      background-color: #134E4A;
-      color: #14B8A6;
-  }

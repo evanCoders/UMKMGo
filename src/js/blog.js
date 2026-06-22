@@ -8,6 +8,10 @@
             const isDark = theme === 'dark';
             document.documentElement.classList.toggle('dark', isDark);
             localStorage.setItem(THEME_KEY, theme);
+
+            // Guard: jika ikon tidak ada, jangan crash
+            if (!lightIcon || !darkIcon) return;
+
             if (isDark) {
                 lightIcon.classList.remove('hidden');
                 darkIcon.classList.add('hidden');
@@ -19,20 +23,29 @@
 
         function getInitialTheme() {
             const stored = localStorage.getItem(THEME_KEY);
-            if (stored) return stored;
+            if (stored === 'dark' || stored === 'light') return stored;
             return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         }
 
-        applyTheme(getInitialTheme());
-        themeToggle.addEventListener('click', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            applyTheme(isDark ? 'light' : 'dark');
-        });
+        if (themeToggle) {
+            applyTheme(getInitialTheme());
+            themeToggle.addEventListener('click', () => {
+                const isDark = document.documentElement.classList.contains('dark');
+                applyTheme(isDark ? 'light' : 'dark');
+            });
+        } else {
+            // fallback agar class dark tetap konsisten meski tombol tidak ada
+            applyTheme(getInitialTheme());
+        }
+
 
         // Mobile Menu
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        }
+
 
         // Scroll Reveal
         const observer = new IntersectionObserver((entries) => {
@@ -48,7 +61,9 @@
         const postsContainer = document.getElementById('posts-container');
 
         function filterPosts(category) {
+            if (!emptyState || !postsContainer) return;
             let visibleCount = 0;
+
 
             // Filter grid posts
             allPosts.forEach(post => {
@@ -103,3 +118,4 @@
 
         // Initialize with 'all' category
         filterPosts('all');
+

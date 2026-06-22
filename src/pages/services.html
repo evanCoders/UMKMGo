@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,8 +11,11 @@
     <meta name="description"
         content="Pelajari cara menggunakan UMKMGo: Kalkulator HPP, Checklist Toko, Planner Konten, dan Template Chat." />
 
-    <link rel="icon" href="/image/favicon.svg" />
-    <link rel="stylesheet" href="../css/service.css" />
+    <!-- ✅ PERBAIKAN: Favicon -->
+    <link rel="icon" href="/public/image/favicon.svg" />
+
+    <!-- ✅ PERBAIKAN: CSS (path absolut) -->
+    <link rel="stylesheet" href="/src/css/service.css" />
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -42,82 +48,81 @@
         }
     </script>
 
+    <!-- ✅ TAMBAHKAN: CSS untuk Accordion -->
+    <style>
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+        .dark .card-hover:hover {
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== ACCORDION ===== */
+        .accordion-item {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .dark .accordion-item {
+            border-bottom-color: #1e293b;
+        }
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.3s ease;
+        }
+        .accordion-header:hover {
+            background: rgba(13, 148, 136, 0.05);
+        }
+        .dark .accordion-header:hover {
+            background: rgba(13, 148, 136, 0.15);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.4s ease,
+                        padding 0.4s ease;
+            opacity: 0;
+            padding: 0 24px;
+        }
+        .accordion-content.open {
+            max-height: 2000px;
+            opacity: 1;
+            padding: 20px 24px;
+        }
+
+        .accordion-icon {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
+        }
+        .accordion-icon.rotate {
+            transform: rotate(180deg);
+        }
+    </style>
+
 </head>
 
 <body>
 
     <!-- ==================== NAVBAR ==================== -->
-    <header id="navbar"
-        class="fixed top-0 inset-x-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all duration-300 dark:bg-slate-900/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <a href="index.html" class="flex items-center gap-3 group">
-                    <div
-                        class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.5"
-                            viewBox="0 0 24 24">
-                            <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </div>
-                    <span class="font-display text-2xl text-gray-900 dark:text-white tracking-tight">UMKM<span
-                            class="text-brand-600">Go</span></span>
-                </a>
-
-                <nav class="hidden md:flex items-center gap-8">
-                    <a href="index.html#fitur"
-                        class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-600 transition">Fitur</a>
-                    <a href="index.html#tentang"
-                        class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-600 transition">Tentang</a>
-                    <a href="services.html"
-                        class="text-sm font-medium text-brand-600 dark:text-brand-400 transition">Layanan</a>
-                    <a href="blog.html"
-                        class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-600 transition">Blog</a>
-                    <a href="index.html#kontak"
-                        class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-600 transition">Kontak</a>
-                </nav>
-
-                <div class="flex items-center gap-4">
-                    <button id="theme-toggle"
-                        class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 transition-colors duration-200"
-                        aria-label="Toggle tema">
-                        <svg id="theme-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                                clip-rule="evenodd" />
-                        </svg>
-                        <svg id="theme-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                        </svg>
-                    </button>
-
-                    <button id="mobile-menu-btn"
-                        class="md:hidden p-2 text-gray-600 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
-                        aria-label="Buka menu">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div id="mobile-menu"
-            class="md:hidden hidden bg-white dark:bg-slate-900 border-t border-gray-100 dark:border-slate-800 absolute w-full">
-            <div class="px-4 py-4 space-y-2">
-                <a href="index.html#fitur"
-                    class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800">Fitur</a>
-                <a href="index.html#tentang"
-                    class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800">Tentang</a>
-                <a href="services.html"
-                    class="block px-3 py-2 text-base font-medium text-brand-600 dark:text-brand-400 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800">Layanan</a>
-                <a href="blog.html"
-                    class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800">Blog</a>
-                <a href="index.html#kontak"
-                    class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800">Kontak</a>
-            </div>
-        </div>
-    </header>
+    <div id="component-navbar" data-component="navbar" data-src="/src/components/navbar-services.html"></div>
 
     <!-- ==================== MAIN CONTENT ==================== -->
     <main class="pt-28 pb-16">
@@ -204,8 +209,7 @@
 
                     <!-- Fitur 1: Kalkulator -->
                     <div class="accordion-item">
-                        <div class="accordion-header flex items-center justify-between p-5 md:p-6"
-                            onclick="toggleAccordion(this)">
+                        <div class="accordion-header flex items-center justify-between p-5 md:p-6" role="button" tabindex="0" aria-expanded="false">
                             <div class="flex items-center gap-4">
                                 <div
                                     class="w-12 h-12 bg-brand-100 dark:bg-brand-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -293,8 +297,7 @@
 
                     <!-- Fitur 2: Checklist -->
                     <div class="accordion-item">
-                        <div class="accordion-header flex items-center justify-between p-5 md:p-6"
-                            onclick="toggleAccordion(this)">
+                        <div class="accordion-header flex items-center justify-between p-5 md:p-6" role="button" tabindex="0" aria-expanded="false">
                             <div class="flex items-center gap-4">
                                 <div
                                     class="w-12 h-12 bg-amber-100 dark:bg-amber-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -354,15 +357,11 @@
 
                     <!-- Fitur 3: Planner -->
                     <div class="accordion-item">
-                        <div class="accordion-header flex items-center justify-between p-5 md:p-6"
-                            onclick="toggleAccordion(this)">
+                        <div class="accordion-header flex items-center justify-between p-5 md:p-6" role="button" tabindex="0" aria-expanded="false">
                             <div class="flex items-center gap-4">
-                                <div
-                                    class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                     </svg>
                                 </div>
                                 <div>
@@ -370,10 +369,8 @@
                                     <p class="text-sm text-gray-500 dark:text-gray-400">Jadwal Konten Media Sosial</p>
                                 </div>
                             </div>
-                            <svg class="accordion-icon w-6 h-6 text-gray-400 dark:text-gray-500" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7" />
+                            <svg class="accordion-icon w-6 h-6 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                             </svg>
                         </div>
                         <div class="accordion-content text-gray-600 dark:text-gray-300">
@@ -403,23 +400,22 @@
                                         <li>Klik <strong>Buat Jadwal</strong> — dapatkan template konten 30 hari</li>
                                     </ol>
                                 </div>
-                                <div
-                                    class="p-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl text-sm text-purple-700 dark:text-purple-300">
+                                <div class="p-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl text-sm text-purple-700 dark:text-purple-300">
                                     💡 <span class="font-semibold">Tips:</span> Posting sesuai jadwal untuk menjaga
                                     konsistensi dan engagement.
                                 </div>
-                                <a href="tools.html#planner"
-                                    class="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 font-semibold hover:underline text-sm">
+                                <a href="tools.html#planner" class="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 font-semibold hover:underline text-sm">
                                     🔗 Buka Planner →
                                 </a>
                             </div>
                         </div>
                     </div>
 
+
                     <!-- Fitur 4: Template Chat -->
                     <div class="accordion-item">
                         <div class="accordion-header flex items-center justify-between p-5 md:p-6"
-                            onclick="toggleAccordion(this)">
+                            role="button" tabindex="0" aria-expanded="false">
                             <div class="flex items-center gap-4">
                                 <div
                                     class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -487,52 +483,40 @@
         </section>
     </main>
 
-    <!-- ==================== FOOTER ==================== -->
-    <footer class="bg-gray-900 text-white pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-12 mb-12">
-                <div class="col-span-1 md:col-span-1">
-                    <div class="flex items-center gap-2.5 mb-6">
-                        <div class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center">
-                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2.5"
-                                viewBox="0 0 24 24">
-                                <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                        <span class="font-display text-xl">UMKMGo</span>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Partner digital terbaik untuk pertumbuhan UMKM
-                        Indonesia di era AI.</p>
-                </div>
-                <div>
-                    <h4 class="font-bold text-white mb-6">Menu</h4>
-                    <ul class="space-y-3 text-sm text-gray-400">
-                        <li><a href="index.html#fitur" class="hover:text-brand-400 transition">Fitur</a></li>
-                        <li><a href="tools.html" class="hover:text-brand-400 transition">Tools Non-AI</a></li>
-                        <li><a href="blog.html" class="hover:text-brand-400 transition">Blog</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-white mb-6">Perusahaan</h4>
-                    <ul class="space-y-3 text-sm text-gray-400">
-                        <li><a href="index.html#tentang" class="hover:text-brand-400 transition">Tentang Kami</a></li>
-                        <li><a href="services.html" class="hover:text-brand-400 transition">Layanan</a></li>
-                        <li><a href="index.html#kontak" class="hover:text-brand-400 transition">Kontak</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-white mb-6">Legal</h4>
-                    <ul class="space-y-3 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-brand-400 transition">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-brand-400 transition">Terms of Service</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
+        <!-- ==================== FOOTER ==================== -->
+    <div id="component-footer" data-component="footer" data-src="/src/components/footer.html"></div>
 
-    <!-- ==================== SCRIPT ==================== -->
-    <script src="../js/service.js"></script>
+    <!-- ==================== SCRIPTS ==================== -->
+    <!-- Load components dulu -->
+    <script>
+        async function loadComponent(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            const src = container.getAttribute('data-src');
+            if (!src) return;
+
+            try {
+                const response = await fetch(src);
+                if (!response.ok) throw new Error('Gagal memuat ' + src);
+                const html = await response.text();
+                container.innerHTML = html;
+            } catch (error) {
+                console.warn('⚠️ Gagal memuat komponen:', error.message);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComponent('component-navbar');
+            loadComponent('component-footer');
+        });
+    </script>
+
+    <!-- ✅ PERBAIKAN: Path JS (absolut) -->
+    <script src="/src/js/service.js"></script>
+
+</body>
+</html>
 
 </body>
 

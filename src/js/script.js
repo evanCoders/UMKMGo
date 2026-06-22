@@ -38,17 +38,21 @@ const menuBtn = document.getElementById('mobile-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 let isMenuOpen = false;
 
-menuBtn.addEventListener('click', () => {
-    isMenuOpen = !isMenuOpen;
-    mobileMenu.classList.toggle('hidden', !isMenuOpen);
-});
-
-document.querySelectorAll('#mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        isMenuOpen = false;
+// Guard: beberapa halaman tidak punya elemen mobile menu
+if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+        isMenuOpen = !isMenuOpen;
+        mobileMenu.classList.toggle('hidden', !isMenuOpen);
     });
-});
+
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            isMenuOpen = false;
+        });
+    });
+}
+
 
 // --- 2. Scroll Reveal Animation ---
 const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
@@ -438,8 +442,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
         });
 
         if (response.ok) {
-            // ✅ Redirect ke thanks.html setelah sukses
-            window.location.href = '../pages/thanks.html';
+window.location.href = '/pages/thanks.html';
         } else {
             throw new Error('Gagal mengirim');
         }

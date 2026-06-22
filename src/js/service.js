@@ -1,112 +1,113 @@
 // ============================================================
-// THEME TOGGLE
+// src/js/service.js
 // ============================================================
-const themeToggle = document.getElementById('theme-toggle');
-// Support both naming conventions found across pages
-const lightIcon =
-    document.getElementById('theme-light-icon') ||
-    document.getElementById('theme-toggle-light-icon');
-const darkIcon =
-    document.getElementById('theme-dark-icon') ||
-    document.getElementById('theme-toggle-dark-icon');
-
-function applyTheme(theme) {
-    const isDark = theme === 'dark';
-    document.documentElement.classList.toggle('dark', isDark);
-    localStorage.setItem('theme', theme);
-
-    // If icons exist, toggle them
-    if (lightIcon && darkIcon) {
-        if (isDark) {
-            lightIcon.classList.remove('hidden');
-            darkIcon.classList.add('hidden');
-        } else {
-            lightIcon.classList.add('hidden');
-            darkIcon.classList.remove('hidden');
-        }
-    }
-}
-
-function getInitialTheme() {
-    const stored = localStorage.getItem('theme');
-    if (stored === 'dark' || stored === 'light') return stored;
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-}
-
-if (themeToggle) {
-    applyTheme(getInitialTheme());
-
-    themeToggle.addEventListener('click', () => {
-        const current = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-        applyTheme(current === 'dark' ? 'light' : 'dark');
-    });
-}
-
-// ============================================================
-// MOBILE MENU
-// ============================================================
-const menuBtn = document.getElementById('mobile-menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-
-if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
-
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
-        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-    });
-}
-
-// ============================================================
-// REVEAL ANIMATION
-// ============================================================
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('visible');
-    });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // ============================================================
 // ACCORDION TOGGLE
 // ============================================================
+function setAccordionItemState(item, isOpen) {
+    if (!item) return;
+
+    const content = item.querySelector('.accordion-content');
+    const header = item.querySelector('.accordion-header');
+    const icon = item.querySelector('.accordion-icon');
+
+    if (!content) return;
+
+    if (isOpen) {
+        content.classList.add('open');
+        content.style.maxHeight = content.scrollHeight + 'px';
+        content.setAttribute('aria-hidden', 'false');
+        if (header) header.setAttribute('aria-expanded', 'true');
+        if (icon) icon.classList.add('rotate');
+    } else {
+        content.classList.remove('open');
+        content.style.maxHeight = '0px';
+        content.setAttribute('aria-hidden', 'true');
+        if (header) header.setAttribute('aria-expanded', 'false');
+        if (icon) icon.classList.remove('rotate');
+    }
+}
+
 function toggleAccordion(headerElement) {
+    if (!headerElement) return;
+
     const item = headerElement.closest('.accordion-item');
     if (!item) return;
-    
+
     const content = item.querySelector('.accordion-content');
-    const icon = headerElement.querySelector('.accordion-icon');
+    if (!content) return;
+
     const isOpen = content.classList.contains('open');
 
     // Tutup semua accordion lain
-    document.querySelectorAll('.accordion-content').forEach(c => {
-        if (c !== content) {
-            c.classList.remove('open');
-            const parentIcon = c.closest('.accordion-item')?.querySelector('.accordion-icon');
-            if (parentIcon) parentIcon.classList.remove('rotate');
+    document.querySelectorAll('.accordion-item').forEach((otherItem) => {
+        if (otherItem !== item) {
+            setAccordionItemState(otherItem, false);
         }
     });
 
     // Toggle yang diklik
-    if (isOpen) {
-        content.classList.remove('open');
-        if (icon) icon.classList.remove('rotate');
-    } else {
-        content.classList.add('open');
-        if (icon) icon.classList.add('rotate');
-    }
+    setAccordionItemState(item, !isOpen);
+}
+
+function openFirstAccordion() {
+    const firstItem = document.querySelector('.accordion-item');
+    if (!firstItem) return;
+
+    const firstContent = firstItem.querySelector('.accordion-content');
+    const firstHeader = firstItem.querySelector('.accordion-header');
+
+    if (!firstContent || !firstHeader) return;
+
+    // Reset semua accordion
+    document.querySelectorAll('.accordion-item').forEach((item) => {
+        setAccordionItemState(item, false);
+    });
+
+    // Buka pertama
+    setAccordionItemState(firstItem, true);
 }
 
 // ============================================================
-// BUKA ACCORDION PERTAMA SECARA DEFAULT
+// INIT
 // ============================================================
 document.addEventListener('DOMContentLoaded', function() {
-    const firstAccordion = document.querySelector('.accordion-item .accordion-content');
-    if (firstAccordion) {
-        firstAccordion.classList.add('open');
-        const icon = firstAccordion.closest('.accordion-item')?.querySelector('.accordion-icon');
-        if (icon) icon.classList.add('rotate');
+    const headers = document.querySelectorAll('.accordion-header');
+
+    if (headers.length === 0) return;
+
+    // Set initial state berdasarkan class .open di HTML
+    document.querySelectorAll('.accordion-item').forEach((item) => {
+        const content = item.querySelector('.accordion-content');
+        const isOpen = content?.classList.contains('open') || false;
+        setAccordionItemState(item, isOpen);
+    });
+
+    // Bind event click dan keyboard
+    headers.forEach((header) => {
+        // Click
+        header.addEventListener('click', function() {
+            toggleAccordion(this);
+        });
+
+        // Keyboard (Enter / Space)
+        header.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleAccordion(this);
+            }
+        });
+    });
+
+    // Buka accordion pertama secara default (jika belum ada yang terbuka)
+    const anyOpen = document.querySelector('.accordion-content.open');
+    if (!anyOpen) {
+        openFirstAccordion();
     }
 });
+
+// ============================================================
+// EXPOSE GLOBAL (untuk inline onclick jika masih ada)
+// ============================================================
+window.toggleAccordion = toggleAccordion;
