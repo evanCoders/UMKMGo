@@ -3,24 +3,49 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pesan Terkirim — UMKMGo</title>
+    <title>Pesan Berhasil Terkirim — UMKMGo</title>
+    <link rel="icon" href="/public/favicon.svg" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: "#F0FDFA",
+                100: "#CCFBF1",
+                500: "#14B8A6",
+                600: "#0D9488",
+                700: "#0F766E",
+                800: "#115E59",
+                900: "#134E4A",
+                950: "#042F2E",
+              },
+            },
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', "sans-serif"],
+              display: ['"DM Serif Display"', "serif"],
+            },
+          },
+        },
+      };
+    </script>
 </head>
-<body class="bg-gray-50 dark:bg-slate-900 flex items-center justify-center min-h-screen font-sans">
-    <div class="max-w-md mx-auto px-4 text-center">
-        <!-- Icon Success -->
-        <div class="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg class="w-10 h-10 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-200 antialiased flex items-center justify-center min-h-screen font-sans p-4">
+    <div class="max-w-md w-full mx-auto px-6 py-10 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-lg text-center">
+        <div class="w-16 h-16 bg-brand-50 dark:bg-brand-950/60 border border-brand-200/60 dark:border-brand-800/40 rounded-2xl flex items-center justify-center mx-auto mb-6 text-brand-600 dark:text-brand-400">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
         </div>
         
-        <h1 class="font-display text-3xl text-gray-900 dark:text-white mb-4">Pesan Terkirim! ✅</h1>
-        <p class="text-gray-600 dark:text-gray-300 mb-8">Terima kasih telah menghubungi kami. Tim UMKMGo akan merespon dalam 24 jam.</p>
+        <h1 class="font-display text-2xl sm:text-3xl text-slate-900 dark:text-white mb-3">Pesan Berhasil Diterima</h1>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8">Terima kasih telah menghubungi kami. Tim UMKMGo akan meninjau dan merespon pesan Anda dalam kurun waktu 24 jam kerja.</p>
         
-        <a href="index.html" class="inline-block px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl transition">
-            Kembali ke Beranda
+        <a href="/index.html" class="inline-block w-full py-3.5 px-6 bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white font-semibold rounded-xl text-sm shadow-sm transition">
+            Kembali ke Beranda Utama
         </a>
     </div>
 </body>

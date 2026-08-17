@@ -4,19 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UMKMGo — Tools Non-AI untuk UMKM</title>
+  <title>Perangkat Praktis Operasional UMKM — UMKMGo</title>
   <meta name="description"
-    content="Tools gratis untuk UMKM: kalkulator HPP, checklist toko, planner konten 30 hari, dan template chat." />
-
-  <!-- ✅ TAMBAHKAN FAVICON -->
-  <link rel="icon" href="/image/favicon.svg" />
-
+    content="Koleksi alat bantu praktis untuk bisnis UMKM: kalkulator HPP & BEP, checklist kesiapan toko, perencana konten 30 hari, dan template respon chat." />
+  <link rel="icon" href="/public/favicon.svg" />
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- ✅ PERBAIKAN: Path CSS -->
   <link rel="stylesheet" href="/src/css/style.css" />
   <link rel="stylesheet" href="/src/css/tools.css" />
-
   <link
     href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap"
     rel="stylesheet" />
@@ -35,6 +29,7 @@
               700: "#0F766E",
               800: "#115E59",
               900: "#134E4A",
+              950: "#042F2E",
             },
           },
           fontFamily: {
@@ -45,298 +40,266 @@
       }
     };
   </script>
-
 </head>
 
-<body class="relative">
-  <!-- ==================== NAVBAR ==================== -->
+<body class="relative bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-200 antialiased transition-colors duration-300">
   <div id="component-navbar" data-component="navbar" data-src="/src/components/navbar-tools.html"></div>
 
-  <!-- ==================== MAIN CONTENT ==================== -->
-  <main class="pt-20 pb-16 px-4">
+  <main class="pt-28 pb-16 px-4">
     <section class="max-w-6xl mx-auto">
       <div class="text-center mb-10 reveal">
-        <span class="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-brand-600">Tools
-          Non-AI untuk UMKM</span>
-        <h1 class="font-display text-3xl md:text-4xl text-gray-900 dark:text-white mt-3">Bantu kerja harian tanpa habis
-          token</h1>
-        <p class="text-gray-600 dark:text-gray-300 mt-3">Kalkulator, checklist, planner konten, dan template respon
-          chat.</p>
+        <span class="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-brand-600 dark:text-brand-400">Koleksi Perangkat Praktis</span>
+        <h1 class="font-display text-3xl md:text-4xl text-slate-900 dark:text-white mt-2 tracking-tight">Mendukung Operasional Harian Usaha Anda</h1>
+        <p class="text-slate-600 dark:text-slate-400 mt-2.5 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">Kalkulasi biaya produksi, evaluasi kelayakan etalase toko, jadwal ide postingan bulanan, dan draf jawaban pesan pelanggan.</p>
       </div>
 
       <div class="flex flex-wrap justify-center gap-2 mb-8 reveal" id="tools-tabs">
         <button data-tab="kalkulator"
-          class="tab-btn px-5 py-2.5 text-sm font-semibold rounded-full active bg-brand-600 text-white">Kalkulator
-          UMKM</button>
+          class="tab-btn px-5 py-2.5 text-xs sm:text-sm font-semibold rounded-xl active bg-brand-600 text-white shadow-sm transition">Kalkulator HPP & BEP</button>
         <button data-tab="checklist"
-          class="tab-btn px-5 py-2.5 text-sm font-semibold rounded-full bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-slate-700">Checklist
-          Siap Jual</button>
+          class="tab-btn px-5 py-2.5 text-xs sm:text-sm font-semibold rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">Checklist Toko</button>
         <button data-tab="planner"
-          class="tab-btn px-5 py-2.5 text-sm font-semibold rounded-full bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-slate-700">Planner
-          30 Hari</button>
+          class="tab-btn px-5 py-2.5 text-xs sm:text-sm font-semibold rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">Planner 30 Hari</button>
         <button data-tab="chat"
-          class="tab-btn px-5 py-2.5 text-sm font-semibold rounded-full bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-slate-700">Template
-          Chat</button>
+          class="tab-btn px-5 py-2.5 text-xs sm:text-sm font-semibold rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">Template Respon Chat</button>
       </div>
 
-      <!-- ====== TAB: KALKULATOR ====== -->
       <div id="tab-kalkulator" class="tool-tab">
         <div
-          class="bg-white dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700 shadow-sm p-6 md:p-10 reveal">
-          <h2 class="font-display text-2xl text-gray-900 dark:text-white mb-4">Kalkulator UMKM (HPP / Margin / Harga
-            Jual / BEP)</h2>
+          class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm p-6 md:p-10 reveal">
+          <h2 class="font-display text-2xl text-slate-900 dark:text-white mb-2">Kalkulator Biaya Pokok, Margin & BEP</h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">Gunakan alat ini untuk menentukan harga jual produk yang menguntungkan dan mengukur batas minimal volume penjualan.</p>
 
-          <div class="grid md:grid-cols-2 gap-6">
+          <div class="grid md:grid-cols-2 gap-8">
             <div class="space-y-4">
               <div>
-                <label class="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-2">Biaya Produksi (HPP
-                  total)</label>
+                <label class="block text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1.5" for="calc-hpp">Biaya Pokok Produksi (HPP per unit)</label>
                 <input id="calc-hpp" type="number" min="0" step="1" placeholder="Contoh: 25000"
-                  class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white" />
+                  class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none text-sm transition" />
               </div>
 
               <div>
-                <label class="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-2">Target Margin (%)</label>
-                <input id="calc-margin" type="number" min="0" step="0.1" placeholder="Contoh: 30"
-                  class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white" />
+                <label class="block text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1.5" for="calc-margin">Target Margin Keuntungan (%)</label>
+                <input id="calc-margin" type="number" min="0" step="0.1" placeholder="Contoh: 35"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none text-sm transition" />
               </div>
 
               <div>
-                <label class="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-2">Biaya Tetap Bulanan
-                  (Rp)</label>
-                <input id="calc-fixed" type="number" min="0" step="1" placeholder="Contoh: 200000"
-                  class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white" />
+                <label class="block text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1.5" for="calc-fixed">Biaya Operasional Tetap Bulanan (Rp)</label>
+                <input id="calc-fixed" type="number" min="0" step="1" placeholder="Contoh: 500000"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none text-sm transition" />
               </div>
 
               <div>
-                <label class="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-2">Estimasi Volume per Bulan
-                  (unit)</label>
-                <input id="calc-volume" type="number" min="0" step="1" placeholder="Contoh: 100"
-                  class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white" />
+                <label class="block text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1.5" for="calc-volume">Estimasi Target Penjualan Bulanan (unit)</label>
+                <input id="calc-volume" type="number" min="0" step="1" placeholder="Contoh: 150"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none text-sm transition" />
               </div>
             </div>
 
-            <div class="space-y-4">
-              <div class="rounded-2xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 p-5">
-                <div class="flex items-center justify-between">
-                  <h3 class="font-bold text-gray-900 dark:text-white">Hasil</h3>
+            <div class="space-y-4 flex flex-col justify-between">
+              <div class="rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800 p-6">
+                <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800">
+                  <h3 class="font-bold text-slate-900 dark:text-white text-sm sm:text-base">Ringkasan Hasil</h3>
                   <button id="calc-btn"
-                    class="px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold">Hitung</button>
+                    class="px-5 py-2 rounded-xl bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white font-semibold text-xs sm:text-sm shadow-sm transition">Hitung Angka</button>
                 </div>
-                <div class="mt-4 space-y-3 text-sm">
-                  <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-300">Harga Jual
-                      (rekomendasi)</span><span id="out-harga" class="font-bold text-gray-900 dark:text-white">-</span>
+                <div class="mt-4 space-y-3.5 text-xs sm:text-sm">
+                  <div class="flex justify-between items-center"><span class="text-slate-500 dark:text-slate-400">Rekomendasi Harga Jual</span><span id="out-harga" class="font-bold text-slate-900 dark:text-white">-</span>
                   </div>
-                  <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-300">Margin
-                      (Rp)</span><span id="out-margin-rp" class="font-bold text-gray-900 dark:text-white">-</span></div>
-                  <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-300">BEP unit
-                      (kasar)</span><span id="out-bep" class="font-bold text-gray-900 dark:text-white">-</span></div>
-                  <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-300">Status (BEP vs
-                      volume)</span><span id="out-status" class="font-bold text-gray-900 dark:text-white">-</span></div>
+                  <div class="flex justify-between items-center"><span class="text-slate-500 dark:text-slate-400">Margin Bersih per Unit</span><span id="out-margin-rp" class="font-bold text-slate-900 dark:text-white">-</span></div>
+                  <div class="flex justify-between items-center"><span class="text-slate-500 dark:text-slate-400">Titik Impas (BEP Unit)</span><span id="out-bep" class="font-bold text-slate-900 dark:text-white">-</span></div>
+                  <div class="flex justify-between items-center"><span class="text-slate-500 dark:text-slate-400">Evaluasi Target</span><span id="out-status" class="font-semibold text-brand-600 dark:text-brand-400 text-right">-</span></div>
                 </div>
               </div>
 
-              <div class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                Catatan: BEP dihitung sederhana pakai pendekatan margin kontribusi. Untuk akurasi, gunakan data biaya
-                produksi per unit yang konsisten.
+              <div class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed bg-slate-50/60 dark:bg-slate-950/40 p-3.5 rounded-xl border border-slate-200/60 dark:border-slate-800/60">
+                Catatan: Perhitungan ini menggunakan metode margin kontribusi unit. Sesuaikan harga secara berkala bila terjadi kenaikan harga bahan baku utama.
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- ====== TAB: CHECKLIST ====== -->
       <div id="tab-checklist" class="tool-tab hidden">
         <div
-          class="bg-white dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700 shadow-sm p-6 md:p-10 reveal">
-          <h2 class="font-display text-2xl text-gray-900 dark:text-white mb-4">Checklist Toko Siap Jual (Skor + Saran)
-          </h2>
+          class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm p-6 md:p-10 reveal">
+          <h2 class="font-display text-2xl text-slate-900 dark:text-white mb-2">Audit Kesiapan Etalase Toko Online</h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">Cek apakah informasi produk Anda sudah lengkap untuk meyakinkan calon pembeli.</p>
 
-          <div class="grid md:grid-cols-2 gap-6">
+          <div class="grid md:grid-cols-2 gap-8">
             <div class="space-y-4" id="checklist-form">
               <div>
-                <label class="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-2">Nama Produk</label>
-                <input id="chk-nama" type="text" placeholder="Contoh: Keripik Singkong Pedas Manis"
-                  class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white" />
+                <label class="block text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1.5" for="chk-nama">Nama Produk yang Sedang Dievaluasi</label>
+                <input id="chk-nama" type="text" placeholder="Contoh: Keripik Tempe Renyah Kemasan 200g"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none text-sm transition" />
               </div>
 
-              <div class="space-y-3">
-                <div class="flex items-center justify-between">
-                  <label class="text-sm font-semibold text-gray-800 dark:text-gray-200">Foto produk jelas</label>
-                  <input type="checkbox" id="chk-foto" class="w-5 h-5 accent-brand-600" />
+              <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between p-3 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50">
+                  <label class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 cursor-pointer" for="chk-foto">Foto produk jelas dan pencahayaan terang</label>
+                  <input type="checkbox" id="chk-foto" class="w-4 h-4 accent-brand-600 cursor-pointer" />
                 </div>
-                <div class="flex items-center justify-between">
-                  <label class="text-sm font-semibold text-gray-800 dark:text-gray-200">Harga tertulis</label>
-                  <input type="checkbox" id="chk-harga" class="w-5 h-5 accent-brand-600" />
+                <div class="flex items-center justify-between p-3 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50">
+                  <label class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 cursor-pointer" for="chk-harga">Informasi harga tercantum jelas</label>
+                  <input type="checkbox" id="chk-harga" class="w-4 h-4 accent-brand-600 cursor-pointer" />
                 </div>
-                <div class="flex items-center justify-between">
-                  <label class="text-sm font-semibold text-gray-800 dark:text-gray-200">Ada varian (opsional)</label>
-                  <input type="checkbox" id="chk-varian" class="w-5 h-5 accent-brand-600" />
+                <div class="flex items-center justify-between p-3 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50">
+                  <label class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 cursor-pointer" for="chk-varian">Pilihan varian rasa / ukuran tertera</label>
+                  <input type="checkbox" id="chk-varian" class="w-4 h-4 accent-brand-600 cursor-pointer" />
                 </div>
-                <div class="flex items-center justify-between">
-                  <label class="text-sm font-semibold text-gray-800 dark:text-gray-200">Deskripsi singkat
-                    (manfaat)</label>
-                  <input type="checkbox" id="chk-deskripsi" class="w-5 h-5 accent-brand-600" />
+                <div class="flex items-center justify-between p-3 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50">
+                  <label class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 cursor-pointer" for="chk-deskripsi">Deskripsi singkat & keunggulan bahan</label>
+                  <input type="checkbox" id="chk-deskripsi" class="w-4 h-4 accent-brand-600 cursor-pointer" />
                 </div>
-                <div class="flex items-center justify-between">
-                  <label class="text-sm font-semibold text-gray-800 dark:text-gray-200">Info pengiriman/ongkir
-                    jelas</label>
-                  <input type="checkbox" id="chk-ongkir" class="w-5 h-5 accent-brand-600" />
+                <div class="flex items-center justify-between p-3 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50">
+                  <label class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 cursor-pointer" for="chk-ongkir">Info kurir & estimasi pengiriman jelas</label>
+                  <input type="checkbox" id="chk-ongkir" class="w-4 h-4 accent-brand-600 cursor-pointer" />
                 </div>
-                <div class="flex items-center justify-between">
-                  <label class="text-sm font-semibold text-gray-800 dark:text-gray-200">Ada CTA (contoh: "Chat untuk
-                    order")</label>
-                  <input type="checkbox" id="chk-cta" class="w-5 h-5 accent-brand-600" />
+                <div class="flex items-center justify-between p-3 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50">
+                  <label class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 cursor-pointer" for="chk-cta">Ajakan bertindak / nomor pemesanan</label>
+                  <input type="checkbox" id="chk-cta" class="w-4 h-4 accent-brand-600 cursor-pointer" />
                 </div>
               </div>
 
               <button id="chk-btn"
-                class="w-full px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold">Hitung
-                Skor</button>
+                class="w-full px-5 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white font-semibold text-xs sm:text-sm shadow-sm transition">Hitung Skor Kesiapan Toko</button>
             </div>
 
-            <div class="space-y-4">
-              <div class="rounded-2xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 p-5">
-                <div class="flex items-center justify-between">
-                  <h3 class="font-bold text-gray-900 dark:text-white">Ringkasan</h3>
+            <div class="space-y-4 flex flex-col justify-between">
+              <div class="rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800 p-6">
+                <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800">
+                  <h3 class="font-bold text-slate-900 dark:text-white text-sm sm:text-base">Hasil Evaluasi</h3>
                   <span id="chk-badge"
-                    class="text-xs font-bold px-3 py-1 rounded-full bg-brand-100 text-brand-800 dark:bg-brand-900/30 dark:text-brand-300">-</span>
+                    class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">-</span>
                 </div>
-                <div class="mt-4 text-sm space-y-2">
-                  <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-300">Skor</span><span
-                      id="chk-score" class="font-bold text-gray-900 dark:text-white">-</span></div>
-                  <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-300">Status</span><span
-                      id="chk-status" class="font-bold text-gray-900 dark:text-white">-</span></div>
+                <div class="mt-4 text-xs sm:text-sm space-y-2.5">
+                  <div class="flex justify-between items-center"><span class="text-slate-500 dark:text-slate-400">Skor Kelengkapan</span><span
+                      id="chk-score" class="font-bold text-slate-900 dark:text-white">-</span></div>
+                  <div class="flex justify-between items-center"><span class="text-slate-500 dark:text-slate-400">Target Evaluasi</span><span
+                      id="chk-status" class="font-semibold text-slate-800 dark:text-slate-200">-</span></div>
                 </div>
 
-                <div class="mt-4">
-                  <p class="text-sm font-bold text-gray-900 dark:text-white">Saran Perbaikan</p>
-                  <ul id="chk-saran" class="mt-2 text-sm text-gray-700 dark:text-gray-200 list-disc pl-5 space-y-1">
+                <div class="mt-5 pt-4 border-t border-slate-200 dark:border-slate-800">
+                  <p class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">Saran Peningkatan:</p>
+                  <ul id="chk-saran" class="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400 list-disc pl-5 space-y-1.5 leading-relaxed">
                   </ul>
                 </div>
               </div>
 
-              <div class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                Skor berbasis checklist inti agar calon pembeli cepat paham, yakin, dan tahu langkah order.
+              <div class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed bg-slate-50/60 dark:bg-slate-950/40 p-3.5 rounded-xl border border-slate-200/60 dark:border-slate-800/60">
+                Lengkapi seluruh poin checklist di atas guna menumbuhkan keyakinan calon pembeli saat pertama kali membuka profil toko Anda.
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- ====== TAB: PLANNER ====== -->
       <div id="tab-planner" class="tool-tab hidden">
         <div
-          class="bg-white dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700 shadow-sm p-6 md:p-10 reveal">
-          <h2 class="font-display text-2xl text-gray-900 dark:text-white mb-4">Planner Konten 30 Hari (Template)</h2>
+          class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm p-6 md:p-10 reveal">
+          <h2 class="font-display text-2xl text-slate-900 dark:text-white mb-2">Kalender Ide Konten 30 Hari</h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">Rancang jadwal posting media sosial harian yang variatif dan terstruktur.</p>
 
-          <div class="grid md:grid-cols-2 gap-6">
+          <div class="grid md:grid-cols-2 gap-8">
             <div class="space-y-4">
               <div>
-                <label class="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-2">Kategori Usaha /
-                  Produk</label>
-                <input id="pl-kategori" type="text" placeholder="Contoh: Kuliner, Skincare, Kerajinan"
-                  class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white" />
+                <label class="block text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1.5" for="pl-kategori">Kategori Usaha atau Nama Produk</label>
+                <input id="pl-kategori" type="text" placeholder="Contoh: Sambal Kemasan Rumahan, Fashion Hijab, Kerajinan Anyaman"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none text-sm transition" />
               </div>
 
               <div>
-                <label class="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-2">Channel Utama</label>
+                <label class="block text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1.5" for="pl-channel">Saluran Media Sosial Utama</label>
                 <select id="pl-channel"
-                  class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white">
+                  class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none text-sm transition">
                   <option value="instagram">Instagram</option>
                   <option value="tiktok">TikTok</option>
                   <option value="facebook">Facebook</option>
-                  <option value="wa">WhatsApp</option>
+                  <option value="wa">Status WhatsApp</option>
                 </select>
               </div>
 
               <div class="space-y-2">
-                <label class="block text-sm font-bold text-gray-700 dark:text-gray-200">Tujuan</label>
+                <label class="block text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">Fokus Sasaran</label>
                 <div class="grid grid-cols-2 gap-3">
                   <label
-                    class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-slate-700 p-3 bg-white dark:bg-slate-900">
+                    class="flex items-center gap-2.5 rounded-xl border border-slate-200 dark:border-slate-700 p-3 bg-slate-50 dark:bg-slate-950 cursor-pointer">
                     <input type="radio" name="pl-goal" value="jualan" class="accent-brand-600" checked />
-                    <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">Jualan</span>
+                    <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200">Dorongan Penjualan</span>
                   </label>
                   <label
-                    class="flex items-center gap-2 rounded-xl border border-gray-200 dark:border-slate-700 p-3 bg-white dark:bg-slate-900">
+                    class="flex items-center gap-2.5 rounded-xl border border-slate-200 dark:border-slate-700 p-3 bg-slate-50 dark:bg-slate-950 cursor-pointer">
                     <input type="radio" name="pl-goal" value="brand" class="accent-brand-600" />
-                    <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">Brand</span>
+                    <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200">Pengenalan Brand</span>
                   </label>
                 </div>
               </div>
 
               <button id="pl-btn"
-                class="w-full px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold">Buat Jadwal 30
-                Hari</button>
+                class="w-full px-5 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white font-semibold text-xs sm:text-sm shadow-sm transition">Susun Jadwal 30 Hari</button>
             </div>
 
             <div class="space-y-3">
-              <div class="rounded-2xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 p-5">
-                <div class="flex items-center justify-between gap-3">
-                  <h3 class="font-bold text-gray-900 dark:text-white">Output</h3>
+              <div class="rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800 p-5">
+                <div class="flex items-center justify-between gap-3 pb-3 border-b border-slate-200 dark:border-slate-800">
+                  <h3 class="font-bold text-slate-900 dark:text-white text-sm sm:text-base">Jadwal Konten</h3>
                   <button id="pl-copy"
-                    class="px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-gray-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-slate-700">Salin</button>
+                    class="px-3.5 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-xs hover:bg-slate-100 dark:hover:bg-slate-800 transition">Salin Rencana</button>
                 </div>
-                <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">Pilih jadwal ini dan posting sesuai urutan.
-                  (Template non-AI)</div>
                 <pre id="pl-out"
-                  class="mt-3 whitespace-pre-wrap text-sm text-gray-800 dark:text-gray-200 max-h-[420px] overflow-y-auto bg-white/50 dark:bg-slate-800/50 rounded-xl p-4 border border-gray-200 dark:border-slate-700">-</pre>
+                  class="mt-3 whitespace-pre-wrap text-xs sm:text-sm text-slate-800 dark:text-slate-200 max-h-[380px] overflow-y-auto bg-white/60 dark:bg-slate-900/60 rounded-xl p-4 border border-slate-200/70 dark:border-slate-800/70 font-sans leading-relaxed">-</pre>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- ====== TAB: TEMPLATE CHAT ====== -->
       <div id="tab-chat" class="tool-tab hidden">
         <div
-          class="bg-white dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700 shadow-sm p-6 md:p-10 reveal">
-          <h2 class="font-display text-2xl text-gray-900 dark:text-white mb-4">Template Respon Chat Pelanggan (Keyword)
-          </h2>
+          class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm p-6 md:p-10 reveal">
+          <h2 class="font-display text-2xl text-slate-900 dark:text-white mb-2">Generator Template Balasan Chat Cepat</h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">Susun jawaban pesan otomatis yang sopan dan ramah untuk pertanyaan pelanggan.</p>
 
-          <div class="grid md:grid-cols-2 gap-6">
+          <div class="grid md:grid-cols-2 gap-8">
             <div class="space-y-4">
               <div>
-                <label class="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-2">Tulis Pesan
-                  Pelanggan</label>
-                <textarea id="chat-msg" rows="6"
-                  placeholder="Contoh: Berapa harganya? Ready stok? Ongkir ke Jakarta berapa?"
-                  class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white"></textarea>
+                <label class="block text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1.5" for="chat-msg">Tuliskan Pertanyaan Pelanggan</label>
+                <textarea id="chat-msg" rows="5"
+                  placeholder="Contoh: Halo kak, mau tanya harga sambal botolnya berapa ya? Ongkir ke Bandung berapa?"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none text-sm transition"></textarea>
               </div>
 
               <div class="grid grid-cols-2 gap-3">
                 <div>
-                  <label class="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-2">Nama Toko</label>
+                  <label class="block text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1.5" for="chat-toko">Nama Toko</label>
                   <input id="chat-toko" type="text" value="UMKMGo"
-                    class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white" />
+                    class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white text-sm outline-none focus:border-brand-500" />
                 </div>
                 <div>
-                  <label class="block text-sm font-bold text-gray-700 dark:text-gray-200 mb-2">Produk (opsional)</label>
-                  <input id="chat-produk" type="text" placeholder="Contoh: Keripik Singkong"
-                    class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-gray-900 dark:text-white" />
+                  <label class="block text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1.5" for="chat-produk">Produk (opsional)</label>
+                  <input id="chat-produk" type="text" placeholder="Contoh: Sambal Bawang"
+                    class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white text-sm outline-none focus:border-brand-500" />
                 </div>
               </div>
 
               <button id="chat-btn"
-                class="w-full px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold">Buat
-                Balasan</button>
+                class="w-full px-5 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white font-semibold text-xs sm:text-sm shadow-sm transition">Buat Balasan Ramah</button>
             </div>
 
             <div class="space-y-3">
-              <div class="rounded-2xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 p-5">
-                <div class="flex items-center justify-between">
-                  <h3 class="font-bold text-gray-900 dark:text-white">Balasan</h3>
+              <div class="rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800 p-5">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
+                  <h3 class="font-bold text-slate-900 dark:text-white text-sm sm:text-base">Draf Respon Siap Kirim</h3>
                   <button id="chat-copy"
-                    class="px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-gray-200 font-bold text-sm hover:bg-gray-50 dark:hover:bg-slate-700">Salin</button>
+                    class="px-3.5 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-xs hover:bg-slate-100 dark:hover:bg-slate-800 transition">Salin Teks</button>
                 </div>
                 <pre id="chat-out"
-                  class="mt-3 whitespace-pre-wrap text-sm text-gray-800 dark:text-gray-200 max-h-[420px] overflow-y-auto bg-white/50 dark:bg-slate-800/50 rounded-xl p-4 border border-gray-200 dark:border-slate-700">-</pre>
+                  class="mt-3 whitespace-pre-wrap text-xs sm:text-sm text-slate-800 dark:text-slate-200 max-h-[380px] overflow-y-auto bg-white/60 dark:bg-slate-900/60 rounded-xl p-4 border border-slate-200/70 dark:border-slate-800/70 font-sans leading-relaxed">-</pre>
               </div>
 
-              <div class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                Template ini non-AI: cocok untuk respon cepat (harga/stok/ongkir/order/komplain) dan bisa Anda
-                sesuaikan.
+              <div class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed bg-slate-50/60 dark:bg-slate-950/40 p-3.5 rounded-xl border border-slate-200/60 dark:border-slate-800/60">
+                Sistem otomatis mengenali kata kunci seperti harga, kesiapan stok, rute ongkir, keluhan kerusakan, atau tata cara pemesanan.
               </div>
             </div>
           </div>
@@ -345,45 +308,38 @@
 
     </section>
 
-    <!-- ============================================================
-     MODAL TESTIMONI (SOCIALPROOF)
-     ============================================================ -->
     <div id="testimonialModal"
-      class="fixed inset-0 z-50 hidden bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+      class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
       <div
-        class="bg-white dark:bg-slate-800 rounded-2xl max-w-2xl w-full max-h-[90vh] shadow-2xl relative overflow-hidden">
+        class="bg-white dark:bg-slate-900 rounded-2xl max-w-2xl w-full max-h-[90vh] shadow-2xl relative overflow-hidden border border-slate-200 dark:border-slate-800">
 
-        <!-- Header Modal -->
-        <div class="flex items-center justify-between p-4 border-b border-gray-100 dark:border-slate-700">
-          <h3 class="font-display text-xl text-gray-900 dark:text-white">Bagikan Pengalaman Anda</h3>
+        <div class="flex items-center justify-between p-4 sm:p-5 border-b border-slate-200 dark:border-slate-800">
+          <h3 class="font-display text-lg sm:text-xl text-slate-900 dark:text-white">Bagikan Tanggapan Anda</h3>
           <button onclick="closeTestimonialModal()"
-            class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1 rounded-lg transition" aria-label="Tutup Jendela Tanggapan">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
 
-        <!-- Konten Modal: Iframe ke Link SocialProof -->
-        <div class="p-4 h-[500px]">
+        <div class="p-4 h-[480px]">
           <iframe id="socialProofIframe" src="https://socialproof.dev/c/frm_lzKE4aOTavZyIw252GR6l"
-            class="w-full h-full rounded-lg border-0" loading="lazy">
+            class="w-full h-full rounded-xl border-0" loading="lazy" title="Formulir Ulasan Pengguna">
           </iframe>
         </div>
 
-        <!-- Footer Modal -->
-        <div class="p-3 border-t border-gray-100 dark:border-slate-700 text-center">
-          <p class="text-xs text-gray-400 dark:text-gray-500">Terima kasih telah menggunakan UMKMGo! 🙏</p>
+        <div class="p-3 border-t border-slate-200 dark:border-slate-800 text-center">
+          <p class="text-xs text-slate-500 dark:text-slate-400">Terima kasih telah menggunakan sarana UMKMGo untuk memajukan usaha Anda.</p>
         </div>
 
       </div>
     </div>
   </main>
 
-  <!-- ==================== FOOTER ==================== -->
   <div id="component-footer" data-component="footer" data-src="/src/components/footer.html"></div>
 
-  <!-- ✅ PERBAIKAN: Path JS -->
+  <script src="/src/js/components.js"></script>
   <script src="/src/js/tools.js"></script>
 </body>
 

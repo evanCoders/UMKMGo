@@ -1,10 +1,3 @@
-// ============================================================
-// src/js/service.js
-// ============================================================
-
-// ============================================================
-// ACCORDION TOGGLE
-// ============================================================
 function setAccordionItemState(item, isOpen) {
     if (!item) return;
 
@@ -40,14 +33,12 @@ function toggleAccordion(headerElement) {
 
     const isOpen = content.classList.contains('open');
 
-    // Tutup semua accordion lain
     document.querySelectorAll('.accordion-item').forEach((otherItem) => {
         if (otherItem !== item) {
             setAccordionItemState(otherItem, false);
         }
     });
 
-    // Toggle yang diklik
     setAccordionItemState(item, !isOpen);
 }
 
@@ -60,54 +51,54 @@ function openFirstAccordion() {
 
     if (!firstContent || !firstHeader) return;
 
-    // Reset semua accordion
     document.querySelectorAll('.accordion-item').forEach((item) => {
         setAccordionItemState(item, false);
     });
 
-    // Buka pertama
     setAccordionItemState(firstItem, true);
 }
 
-// ============================================================
-// INIT
-// ============================================================
-document.addEventListener('DOMContentLoaded', function() {
+function initAccordions() {
     const headers = document.querySelectorAll('.accordion-header');
-
     if (headers.length === 0) return;
 
-    // Set initial state berdasarkan class .open di HTML
     document.querySelectorAll('.accordion-item').forEach((item) => {
         const content = item.querySelector('.accordion-content');
         const isOpen = content?.classList.contains('open') || false;
         setAccordionItemState(item, isOpen);
     });
 
-    // Bind event click dan keyboard
     headers.forEach((header) => {
-        // Click
-        header.addEventListener('click', function() {
-            toggleAccordion(this);
-        });
-
-        // Keyboard (Enter / Space)
-        header.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
+        if (!header.dataset.bound) {
+            header.dataset.bound = 'true';
+            header.addEventListener('click', function() {
                 toggleAccordion(this);
-            }
-        });
+            });
+
+            header.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleAccordion(this);
+                }
+            });
+        }
     });
 
-    // Buka accordion pertama secara default (jika belum ada yang terbuka)
     const anyOpen = document.querySelector('.accordion-content.open');
     if (!anyOpen) {
         openFirstAccordion();
     }
-});
+}
 
-// ============================================================
-// EXPOSE GLOBAL (untuk inline onclick jika masih ada)
-// ============================================================
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAccordions);
+} else {
+    initAccordions();
+}
+
 window.toggleAccordion = toggleAccordion;

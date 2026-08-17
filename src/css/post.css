@@ -67,7 +67,6 @@ body {
     transform: translateY(0);
 }
 
-/* Prose Styling for Article Content */
 .prose {
     line-height: 1.75;
     font-size: 1.05rem;

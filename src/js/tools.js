@@ -1,8 +1,3 @@
-// ============================================
-// FUNGSI MODAL TESTIMONI (PASTIKAN DI ATAS)
-// ============================================
-
-// Fungsi untuk menampilkan modal testimoni
 function showTestimonialModal() {
     const modal = document.getElementById('testimonialModal');
     if (modal) {
@@ -11,7 +6,6 @@ function showTestimonialModal() {
     }
 }
 
-// Fungsi untuk menutup modal testimoni
 function closeTestimonialModal() {
     const modal = document.getElementById('testimonialModal');
     if (modal) {
@@ -20,7 +14,6 @@ function closeTestimonialModal() {
     }
 }
 
-// Tutup modal jika klik di luar area modal
 document.addEventListener('click', function(e) {
     const modal = document.getElementById('testimonialModal');
     if (modal && !modal.classList.contains('hidden')) {
@@ -30,59 +23,17 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Tutup modal dengan tombol Escape
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         closeTestimonialModal();
     }
 });
 
-// ============================================
-// THEME TOGGLE
-// ============================================
-const themeToggleBtn = document.getElementById('theme-toggle');
-const THEME_KEY = 'umkmgo-theme';
-const lightIcon = document.getElementById('theme-toggle-light-icon');
-const darkIcon = document.getElementById('theme-toggle-dark-icon');
-
-function applyTheme(theme) {
-    const isDark = theme === 'dark';
-    document.documentElement.classList.toggle('dark', isDark);
-    localStorage.setItem(THEME_KEY, theme);
-    if (isDark) {
-        lightIcon.classList.remove('hidden');
-        darkIcon.classList.add('hidden');
-    } else {
-        lightIcon.classList.add('hidden');
-        darkIcon.classList.remove('hidden');
-    }
-}
-
-function getInitialTheme() {
-    const stored = localStorage.getItem(THEME_KEY);
-    if (stored === 'dark' || stored === 'light') return stored;
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-}
-
-if (themeToggleBtn) {
-    applyTheme(getInitialTheme());
-    themeToggleBtn.addEventListener('click', () => {
-        const current = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-        applyTheme(current === 'dark' ? 'light' : 'dark');
-    });
-}
-
-// ============================================
-// REVEAL ANIMATION
-// ============================================
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// ============================================
-// TABS
-// ============================================
 const tabButtons = document.querySelectorAll('#tools-tabs [data-tab]');
 const tabPanels = {
     kalkulator: document.getElementById('tab-kalkulator'),
@@ -97,15 +48,17 @@ function setActiveTab(name) {
         btn.classList.toggle('active', active);
         if (active) {
             btn.classList.add('bg-brand-600', 'text-white');
-            btn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-gray-700', 'dark:text-gray-200');
+            btn.classList.remove('bg-white', 'dark:bg-slate-900', 'text-slate-700', 'dark:text-slate-300');
         } else {
             btn.classList.remove('bg-brand-600', 'text-white');
-            btn.classList.add('bg-white', 'dark:bg-slate-800', 'text-gray-700', 'dark:text-gray-200');
+            btn.classList.add('bg-white', 'dark:bg-slate-900', 'text-slate-700', 'dark:text-slate-300');
         }
     });
 
     Object.keys(tabPanels).forEach(k => {
-        tabPanels[k].classList.toggle('hidden', k !== name);
+        if (tabPanels[k]) {
+            tabPanels[k].classList.toggle('hidden', k !== name);
+        }
     });
 }
 
@@ -113,17 +66,19 @@ tabButtons.forEach(btn => {
     btn.addEventListener('click', () => setActiveTab(btn.getAttribute('data-tab')));
 });
 
-// Default
-setActiveTab('kalkulator');
+const hashTab = window.location.hash ? window.location.hash.replace('#', '') : '';
+if (hashTab && tabPanels[hashTab]) {
+    setActiveTab(hashTab);
+} else {
+    setActiveTab('kalkulator');
+}
 
-// ============================================
-// KALKULATOR
-// ============================================
 const calcBtn = document.getElementById('calc-btn');
 
 function toNum(id) {
-    const v = document.getElementById(id).value;
-    const n = Number(v);
+    const el = document.getElementById(id);
+    if (!el) return 0;
+    const n = Number(el.value);
     return Number.isFinite(n) ? n : 0;
 }
 
@@ -132,194 +87,211 @@ function formatRp(n) {
     return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(n);
 }
 
-calcBtn?.addEventListener('click', () => {
-    const hpp = toNum('calc-hpp');
-    const marginPct = toNum('calc-margin');
-    const fixed = toNum('calc-fixed');
-    const volume = toNum('calc-volume');
+if (calcBtn) {
+    calcBtn.addEventListener('click', () => {
+        const hpp = toNum('calc-hpp');
+        const marginPct = toNum('calc-margin');
+        const fixed = toNum('calc-fixed');
+        const volume = toNum('calc-volume');
 
-    if (hpp <= 0 || marginPct <= 0) {
-        document.getElementById('out-harga').textContent = '-';
-        document.getElementById('out-margin-rp').textContent = '-';
-        document.getElementById('out-bep').textContent = '-';
-        document.getElementById('out-status').textContent = 'Masukkan HPP & margin';
-        return;
-    }
+        if (hpp <= 0 || marginPct <= 0) {
+            document.getElementById('out-harga').textContent = '-';
+            document.getElementById('out-margin-rp').textContent = '-';
+            document.getElementById('out-bep').textContent = '-';
+            document.getElementById('out-status').textContent = 'Mohon isi HPP dan margin target';
+            return;
+        }
 
-    const marginRp = hpp * (marginPct / 100);
-    const hargaJual = hpp + marginRp;
-    const bepUnit = marginRp > 0 ? (fixed / marginRp) : Infinity;
-    const status = volume > 0 ? (volume >= Math.ceil(bepUnit) ? 'Potensi untung (di atas BEP)' : 'Potensi rugi (di bawah BEP)') : 'Isi volume untuk evaluasi';
+        const marginRp = hpp * (marginPct / 100);
+        const hargaJual = hpp + marginRp;
+        const bepUnit = marginRp > 0 ? (fixed / marginRp) : Infinity;
+        const status = volume > 0 ? (volume >= Math.ceil(bepUnit) ? 'Potensi laba sehat (di atas ambang BEP)' : 'Perlu evaluasi volume (di bawah ambang BEP)') : 'Lengkapi estimasi volume';
 
-    document.getElementById('out-harga').textContent = formatRp(hargaJual);
-    document.getElementById('out-margin-rp').textContent = formatRp(marginRp);
-    document.getElementById('out-bep').textContent = Number.isFinite(bepUnit) ? `${Math.ceil(bepUnit)} unit` : '-';
-    document.getElementById('out-status').textContent = status;
+        document.getElementById('out-harga').textContent = formatRp(hargaJual);
+        document.getElementById('out-margin-rp').textContent = formatRp(marginRp);
+        document.getElementById('out-bep').textContent = Number.isFinite(bepUnit) ? `${Math.ceil(bepUnit)} unit / bulan` : '-';
+        document.getElementById('out-status').textContent = status;
 
-    // ✅ Tampilkan modal testimoni
-    showTestimonialModal();
-});
+        showTestimonialModal();
+    });
+}
 
-// ============================================
-// CHECKLIST
-// ============================================
 const chkBtn = document.getElementById('chk-btn');
 const chkItems = [
-    { id: 'chk-foto', label: 'Foto produk jelas', saran: 'Tambahkan foto close-up + pencahayaan terang (minimal 2 sudut).' },
-    { id: 'chk-harga', label: 'Harga tertulis', saran: 'Tulis harga (atau kisaran harga) agar pembeli tidak ragu bertanya dari awal.' },
-    { id: 'chk-varian', label: 'Ada varian (opsional)', saran: 'Kalau ada varian (rasa/ukuran/bahan), tampilkan daftar singkat biar pembeli mudah memilih.' },
-    { id: 'chk-deskripsi', label: 'Deskripsi singkat (manfaat)', saran: 'Tulis 3-5 kalimat manfaat: keunggulan utama, bahan, dan siapa yang cocok.' },
-    { id: 'chk-ongkir', label: 'Info pengiriman/ongkir jelas', saran: 'Cantumkan estimasi pengiriman/ongkir (atau cara hitung) agar proses order cepat.' },
-    { id: 'chk-cta', label: 'CTA (contoh: Chat untuk order)', saran: 'Tambahkan tombol/kalimat CTA: "Chat sekarang untuk cek stok & order".' },
+    { id: 'chk-foto', label: 'Foto produk jelas', saran: 'Tambahkan foto sudut dekat dengan pencahayaan alami yang terang.' },
+    { id: 'chk-harga', label: 'Harga tertulis', saran: 'Cantumkan nominal harga atau rentang paket secara terbuka.' },
+    { id: 'chk-varian', label: 'Ada varian', saran: 'Sertakan daftar ukuran, berat bersih, atau varian rasa produk.' },
+    { id: 'chk-deskripsi', label: 'Deskripsi manfaat', saran: 'Tuliskan 2-3 keunggulan bahan baku dan manfaat nyata produk.' },
+    { id: 'chk-ongkir', label: 'Info pengiriman jelas', saran: 'Sebutkan opsi jasa kurir yang tersedia serta estimasi waktu antar.' },
+    { id: 'chk-cta', label: 'Ajakan bertindak (CTA)', saran: 'Beri instruksi pemesanan singkat atau tautan pesan WhatsApp.' },
 ];
 
 function scoreBadge(score) {
-    if (score >= 5) return { badge: 'Siap Jual', cls: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' };
-    if (score >= 3) return { badge: 'Hampir Siap', cls: 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300' };
-    return { badge: 'Perlu Perbaikan', cls: 'bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-300' };
+    if (score >= 5) return { badge: 'Etalase Siap Jual', cls: 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/40' };
+    if (score >= 3) return { badge: 'Cukup Lengkap', cls: 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700' };
+    return { badge: 'Perlu Dilengkapi', cls: 'bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300 border border-amber-200/60 dark:border-amber-800/40' };
 }
 
-chkBtn?.addEventListener('click', () => {
-    const checked = chkItems.filter(it => document.getElementById(it.id).checked);
-    const score = checked.length;
-
-    const badge = scoreBadge(score);
-    const status = badge.badge;
-
-    const ul = document.getElementById('chk-saran');
-    ul.innerHTML = '';
-
-    const missing = chkItems.filter(it => !document.getElementById(it.id).checked);
-    if (missing.length === 0) {
-        const li = document.createElement('li');
-        li.textContent = 'Toko Anda sudah cukup siap. Fokus tingkatkan testimoni dan konsistensi konten.';
-        ul.appendChild(li);
-    } else {
-        missing.forEach(m => {
-            const li = document.createElement('li');
-            li.textContent = m.saran;
-            ul.appendChild(li);
+if (chkBtn) {
+    chkBtn.addEventListener('click', () => {
+        const checked = chkItems.filter(it => {
+            const el = document.getElementById(it.id);
+            return el && el.checked;
         });
-    }
+        const score = checked.length;
 
-    const nama = document.getElementById('chk-nama').value.trim();
-    const badgeEl = document.getElementById('chk-badge');
-    badgeEl.textContent = status;
-    badgeEl.className = `text-xs font-bold px-3 py-1 rounded-full ${badge.cls}`;
+        const badge = scoreBadge(score);
+        const status = badge.badge;
 
-    document.getElementById('chk-score').textContent = `${score}/6`;
-    document.getElementById('chk-status').textContent = nama ? `Untuk: ${nama}` : status;
+        const ul = document.getElementById('chk-saran');
+        if (ul) {
+            ul.innerHTML = '';
+            const missing = chkItems.filter(it => {
+                const el = document.getElementById(it.id);
+                return !el || !el.checked;
+            });
+            if (missing.length === 0) {
+                const li = document.createElement('li');
+                li.textContent = 'Etalase produk Anda sudah sangat lengkap dan siap memberikan rasa aman bagi calon pembeli.';
+                ul.appendChild(li);
+            } else {
+                missing.forEach(m => {
+                    const li = document.createElement('li');
+                    li.textContent = m.saran;
+                    ul.appendChild(li);
+                });
+            }
+        }
 
-    // ✅ Tampilkan modal testimoni
-    showTestimonialModal();
-});
+        const namaEl = document.getElementById('chk-nama');
+        const nama = namaEl ? namaEl.value.trim() : '';
+        const badgeEl = document.getElementById('chk-badge');
+        if (badgeEl) {
+            badgeEl.textContent = status;
+            badgeEl.className = `text-xs font-semibold px-3 py-1 rounded-full ${badge.cls}`;
+        }
 
-// ============================================
-// PLANNER 30 HARI
-// ============================================
+        const scoreEl = document.getElementById('chk-score');
+        if (scoreEl) scoreEl.textContent = `${score} dari 6 Poin`;
+
+        const statusEl = document.getElementById('chk-status');
+        if (statusEl) statusEl.textContent = nama ? `Hasil Evaluasi: ${nama}` : status;
+
+        showTestimonialModal();
+    });
+}
+
 const plBtn = document.getElementById('pl-btn');
 const plCopy = document.getElementById('pl-copy');
 const plOut = document.getElementById('pl-out');
 
 const hookTemplates = {
     jualan: [
-        'Hook: {produk} hari ini diskon ringan—buruan chat ya!',
-        'Hook: Rahasia {produk} laris karena ini…',
-        'Hook: 3 alasan kenapa {produk} bikin repeat order',
-        'Hook: Paket hemat {produk} untuk kamu yang suka praktis'
+        'Kalimat Pembuka: Lagi cari {produk} berkualitas yang siap kirim hari ini?',
+        'Kalimat Pembuka: Ini alasan kenapa pelanggan kami selalu repeat order {produk}...',
+        'Kalimat Pembuka: 3 keunggulan utama {produk} yang wajib Anda coba sekarang.',
+        'Kalimat Pembuka: Khusus minggu ini, ada penawaran paket hemat untuk {produk}!'
     ],
     brand: [
-        'Hook: Kenalan dulu yuk, di balik {produk} ada cerita ini',
-        'Hook: Proses pembuatan {produk} step-by-step',
-        'Hook: Nilai & komitmen kami untuk pelanggan {produk}',
-        'Hook: Kenapa kami konsisten dengan {produk}?'
+        'Kalimat Pembuka: Ada cerita menarik di balik proses pemilihan bahan baku {produk}.',
+        'Kalimat Pembuka: Di balik layar tim kami menyiapkan pesanan {produk} hari ini.',
+        'Kalimat Pembuka: Komitmen kami menjaga mutu dan ketulusan rasa {produk} untuk Anda.',
+        'Kalimat Pembuka: Mengapa kami konsisten mengembangkan {produk} sejak awal mula?'
     ]
 };
 
 const captionCTA = {
-    instagram: 'CTA: Mau versi rasa/varian tertentu? Chat sekarang untuk cek stok & harga ya.',
-    tiktok: 'CTA: Klik follow dan komen "ORDER" biar kami bantu proses order!',
-    facebook: 'CTA: Tertarik? Chat admin + sebut varian yang kamu mau.',
-    wa: 'CTA: Balas pesan ini dengan nama produk + alamat (untuk estimasi ongkir).'
+    instagram: 'Ajakan Bertindak: Mau pilih varian? Langsung klik tautan di bio atau kirim DM ke kami sekarang ya!',
+    tiktok: 'Ajakan Bertindak: Ikuti akun kami dan tuliskan komentar untuk mendapatkan penawaran spesial.',
+    facebook: 'Ajakan Bertindak: Tertarik mencoba? Hubungi kami via pesan langsung atau tinggalkan komentar.',
+    wa: 'Ajakan Bertindak: Balas pesan ini untuk memilih varian dan cek ongkos kirim ke alamat Anda.'
 };
 
 function buildPlanner(kategori, channel, goal) {
-    const produk = kategori?.trim() ? kategori.trim() : 'produk UMKM';
+    const produk = kategori && kategori.trim() ? kategori.trim() : 'produk pilihan kami';
     const hooks = hookTemplates[goal] || hookTemplates.jualan;
 
     const plan = [];
-    const hari = [
-        'Edukasi singkat', 'Manfaat & problem-solution', 'Behind the scene', 'Testimoni/Review', 'Promo ringan',
-        'Cara pakai/step', 'Tips memilih', 'QnA kecil', 'Bikin penasaran', 'Promo bundle'
+    const tema = [
+        'Edukasi Bahan Baku', 'Solusi Kebutuhan Harian', 'Proses Pengemasan Rapi', 'Ulasan Kepuasan Pembeli', 'Penawaran Spesial',
+        'Petunjuk Penyimpanan', 'Rekomendasi Varian', 'Jawaban Pertanyaan Umum', 'Kabar Stok Terbaru', 'Keuntungan Pesan Langsung'
     ];
 
     for (let i = 1; i <= 30; i++) {
-        const slot = (i - 1) % hari.length;
-        const jenis = hari[slot];
+        const slot = (i - 1) % tema.length;
+        const jenis = tema[slot];
         const hook = hooks[(i - 1) % hooks.length].replaceAll('{produk}', produk);
         const cta = captionCTA[channel] || captionCTA.instagram;
 
         let isi = '';
         switch (jenis) {
-            case 'Edukasi singkat':
-                isi = `Ide konten: 3 fakta cepat tentang ${produk}.\nCopy angle: "Yang sering orang salah paham tentang ${produk} adalah…"`;
+            case 'Edukasi Bahan Baku':
+                isi = `Ide materi: Jelaskan 2 bahan utama ${produk} dan alasan Anda memilihnya.\nFokus: Memperlihatkan kepedulian mutu secara jujur.`;
                 break;
-            case 'Manfaat & problem-solution':
-                isi = `Ide konten: tampilkan masalah umum lalu solusinya pakai ${produk}.\nStruktur: Masalah → Solusi → Ajakan chat.`;
+            case 'Solusi Kebutuhan Harian':
+                isi = `Ide materi: Ceritakan bagaimana ${produk} mempermudah rutinitas harian konsumen Anda.\nFokus: Mengaitkan produk dengan situasi nyata.`;
                 break;
-            case 'Behind the scene':
-                isi = `Ide konten: proses pembuatan/packing ${produk} (video/foto singkat).\nTampilkan step penting dan higienitas.`;
+            case 'Proses Pengemasan Rapi':
+                isi = `Ide materi: Tampilkan video atau foto persiapan pengemasan ${produk} yang higienis.\nFokus: Menumbuhkan rasa percaya terhadap kebersihan produk.`;
                 break;
-            case 'Testimoni/Review':
-                isi = `Ide konten: kutip testimoni pelanggan.\nTambahkan: konteks singkat pelanggan + hasilnya.`;
+            case 'Ulasan Kepuasan Pembeli':
+                isi = `Ide materi: Tampilkan tanggapan layar pesan kepuasan dari pelanggan ${produk}.\nFokus: Bukti sosial nyata dari pembeli sebelumnya.`;
                 break;
-            case 'Promo ringan':
-                isi = `Ide konten: promo ringan (tanpa membahayakan margin).\nContoh: "beli 2 bonus kemasan/varian mini"`;
+            case 'Penawaran Spesial':
+                isi = `Ide materi: Rancang penawaran bundling hemat untuk pembelian 2 atau 3 paket ${produk}.\nFokus: Memberikan nilai tambah ekonomis bagi pembeli.`;
                 break;
-            case 'Cara pakai/step':
-                isi = `Ide konten: cara pakai/step untuk hasil maksimal dari ${produk}.\nBikin 3 langkah mudah.`;
+            case 'Petunjuk Penyimpanan':
+                isi = `Ide materi: Panduan menjaga kualitas ${produk} agar tetap segar dan tahan lama di rumah.`;
                 break;
-            case 'Tips memilih':
-                isi = `Ide konten: tips memilih varian ${produk} yang cocok.\nBuat checklist kecil.`;
+            case 'Rekomendasi Varian':
+                isi = `Ide materi: Rekomendasi varian ${produk} yang paling cocok untuk dicoba pertama kali.`;
                 break;
-            case 'QnA kecil':
-                isi = `Ide konten: 5 pertanyaan yang sering ditanya tentang ${produk}.\nJawab singkat dalam format carousel.`;
+            case 'Jawaban Pertanyaan Umum':
+                isi = `Ide materi: Menjawab pertanyaan seputar daya tahan, pengiriman, dan cara pemesanan ${produk}.`;
                 break;
-            case 'Bikin penasaran':
-                isi = `Ide konten: teaser—"besok ada varian baru ${produk}".\nAkhiri dengan pertanyaan untuk engagement.`;
+            case 'Kabar Stok Terbaru':
+                isi = `Ide materi: Memberitahukan bahwa batch produksi ${produk} baru saja selesai dan siap dikirim.`;
                 break;
-            case 'Promo bundle':
-                isi = `Ide konten: bundle hemat ${produk}.\nTampilkan perbandingan harga sederhana (versi hemat vs biasa).`;
+            case 'Keuntungan Pesan Langsung':
+                isi = `Ide materi: Mengingatkan keuntungan memesan langsung lewat saluran resmi toko.`;
                 break;
         }
 
-        plan.push(`Hari ${i}: ${jenis}\n${hook}\n${isi}\n${cta}`);
+        plan.push(`Hari Ke-${i} [${jenis}]\n${hook}\n${isi}\n${cta}`);
     }
 
-    return `Kategori: ${produk}\nChannel: ${channel}\nTujuan: ${goal}\n\n--- Jadwal 30 Hari ---\n\n` + plan.join('\n\n');
+    return `Kategori Usaha: ${produk}\nSaluran Utama: ${channel}\nFokus Sasaran: ${goal === 'jualan' ? 'Penjualan Langsung' : 'Pengenalan Brand'}\n\n========================================\nJADWAL KONTEN MEDIA SOSIAL 30 HARI\n========================================\n\n` + plan.join('\n\n----------------------------------------\n\n');
 }
 
-plBtn?.addEventListener('click', () => {
-    const kategori = document.getElementById('pl-kategori').value;
-    const channel = document.getElementById('pl-channel').value;
-    const goal = document.querySelector('input[name="pl-goal"]:checked')?.value || 'jualan';
-    plOut.textContent = buildPlanner(kategori, channel, goal);
-    
-    // ✅ Tampilkan modal testimoni
-    showTestimonialModal();
-});
+if (plBtn) {
+    plBtn.addEventListener('click', () => {
+        const kategoriEl = document.getElementById('pl-kategori');
+        const channelEl = document.getElementById('pl-channel');
+        const goalEl = document.querySelector('input[name="pl-goal"]:checked');
 
-plCopy?.addEventListener('click', async () => {
-    try {
-        await navigator.clipboard.writeText(plOut.textContent);
-    } catch {
-        // ignore
-    }
-});
+        const kategori = kategoriEl ? kategoriEl.value : '';
+        const channel = channelEl ? channelEl.value : 'instagram';
+        const goal = goalEl ? goalEl.value : 'jualan';
 
-// ============================================
-// TEMPLATE CHAT
-// ============================================
+        if (plOut) {
+            plOut.textContent = buildPlanner(kategori, channel, goal);
+        }
+
+        showTestimonialModal();
+    });
+}
+
+if (plCopy && plOut) {
+    plCopy.addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText(plOut.textContent);
+            const orig = plCopy.textContent;
+            plCopy.textContent = 'Tersalin!';
+            setTimeout(() => { plCopy.textContent = orig; }, 2000);
+        } catch (e) {}
+    });
+}
+
 const chatBtn = document.getElementById('chat-btn');
 const chatCopy = document.getElementById('chat-copy');
 const chatOut = document.getElementById('chat-out');
@@ -332,51 +304,65 @@ function guessIntent(msg) {
     const m = normalize(msg);
     const has = (...words) => words.some(w => m.includes(w));
 
-    if (has('stok', 'ready')) return 'stok';
-    if (has('harga', 'berapa', 'price', 'biaya')) return 'harga';
-    if (has('ongkir', 'ongkos kirim', 'kirim', 'kiriman')) return 'ongkir';
-    if (has('order', 'pesan', 'beli', 'pemesanan')) return 'order';
-    if (has('komplain', 'rusak', 'tidak sesuai', 'salah', 'refund', 'tolak')) return 'komplain';
-    if (has('alamat', 'kota', 'jakarta', 'bandung', 'surabaya', 'medan', 'bekasi', 'bogor', 'depok')) return 'ongkir';
+    if (has('stok', 'ready', 'ada')) return 'stok';
+    if (has('harga', 'berapa', 'price', 'biaya', 'ongkos')) return 'harga';
+    if (has('ongkir', 'kirim', 'pengiriman', 'kurir', 'ekspedisi')) return 'ongkir';
+    if (has('order', 'pesan', 'beli', 'pemesanan', 'checkout')) return 'order';
+    if (has('komplain', 'rusak', 'tidak sesuai', 'salah', 'refund', 'cacat')) return 'komplain';
     return 'umum';
 }
 
 function buildChatReply({ toko, produk, msg }) {
     const intent = guessIntent(msg);
-    const p = produk?.trim() ? produk.trim() : '';
-    const opener = toko?.trim() ? `${toko.trim()} di sini 😊` : 'Halo! 😊';
+    const p = produk && produk.trim() ? produk.trim() : 'produk kami';
+    const opener = toko && toko.trim() ? `Halo Kak! Terima kasih sudah menghubungi ${toko.trim()} 😊` : 'Halo Kak! Terima kasih sudah menghubungi kami 😊';
 
     const replies = {
-        stok: `${opener}\n\nSiap! Untuk ${p || 'produk'} saat ini statusnya: READY / MENUNGGU (sebutkan varian/ukuran yang Anda mau ya).\n\nBoleh info varian + jumlahnya? Nanti kami cekkan ketersediaannya.`,
-        harga: `${opener}\n\nUntuk ${p || 'produk'} harganya mulai dari: (isi sesuai harga Anda).\n\nMau yang varian/ukuran mana? Sebutkan ya, biar kami hitungkan totalnya sekalian.`,
-        ongkir: `${opener}\n\nBisa kak 👍\nUntuk estimasi ongkir, mohon info:\n1) Alamat tujuan (kota/kode pos)\n2) Pilihan produk + jumlah\n\nNanti kami bantu cekkan nominalnya.`,
-        order: `${opener}\n\nBisa kak. Berikut langkah order: \n1) Pilih varian/ukuran & jumlah\n2) Konfirmasi alamat + no HP\n3) Kami kirim total pembayaran\n\nKakak mau order varian apa?`,
-        komplain: `${opener}\n\nMohon maaf ya kak atas ketidaknyamanannya 😔\nBiar kami bantu cek cepat, mohon kirim: \n1) Foto / video kondisi produk\n2) Nomor pesanan (jika ada)\n3) Keluhan singkat\n\nSetelah itu kami tindaklanjuti solusinya.`,
-        umum: `${opener}\n\nTerima kasih sudah chat 😊\nBoleh info yang Anda butuhkan terkait ${p || 'produk'}?\nContoh: harga, stok, ongkir, atau cara order.`
+        stok: `${opener}\n\nUntuk ${p}, stok saat ini tersedia dan siap kami kirimkan.\n\nBoleh kami bantu catat pilihan varian atau jumlah pesanan yang diinginkan?`,
+        harga: `${opener}\n\nUntuk informasi harga ${p}, kami menyediakan paket terjangkau dengan kualitas mutu terjamin.\n\nBoleh tahu varian atau ukuran yang Kakak butuhkan agar kami rincikan total pesanannya?`,
+        ongkir: `${opener}\n\nTentu bisa Kak 👍\nUntuk mengecek perkiraan tarif ongkos kirim, boleh sebutkan nama Kecamatan dan Kota tujuan pengirimannya? Kami bantu carikan tarif ekspedisi terbaik.`,
+        order: `${opener}\n\nSiap kami proses dengan senang hati! Berikut langkah mudah pemesanannya:\n1. Tentukan varian dan jumlah ${p}\n2. Kirimkan nama penerima, nomor kontak, dan alamat lengkap\n3. Kami kirimkan total dan nomor rekening resmi toko\n\nKakak ingin memesan varian apa hari ini?`,
+        komplain: `${opener}\n\nKami memohon maaf yang sebesar-besarnya atas kendala yang dialami 🙏\nKenyamanan dan kepuasan Kakak adalah hal utama bagi kami. Mohon bantu kirimkan foto/video kendala produk serta nomor pesanan agar tim kami dapat segera memberikan solusi terbaik.`,
+        umum: `${opener}\n\nAda yang bisa kami bantu seputar detail informasi ${p}, pilihan varian rasa, atau tata cara pemesanannya?`
     };
 
     return replies[intent] || replies.umum;
 }
 
-chatBtn?.addEventListener('click', () => {
-    const msg = document.getElementById('chat-msg').value;
-    const toko = document.getElementById('chat-toko').value;
-    const produk = document.getElementById('chat-produk').value;
+if (chatBtn) {
+    chatBtn.addEventListener('click', () => {
+        const msgEl = document.getElementById('chat-msg');
+        const tokoEl = document.getElementById('chat-toko');
+        const produkEl = document.getElementById('chat-produk');
 
-    if (!msg.trim()) {
-        chatOut.textContent = 'Masukkan pesan pelanggan dulu.';
-        return;
-    }
-    chatOut.textContent = buildChatReply({ toko, produk, msg });
-    
-    // ✅ Tampilkan modal testimoni
-    showTestimonialModal();
-});
+        const msg = msgEl ? msgEl.value : '';
+        const toko = tokoEl ? tokoEl.value : '';
+        const produk = produkEl ? produkEl.value : '';
 
-chatCopy?.addEventListener('click', async () => {
-    try {
-        await navigator.clipboard.writeText(chatOut.textContent);
-    } catch {
-        // ignore
-    }
-});
+        if (!msg.trim()) {
+            if (chatOut) chatOut.textContent = 'Mohon ketikkan contoh pertanyaan calon pembeli terlebih dahulu.';
+            return;
+        }
+
+        if (chatOut) {
+            chatOut.textContent = buildChatReply({ toko, produk, msg });
+        }
+
+        showTestimonialModal();
+    });
+}
+
+if (chatCopy && chatOut) {
+    chatCopy.addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText(chatOut.textContent);
+            const orig = chatCopy.textContent;
+            chatCopy.textContent = 'Tersalin!';
+            setTimeout(() => { chatCopy.textContent = orig; }, 2000);
+        } catch (e) {}
+    });
+}
+
+window.showTestimonialModal = showTestimonialModal;
+window.closeTestimonialModal = closeTestimonialModal;
+window.setActiveTab = setActiveTab;

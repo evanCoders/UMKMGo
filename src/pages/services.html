@@ -1,24 +1,15 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 
-<!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Layanan UMKMGo — Panduan & Fitur</title>
+    <title>Panduan & Layanan UMKMGo</title>
     <meta name="description"
-        content="Pelajari cara menggunakan UMKMGo: Kalkulator HPP, Checklist Toko, Planner Konten, dan Template Chat." />
-
-    <!-- ✅ PERBAIKAN: Favicon -->
-    <link rel="icon" href="/public/image/favicon.svg" />
-
-    <!-- ✅ PERBAIKAN: CSS (path absolut) -->
+        content="Panduan lengkap penggunaan perangkat UMKMGo: Kalkulator HPP & BEP, Checklist Kesiapan Toko, Perencana Konten, dan Template Respon Chat." />
+    <link rel="icon" href="/public/favicon.svg" />
     <link rel="stylesheet" href="/src/css/service.css" />
-
     <script src="https://cdn.tailwindcss.com"></script>
-
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap"
         rel="stylesheet" />
@@ -37,6 +28,7 @@
                             700: "#0F766E",
                             800: "#115E59",
                             900: "#134E4A",
+                            950: "#042F2E",
                         },
                     },
                     fontFamily: {
@@ -47,432 +39,296 @@
             },
         }
     </script>
-
-    <!-- ✅ TAMBAHKAN: CSS untuk Accordion -->
-    <style>
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .card-hover {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-        }
-        .dark .card-hover:hover {
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        /* ===== ACCORDION ===== */
-        .accordion-item {
-            border-bottom: 1px solid #e5e7eb;
-        }
-        .dark .accordion-item {
-            border-bottom-color: #1e293b;
-        }
-        .accordion-item:last-child {
-            border-bottom: none;
-        }
-
-        .accordion-header {
-            cursor: pointer;
-            user-select: none;
-            transition: background 0.3s ease;
-        }
-        .accordion-header:hover {
-            background: rgba(13, 148, 136, 0.05);
-        }
-        .dark .accordion-header:hover {
-            background: rgba(13, 148, 136, 0.15);
-        }
-
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                        opacity 0.4s ease,
-                        padding 0.4s ease;
-            opacity: 0;
-            padding: 0 24px;
-        }
-        .accordion-content.open {
-            max-height: 2000px;
-            opacity: 1;
-            padding: 20px 24px;
-        }
-
-        .accordion-icon {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            flex-shrink: 0;
-        }
-        .accordion-icon.rotate {
-            transform: rotate(180deg);
-        }
-    </style>
-
 </head>
 
-<body>
-
-    <!-- ==================== NAVBAR ==================== -->
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-200 antialiased transition-colors duration-300">
     <div id="component-navbar" data-component="navbar" data-src="/src/components/navbar-services.html"></div>
 
-    <!-- ==================== MAIN CONTENT ==================== -->
     <main class="pt-28 pb-16">
-
-        <!-- ===== HERO ===== -->
         <section
-            class="relative py-16 bg-gradient-to-br from-brand-50 to-teal-50 dark:from-slate-800 dark:to-slate-800">
+            class="relative py-16 bg-gradient-to-b from-slate-100/80 to-transparent dark:from-slate-900/60 dark:to-transparent">
             <div class="max-w-4xl mx-auto px-4 text-center">
-                <span class="text-brand-600 dark:text-brand-400 font-bold tracking-wider uppercase text-sm">Panduan
-                    Layanan</span>
-                <h1 class="font-display text-4xl md:text-5xl text-gray-900 dark:text-white mt-3 mb-4">
-                    Apa itu UMKMGo?
+                <span class="text-brand-600 dark:text-brand-400 font-semibold tracking-wider uppercase text-xs">Pusat Panduan</span>
+                <h1 class="font-display text-4xl md:text-5xl text-slate-900 dark:text-white mt-2 mb-4 tracking-tight">
+                    Mengenal Ekosistem UMKMGo
                 </h1>
-                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                    UMKMGo adalah platform gratis yang membantu pelaku UMKM di Indonesia
-                    <span class="font-semibold text-brand-600 dark:text-brand-400">mengelola bisnis lebih mudah</span>
-                    dengan alat-alat praktis berbasis AI dan non-AI.
+                <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                    UMKMGo menghadirkan ragam alat praktis yang dirancang khusus untuk mempermudah perhitungan operasional, manajemen naskah promosi, serta interaksi harian dengan calon pembeli.
                 </p>
             </div>
         </section>
 
-        <!-- ===== TUJUAN ===== -->
-        <section class="py-16 bg-white dark:bg-slate-900">
+        <section class="py-12 bg-white dark:bg-slate-900 border-y border-slate-200/70 dark:border-slate-800/80">
             <div class="max-w-6xl mx-auto px-4">
                 <div class="grid md:grid-cols-3 gap-8">
                     <div
-                        class="text-center reveal card-hover p-6 bg-gray-50 dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700">
+                        class="text-center reveal card-hover p-6 sm:p-8 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200/80 dark:border-slate-800">
                         <div
-                            class="w-16 h-16 bg-brand-100 dark:bg-brand-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            class="w-12 h-12 bg-brand-50 dark:bg-brand-950/60 border border-brand-200/60 dark:border-brand-800/40 rounded-xl flex items-center justify-center mx-auto mb-5 text-brand-600 dark:text-brand-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M13 10V3L4 14h7v7l9-11h-7z" />
                             </svg>
                         </div>
-                        <h3 class="font-bold text-gray-900 dark:text-white">Mudah Digunakan</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Antarmuka sederhana, langsung pakai
-                            tanpa perlu keahlian teknis.</p>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-base mb-2">Mudah Dijalankan</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Tata letak yang sederhana membuat siapa saja bisa langsung menggunakannya tanpa kendala teknis.</p>
                     </div>
-                    <div class="text-center reveal card-hover p-6 bg-gray-50 dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700"
+
+                    <div class="text-center reveal card-hover p-6 sm:p-8 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200/80 dark:border-slate-800"
                         style="transition-delay: 100ms;">
                         <div
-                            class="w-16 h-16 bg-brand-100 dark:bg-brand-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            class="w-12 h-12 bg-brand-50 dark:bg-brand-950/60 border border-brand-200/60 dark:border-brand-800/40 rounded-xl flex items-center justify-center mx-auto mb-5 text-brand-600 dark:text-brand-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </div>
-                        <h3 class="font-bold text-gray-900 dark:text-white">100% Gratis</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Semua fitur tersedia gratis, tanpa
-                            biaya langganan.</p>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-base mb-2">Bebas Biaya Langganan</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Seluruh sarana dan modul perhitungan dapat diakses tanpa biaya tersembunyi.</p>
                     </div>
-                    <div class="text-center reveal card-hover p-6 bg-gray-50 dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700"
+
+                    <div class="text-center reveal card-hover p-6 sm:p-8 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200/80 dark:border-slate-800"
                         style="transition-delay: 200ms;">
                         <div
-                            class="w-16 h-16 bg-brand-100 dark:bg-brand-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            class="w-12 h-12 bg-brand-50 dark:bg-brand-950/60 border border-brand-200/60 dark:border-brand-800/40 rounded-xl flex items-center justify-center mx-auto mb-5 text-brand-600 dark:text-brand-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                             </svg>
                         </div>
-                        <h3 class="font-bold text-gray-900 dark:text-white">Langsung Manfaat</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Hasil perhitungan dan template siap
-                            pakai untuk bisnis Anda.</p>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-base mb-2">Hasil Nyata & Aplikatif</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Memberikan keluaran data yang langsung dapat diterapkan pada aktivitas bisnis harian Anda.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== 4 FITUR + ACCORDION ===== -->
-        <section class="py-16 bg-gray-50 dark:bg-slate-900/50">
+        <section class="py-16 bg-slate-50 dark:bg-slate-950">
             <div class="max-w-4xl mx-auto px-4">
                 <div class="text-center mb-12 reveal">
-                    <span class="text-brand-600 dark:text-brand-400 font-bold tracking-wider uppercase text-sm">Fitur &
-                        Panduan</span>
-                    <h2 class="font-display text-3xl md:text-4xl text-gray-900 dark:text-white mt-3">Cara Menggunakan
-                        Fitur</h2>
-                    <p class="text-gray-600 dark:text-gray-300 mt-4">Klik pada fitur yang ingin Anda ketahui lebih
-                        detail.</p>
+                    <span class="text-brand-600 dark:text-brand-400 font-semibold tracking-wider uppercase text-xs">Petunjuk Penggunaan</span>
+                    <h2 class="font-display text-3xl md:text-4xl text-slate-900 dark:text-white mt-2">Cara Memanfaatkan Perangkat</h2>
+                    <p class="text-slate-600 dark:text-slate-400 mt-2 text-sm sm:text-base">Pilih topik fitur di bawah ini untuk melihat rincian fungsi serta panduan langkah demi langkahnya.</p>
                 </div>
 
-                <!-- ===== ACCORDION WRAPPER ===== -->
                 <div
-                    class="bg-white dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700 shadow-sm overflow-hidden reveal">
+                    class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm overflow-hidden reveal">
 
-                    <!-- Fitur 1: Kalkulator -->
                     <div class="accordion-item">
                         <div class="accordion-header flex items-center justify-between p-5 md:p-6" role="button" tabindex="0" aria-expanded="false">
                             <div class="flex items-center gap-4">
                                 <div
-                                    class="w-12 h-12 bg-brand-100 dark:bg-brand-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor"
+                                    class="w-11 h-11 bg-brand-50 dark:bg-brand-950/60 border border-brand-200/60 dark:border-brand-800/40 rounded-xl flex items-center justify-center flex-shrink-0 text-brand-600 dark:text-brand-400">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                             d="M9 7h6m0 10v-3m-6 3v-3m-6 3h18M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z" />
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="font-bold text-gray-900 dark:text-white text-lg">Kalkulator UMKM</h3>
-                                    <p class="text-sm text-gray-500 dark:text-gray-400">Hitung HPP, Margin, & BEP</p>
+                                    <h3 class="font-bold text-slate-900 dark:text-white text-base sm:text-lg">Kalkulator HPP, Margin & BEP</h3>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Penetapan harga jual dan analisis titik impas modal</p>
                                 </div>
                             </div>
-                            <svg class="accordion-icon w-6 h-6 text-gray-400 dark:text-gray-500" fill="none"
+                            <svg class="accordion-icon w-5 h-5 text-slate-400 dark:text-slate-500" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M19 9l-7 7-7-7" />
                             </svg>
                         </div>
-                        <div class="accordion-content text-gray-600 dark:text-gray-300">
+                        <div class="accordion-content text-slate-600 dark:text-slate-400">
                             <div class="space-y-4">
                                 <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white"> Apa Itu?</h4>
-                                    <p>Kalkulator UMKM membantu Anda menghitung <strong>Harga Pokok Produksi
-                                            (HPP)</strong>, <strong>Margin Keuntungan</strong>, dan <strong>BEP (Break
-                                            Even Point)</strong> dengan cepat dan akurat.</p>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Tujuan Modul</h4>
+                                    <p class="text-sm leading-relaxed">Menghitung akumulasi modal produksi per unit produk, menetapkan persentase margin keuntungan yang realistis, serta mengukur jumlah minimal unit yang wajib terjual untuk menutupi biaya operasional bulanan.</p>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white"> Kegunaan</h4>
-                                    <ul class="list-disc pl-5 space-y-1">
-                                        <li>Menentukan harga jual yang kompetitif</li>
-                                        <li>Mengetahui keuntungan per produk</li>
-                                        <li>Menganalisis kapan bisnis mencapai titik impas</li>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Manfaat Utama</h4>
+                                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                                        <li>Mencegah risiko menjual produk di bawah harga dasar produksi modal.</li>
+                                        <li>Mengetahui nominal keuntungan bersih per transaksi secara transparan.</li>
+                                        <li>Membantu menyusun target penjualan harian dan mingguan yang terukur.</li>
                                     </ul>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white"> Cara Pakai</h4>
-                                    <ol class="list-decimal pl-5 space-y-3 text-sm">
-                                        <li>
-                                            <div>
-                                                <span class="font-bold text-gray-900 dark:text-white">Masukkan Biaya
-                                                    Produksi (HPP)</span>
-                                                <p class="text-gray-600 dark:text-gray-300 text-sm mt-0.5">Total biaya
-                                                    bahan baku &amp; produksi per unit.</p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div>
-                                                <span class="font-bold text-gray-900 dark:text-white">Masukkan Target
-                                                    Margin (%)</span>
-                                                <p class="text-gray-600 dark:text-gray-300 text-sm mt-0.5">Keuntungan
-                                                    yang Anda inginkan dari setiap produk.</p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div>
-                                                <span class="font-bold text-gray-900 dark:text-white">Isi Biaya Tetap
-                                                    &amp; Volume</span>
-                                                <p class="text-gray-600 dark:text-gray-300 text-sm mt-0.5">Opsional —
-                                                    digunakan untuk menghitung BEP (Break Even Point).</p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div>
-                                                <span class="font-bold text-gray-900 dark:text-white">Klik Hitung</span>
-                                                <p class="text-gray-600 dark:text-gray-300 text-sm mt-0.5">Dapatkan
-                                                    hasil perhitungan langsung.</p>
-                                            </div>
-                                        </li>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Panduan Pengisian</h4>
+                                    <ol class="list-decimal pl-5 space-y-2 text-sm">
+                                        <li>Ketikkan estimasi seluruh biaya modal bahan baku per unit pada kolom HPP.</li>
+                                        <li>Tentukan persentase keuntungan yang ditargetkan (misal: 25% atau 40%).</li>
+                                        <li>Masukkan nominal biaya tetap bulanan (seperti sewa tempat atau kuota internet) dan target unit penjualan untuk melihat evaluasi BEP.</li>
+                                        <li>Tekan tombol hitung untuk melihat rincian harga rekomendasi seketika.</li>
                                     </ol>
                                 </div>
                                 <div
-                                    class="p-3 bg-brand-50 dark:bg-brand-900/20 rounded-xl text-sm text-brand-700 dark:text-brand-300">
-                                    💡 <span class="font-semibold">Tips:</span> Gunakan hasil ini untuk menentukan harga
-                                    jual yang kompetitif dan tetap untung.
+                                    class="p-3.5 bg-brand-50/70 dark:bg-brand-950/40 border border-brand-200/50 dark:border-brand-800/40 rounded-xl text-xs sm:text-sm text-brand-800 dark:text-brand-300">
+                                    <span class="font-semibold">Tips:</span> Pastikan seluruh unsur kemasan, label, dan plastik pembungkus dimasukkan ke dalam komponen HPP unit Anda.
                                 </div>
-                                <a href="tools.html#kalkulator"
-                                    class="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 font-semibold hover:underline text-sm">
-                                    🔗 Buka Kalkulator →
+                                <a href="/src/pages/tools.html#kalkulator"
+                                    class="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 font-semibold hover:underline text-sm pt-2">
+                                    Buka Kalkulator Finansial →
                                 </a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Fitur 2: Checklist -->
                     <div class="accordion-item">
                         <div class="accordion-header flex items-center justify-between p-5 md:p-6" role="button" tabindex="0" aria-expanded="false">
                             <div class="flex items-center gap-4">
                                 <div
-                                    class="w-12 h-12 bg-amber-100 dark:bg-amber-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor"
+                                    class="w-11 h-11 bg-brand-50 dark:bg-brand-950/60 border border-brand-200/60 dark:border-brand-800/40 rounded-xl flex items-center justify-center flex-shrink-0 text-brand-600 dark:text-brand-400">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                             d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="font-bold text-gray-900 dark:text-white text-lg">Checklist Toko</h3>
-                                    <p class="text-sm text-gray-500 dark:text-gray-400">Cek Kesiapan Toko Online</p>
+                                    <h3 class="font-bold text-slate-900 dark:text-white text-base sm:text-lg">Checklist Toko Siap Jual</h3>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Audit kelengkapan etalase & informasi produk</p>
                                 </div>
                             </div>
-                            <svg class="accordion-icon w-6 h-6 text-gray-400 dark:text-gray-500" fill="none"
+                            <svg class="accordion-icon w-5 h-5 text-slate-400 dark:text-slate-500" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M19 9l-7 7-7-7" />
                             </svg>
                         </div>
-                        <div class="accordion-content text-gray-600 dark:text-gray-300">
+                        <div class="accordion-content text-slate-600 dark:text-slate-400">
                             <div class="space-y-4">
                                 <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white"> Apa Itu?</h4>
-                                    <p>Checklist Toko membantu Anda mengevaluasi kesiapan toko online dengan 6 poin
-                                        penting yang mempengaruhi keputusan pembeli.</p>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Tujuan Modul</h4>
+                                    <p class="text-sm leading-relaxed">Mengevaluasi kelayakan tampilan etalase produk online Anda berdasarkan 6 faktor utama yang menentukan rasa percaya calon pembeli.</p>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white"> Kegunaan</h4>
-                                    <ul class="list-disc pl-5 space-y-1">
-                                        <li>Mengetahui kekuatan dan kelemahan toko online Anda</li>
-                                        <li>Mendapatkan saran perbaikan yang spesifik</li>
-                                        <li>Meningkatkan kepercayaan pembeli</li>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Manfaat Utama</h4>
+                                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                                        <li>Menemukan celah informasi yang sering membuat pembeli ragu melanjutkan pemesanan.</li>
+                                        <li>Mendapatkan rekomendasi perbaikan tampilan foto dan teks deskripsi.</li>
+                                        <li>Meningkatkan rasio konversi pengunjung menjadi transaksi berhasil.</li>
                                     </ul>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white"> Cara Pakai</h4>
-                                    <ol class="list-decimal pl-5 space-y-1">
-                                        <li>Isi <strong>Nama Produk</strong> — agar saran lebih spesifik</li>
-                                        <li>Centang item yang sudah Anda penuhi (foto, harga, deskripsi, dll)</li>
-                                        <li>Klik <strong>Hitung Skor</strong> — dapatkan skor & saran perbaikan</li>
-                                        <li>Terapkan saran untuk membuat toko lebih siap jual</li>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Panduan Pengisian</h4>
+                                    <ol class="list-decimal pl-5 space-y-1 text-sm">
+                                        <li>Tulis nama produk yang sedang dievaluasi.</li>
+                                        <li>Beri tanda centang pada poin-poin yang sudah terpenuhi pada profil toko Anda.</li>
+                                        <li>Klik tombol hitung untuk melihat perolehan skor dan saran perbaikan terstruktur.</li>
                                     </ol>
                                 </div>
                                 <div
-                                    class="p-3 bg-amber-50 dark:bg-amber-900/20 rounded-xl text-sm text-amber-700 dark:text-amber-300">
-                                    💡 <span class="font-semibold">Tips:</span> Semakin banyak checklist terpenuhi,
-                                    semakin tinggi kepercayaan pembeli.
+                                    class="p-3.5 bg-brand-50/70 dark:bg-brand-950/40 border border-brand-200/50 dark:border-brand-800/40 rounded-xl text-xs sm:text-sm text-brand-800 dark:text-brand-300">
+                                    <span class="font-semibold">Tips:</span> Cantumkan informasi estimasi ongkos kirim dan kejelasan varian rasa atau ukuran untuk menekan pertanyaan berulang.
                                 </div>
-                                <a href="tools.html#checklist"
-                                    class="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 font-semibold hover:underline text-sm">
-                                    🔗 Buka Checklist →
+                                <a href="/src/pages/tools.html#checklist"
+                                    class="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 font-semibold hover:underline text-sm pt-2">
+                                    Buka Checklist Kesiapan Toko →
                                 </a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Fitur 3: Planner -->
                     <div class="accordion-item">
                         <div class="accordion-header flex items-center justify-between p-5 md:p-6" role="button" tabindex="0" aria-expanded="false">
                             <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div class="w-11 h-11 bg-brand-50 dark:bg-brand-950/60 border border-brand-200/60 dark:border-brand-800/40 rounded-xl flex items-center justify-center flex-shrink-0 text-brand-600 dark:text-brand-400">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="font-bold text-gray-900 dark:text-white text-lg">Planner 30 Hari</h3>
-                                    <p class="text-sm text-gray-500 dark:text-gray-400">Jadwal Konten Media Sosial</p>
+                                    <h3 class="font-bold text-slate-900 dark:text-white text-base sm:text-lg">Planner Konten 30 Hari</h3>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Kalender ide unggahan harian terstruktur</p>
                                 </div>
                             </div>
-                            <svg class="accordion-icon w-6 h-6 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="accordion-icon w-5 h-5 text-slate-400 dark:text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                             </svg>
                         </div>
-                        <div class="accordion-content text-gray-600 dark:text-gray-300">
+                        <div class="accordion-content text-slate-600 dark:text-slate-400">
                             <div class="space-y-4">
                                 <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white"> Apa Itu?</h4>
-                                    <p>Planner 30 Hari memberikan template jadwal konten media sosial selama 30 hari
-                                        yang sudah terstruktur untuk membantu Anda konsisten dalam memasarkan produk.
-                                    </p>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Tujuan Modul</h4>
+                                    <p class="text-sm leading-relaxed">Menyusun rencana postingan media sosial selama satu bulan penuh yang menyeimbangkan antara edukasi manfaat, cerita proses produksi, dan ajakan promosi langsung.</p>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white"> Kegunaan</h4>
-                                    <ul class="list-disc pl-5 space-y-1">
-                                        <li>Memiliki jadwal konten yang teratur</li>
-                                        <li>Menghemat waktu memikirkan ide konten</li>
-                                        <li>Meningkatkan engagement dan penjualan</li>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Manfaat Utama</h4>
+                                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                                        <li>Menghilangkan rasa bingung memikirkan topik konten setiap pagi.</li>
+                                        <li>Menjaga konsistensi kehadiran profil toko Anda di lini masa calon pelanggan.</li>
+                                        <li>Menyajikan variasi angle naskah yang menarik tanpa terlihat monoton membosankan.</li>
                                     </ul>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white">📋 Cara Pakai</h4>
-                                    <ol class="list-decimal pl-5 space-y-1">
-                                        <li>Pilih <strong>Kategori Usaha</strong> — misal: kuliner, skincare, kerajinan
-                                        </li>
-                                        <li>Pilih <strong>Channel Utama</strong> — Instagram, TikTok, Facebook, atau
-                                            WhatsApp</li>
-                                        <li>Tentukan <strong>Tujuan</strong> — Jualan atau membangun brand</li>
-                                        <li>Klik <strong>Buat Jadwal</strong> — dapatkan template konten 30 hari</li>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Panduan Pengisian</h4>
+                                    <ol class="list-decimal pl-5 space-y-1 text-sm">
+                                        <li>Isi kategori usaha atau produk unggulan Anda.</li>
+                                        <li>Tentukan platform media sosial yang menjadi fokus utama (Instagram, TikTok, FB, atau WhatsApp).</li>
+                                        <li>Pilih orientasi tujuan utama: peningkatan penjualan langsung atau penguatan citra brand.</li>
+                                        <li>Salin seluruh draf jadwal 30 hari ke catatan kerja Anda.</li>
                                     </ol>
                                 </div>
-                                <div class="p-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl text-sm text-purple-700 dark:text-purple-300">
-                                    💡 <span class="font-semibold">Tips:</span> Posting sesuai jadwal untuk menjaga
-                                    konsistensi dan engagement.
+                                <div class="p-3.5 bg-brand-50/70 dark:bg-brand-950/40 border border-brand-200/50 dark:border-brand-800/40 rounded-xl text-xs sm:text-sm text-brand-800 dark:text-brand-300">
+                                    <span class="font-semibold">Tips:</span> Buatlah bank foto atau video singkat di akhir pekan untuk mempermudah eksekusi postingan sepanjang minggu berikutnya.
                                 </div>
-                                <a href="tools.html#planner" class="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 font-semibold hover:underline text-sm">
-                                    🔗 Buka Planner →
+                                <a href="/src/pages/tools.html#planner" class="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 font-semibold hover:underline text-sm pt-2">
+                                    Buka Kalender Konten →
                                 </a>
                             </div>
                         </div>
                     </div>
 
-
-                    <!-- Fitur 4: Template Chat -->
                     <div class="accordion-item">
                         <div class="accordion-header flex items-center justify-between p-5 md:p-6"
                             role="button" tabindex="0" aria-expanded="false">
                             <div class="flex items-center gap-4">
                                 <div
-                                    class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor"
+                                    class="w-11 h-11 bg-brand-50 dark:bg-brand-950/60 border border-brand-200/60 dark:border-brand-800/40 rounded-xl flex items-center justify-center flex-shrink-0 text-brand-600 dark:text-brand-400">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                             d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="font-bold text-gray-900 dark:text-white text-lg">Template Chat</h3>
-                                    <p class="text-sm text-gray-500 dark:text-gray-400">Balasan Otomatis untuk Pelanggan
-                                    </p>
+                                    <h3 class="font-bold text-slate-900 dark:text-white text-base sm:text-lg">Template Respon Cepat Chat</h3>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Draf jawaban ramah berbasis kata kunci pesan</p>
                                 </div>
                             </div>
-                            <svg class="accordion-icon w-6 h-6 text-gray-400 dark:text-gray-500" fill="none"
+                            <svg class="accordion-icon w-5 h-5 text-slate-400 dark:text-slate-500" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M19 9l-7 7-7-7" />
                             </svg>
                         </div>
-                        <div class="accordion-content text-gray-600 dark:text-gray-300">
+                        <div class="accordion-content text-slate-600 dark:text-slate-400">
                             <div class="space-y-4">
                                 <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white">📝 Apa Itu?</h4>
-                                    <p>Template Chat membantu Anda membalas pesan pelanggan dengan cepat menggunakan
-                                        template yang sudah disesuaikan berdasarkan kata kunci (keyword) dari pertanyaan
-                                        pelanggan.</p>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Tujuan Modul</h4>
+                                    <p class="text-sm leading-relaxed">Menyediakan format respon pesan pelanggan yang sopan, runtut, dan langsung menjawab inti pertanyaan seputar harga, stok, tarif pengiriman, maupun keluhan pesanan.</p>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white">🎯 Kegunaan</h4>
-                                    <ul class="list-disc pl-5 space-y-1">
-                                        <li>Merespon pelanggan lebih cepat</li>
-                                        <li>Memberikan jawaban yang konsisten</li>
-                                        <li>Meningkatkan kepuasan pelanggan</li>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Manfaat Utama</h4>
+                                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                                        <li>Mempersingkat waktu tunggu balasan pesan pelanggan saat jam sibuk.</li>
+                                        <li>Menjaga standar kesopanan dan keramahan komunikasi bisnis Anda.</li>
+                                        <li>Menghindari kesalahan format saat meminta kelengkapan alamat pengiriman.</li>
                                     </ul>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white">📋 Cara Pakai</h4>
-                                    <ol class="list-decimal pl-5 space-y-1">
-                                        <li>Tulis <strong>Pesan Pelanggan</strong> — copy-paste chat yang masuk ke Anda
-                                        </li>
-                                        <li>Masukkan <strong>Nama Toko</strong> — agar balasan lebih personal</li>
-                                        <li>(Opsional) Isi <strong>Produk</strong> — untuk balasan yang lebih spesifik
-                                        </li>
-                                        <li>Klik <strong>Buat Balasan</strong> — dapatkan template jawaban siap kirim
-                                        </li>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-1">Panduan Pengisian</h4>
+                                    <ol class="list-decimal pl-5 space-y-1 text-sm">
+                                        <li>Tempelkan kalimat pertanyaan yang dikirimkan oleh pembeli.</li>
+                                        <li>Lengkapi nama toko dan nama produk Anda.</li>
+                                        <li>Klik tombol buat balasan untuk memperoleh draf teks yang siap dikirimkan kembali ke WhatsApp.</li>
                                     </ol>
                                 </div>
                                 <div
-                                    class="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl text-sm text-blue-700 dark:text-blue-300">
-                                    <span class="font-semibold">Tips:</span> Balas cepat dengan template ini, pelanggan
-                                    akan merasa dihargai.
+                                    class="p-3.5 bg-brand-50/70 dark:bg-brand-950/40 border border-brand-200/50 dark:border-brand-800/40 rounded-xl text-xs sm:text-sm text-brand-800 dark:text-brand-300">
+                                    <span class="font-semibold">Tips:</span> Balasan yang ramah dan cepat terbukti meningkatkan kepuasan serta loyalitas pelanggan baru.
                                 </div>
-                                <a href="tools.html#chat"
-                                    class="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 font-semibold hover:underline text-sm">
-                                    Buka Template Chat →
+                                <a href="/src/pages/tools.html#chat"
+                                    class="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 font-semibold hover:underline text-sm pt-2">
+                                    Buka Generator Template Chat →
                                 </a>
                             </div>
                         </div>
@@ -483,41 +339,10 @@
         </section>
     </main>
 
-        <!-- ==================== FOOTER ==================== -->
     <div id="component-footer" data-component="footer" data-src="/src/components/footer.html"></div>
 
-    <!-- ==================== SCRIPTS ==================== -->
-    <!-- Load components dulu -->
-    <script>
-        async function loadComponent(containerId) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
-
-            const src = container.getAttribute('data-src');
-            if (!src) return;
-
-            try {
-                const response = await fetch(src);
-                if (!response.ok) throw new Error('Gagal memuat ' + src);
-                const html = await response.text();
-                container.innerHTML = html;
-            } catch (error) {
-                console.warn('⚠️ Gagal memuat komponen:', error.message);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            loadComponent('component-navbar');
-            loadComponent('component-footer');
-        });
-    </script>
-
-    <!-- ✅ PERBAIKAN: Path JS (absolut) -->
+    <script src="/src/js/components.js"></script>
     <script src="/src/js/service.js"></script>
-
-</body>
-</html>
-
 </body>
 
 </html>

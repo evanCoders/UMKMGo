@@ -54,7 +54,6 @@ body {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
-/* Scroll reveal */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -66,7 +65,6 @@ body {
   transform: translateY(0);
 }
 
-/* Transition for filtered posts */
 .post-card,
 .featured-post > div {
   transition:
@@ -99,4 +97,3 @@ body {
   background-color: #134e4a;
   color: #14b8a6;
 }
-

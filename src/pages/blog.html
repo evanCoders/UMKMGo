@@ -4,21 +4,15 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog UMKMGo — Inspirasi & Tips untuk UMKM Indonesia</title>
+    <title>Wawasan & Artikel Bisnis UMKM — UMKMGo</title>
     <meta name="description"
-        content="Kumpulan artikel inspiratif dan tips praktis untuk mengembangkan UMKM Anda dengan bantuan teknologi AI." />
-
-    <!-- Tailwind CSS -->
+        content="Kumpulan artikel, studi kasus, dan panduan praktis pemasaran digital serta pengelolaan keuangan untuk pelaku UMKM Indonesia." />
+    <link rel="icon" href="/public/favicon.svg" />
+    <link rel="stylesheet" href="/src/css/blog.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap"
         rel="stylesheet" />
-
-<link rel="icon" href="/public/favicon.svg" /> <!-- ✅ TAMBAHKAN FAVICON -->
-
-<link rel="stylesheet" href="/src/css/blog.css">
 
     <script>
         tailwind.config = {
@@ -34,6 +28,7 @@
                             700: "#0F766E",
                             800: "#115E59",
                             900: "#134E4A",
+                            950: "#042F2E",
                         },
                     },
                     fontFamily: {
@@ -46,310 +41,304 @@
     </script>
 </head>
 
-<body>
-
-    <!-- ==================== NAVBAR ==================== -->
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-200 antialiased transition-colors duration-300">
     <div id="component-navbar" data-component="navbar" data-src="/src/components/navbar-blog.html"></div>
 
-    <main class="pt-28">
-        <!-- ==================== HERO BLOG ==================== -->
+    <main class="pt-28 pb-16">
         <section
-            class="relative py-16 bg-gradient-to-br from-brand-50 to-teal-50 dark:from-slate-800 dark:to-slate-800">
-            <div class="max-w-5xl mx-auto px-4 text-center">
-                <h1 class="font-display text-4xl md:text-5xl text-gray-900 dark:text-white mb-4">Blog UMKMGo</h1>
-                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Inspirasi, tips, dan cerita sukses
-                    dari UMKM Indonesia yang telah bertransformasi digital.</p>
+            class="relative py-16 bg-gradient-to-b from-slate-100/80 to-transparent dark:from-slate-900/60 dark:to-transparent">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <span class="text-brand-600 dark:text-brand-400 font-semibold tracking-wider uppercase text-xs">Pusat Wawasan</span>
+                <h1 class="font-display text-4xl md:text-5xl text-slate-900 dark:text-white mt-2 mb-4 tracking-tight">
+                    Catatan & Panduan Praktis UMKM
+                </h1>
+                <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                    Kumpulan strategi pemasaran digital, kiat manajemen harga dan stok, serta kisah nyata adaptasi teknologi dari pelaku usaha lokal.
+                </p>
             </div>
         </section>
 
-        <!-- ==================== TAB SECTION ==================== -->
-        <section class="pt-8 pb-4 px-4 border-b border-gray-200 dark:border-slate-700">
+        <section class="px-4 mb-12">
             <div class="max-w-6xl mx-auto">
-                <div class="flex flex-wrap justify-center gap-1 md:gap-2">
-                    <button data-tab="all"
-                        class="tab-btn px-5 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 bg-brand-600 text-white shadow-md active">Semua</button>
-                    <button data-tab="tips"
-                        class="tab-btn px-5 py-2.5 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-all">Tips
-                        & Trik</button>
-                    <button data-tab="success"
-                        class="tab-btn px-5 py-2.5 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-all">Kisah
-                        Sukses</button>
-                    <button data-tab="technology"
-                        class="tab-btn px-5 py-2.5 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-all">Teknologi
-                        AI</button>
-                    <button data-tab="finance"
-                        class="tab-btn px-5 py-2.5 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-all">Keuangan</button>
-                    <button data-tab="marketing"
-                        class="tab-btn px-5 py-2.5 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-all">Pemasaran</button>
+                <div class="flex flex-wrap justify-center gap-2 reveal" id="category-tabs">
+                    <button data-category="all"
+                        class="tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-xl active bg-brand-600 text-white shadow-sm transition">Semua Artikel</button>
+                    <button data-category="tips"
+                        class="tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">Tips & Trik</button>
+                    <button data-category="kisah"
+                        class="tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">Kisah Sukses</button>
+                    <button data-category="keuangan"
+                        class="tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">Keuangan</button>
+                    <button data-category="pemasaran"
+                        class="tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">Pemasaran</button>
+                    <button data-category="teknologi"
+                        class="tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">Teknologi</button>
                 </div>
             </div>
         </section>
 
-        <!-- ==================== BLOG POSTS ==================== -->
-        <section class="py-12 px-4 bg-gray-50 dark:bg-slate-900">
+        <section class="px-4 mb-16">
             <div class="max-w-6xl mx-auto">
-
-                <!-- Featured Post -->
-                <div class="featured-post mb-16 reveal" data-category="tips">
-                    <div
-                        class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-slate-700 flex flex-col md:flex-row">
-                        <div class="md:w-2/5">
+                <article
+                    class="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800 overflow-hidden reveal hover:border-brand-500/50 transition">
+                    <a href="/src/pages/post.html?slug=strategi-digital-umkm-2026" class="grid md:grid-cols-2 gap-6 items-center">
+                        <div class="h-64 md:h-full min-h-[280px]">
                             <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&h=400&fit=crop"
-                                alt="Rapat Bisnis UMKM" class="w-full h-64 md:h-full object-cover" loading="lazy">
-                            <!-- ✅ TAMBAHKAN loading lazy -->
+                                alt="Strategi Pemasaran Digital UMKM" class="w-full h-full object-cover" />
                         </div>
-                        <div class="p-8 md:w-3/5">
-                            <div class="flex items-center gap-2 mb-3">
-                                <span
-                                    class="bg-brand-100 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-bold px-3 py-1 rounded-full">Featured</span>
-                                <span class="text-xs text-gray-400">15 Mei 2026</span>
-                            </div>
-                            <h2 class="font-display text-2xl md:text-3xl text-gray-900 dark:text-white mb-3">4 Strategi
-                                Digital untuk UMKM agar Tidak Tergerus Zaman</h2>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">Transformasi digital bukan
-                                lagi pilihan, tapi keharusan. Pelajari 4 strategi sederhana yang bisa langsung Anda
-                                terapkan untuk bisnis UMKM Anda.</p>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-2">
-                                    <img src="https://ui-avatars.com/api/?name=Tim+UMKMGo&background=0D9488&color=fff"
-                                        class="w-8 h-8 rounded-full" alt="Author">
-                                    <span class="text-sm text-gray-600 dark:text-gray-400">Tim UMKMGo</span>
+                        <div class="p-6 md:p-8">
+                            <span
+                                class="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-300 border border-brand-200/60 dark:border-brand-800/40 mb-3">Artikel Pilihan</span>
+                            <h2
+                                class="font-display text-2xl md:text-3xl text-slate-900 dark:text-white leading-snug mb-3 hover:text-brand-600 dark:hover:text-brand-400 transition">
+                                Cara Praktis Meningkatkan Penjualan UMKM Lewat Media Sosial
+                            </h2>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                                Langkah nyata menata profil toko, menyusun sudut pandang konten yang menarik, dan membangun kepercayaan calon pembeli baru tanpa anggaran promosi berlebihan.
+                            </p>
+                            <div class="flex items-center gap-3">
+                                <img src="https://ui-avatars.com/api/?name=Tim+UMKMGo&background=0D9488&color=fff"
+                                    class="w-9 h-9 rounded-full" alt="Penulis" />
+                                <div>
+                                    <p class="text-xs font-bold text-slate-900 dark:text-white">Tim Redaksi UMKMGo</p>
+                                    <p class="text-[11px] text-slate-500 dark:text-slate-400">14 Februari 2026 · 5 Menit Baca</p>
                                 </div>
-                                <a href="post.html?slug=strategi-digital-umkm-2026"
-                                    class="text-brand-600 dark:text-brand-400 font-semibold text-sm hover:underline">Baca
-                                    Selengkapnya →</a>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </a>
+                </article>
+            </div>
+        </section>
 
-                <!-- Grid Posts -->
-                <div id="posts-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <section class="px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid">
 
-                    <!-- ✅ SEMUA POST SAMA, TIDAK BERUBAH -->
-                    <!-- Post 1 - Tips -->
-                    <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
+                    <article
+                        class="blog-card bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800 overflow-hidden reveal card-hover flex flex-col justify-between"
                         data-category="tips">
-                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=250&fit=crop"
-                            alt="Tools UMKM" class="w-full h-48 object-cover" loading="lazy">
-                        <div class="p-5">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="text-xs text-gray-400">12 Mei 2026</span>
+                        <a href="/src/pages/post.html?slug=5-tools-ai-gratis-umkm" class="block">
+                            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=250&fit=crop"
+                                alt="Perangkat Produktivitas Usaha" class="w-full h-48 object-cover" />
+                            <div class="p-6">
                                 <span
-                                    class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs px-2 py-0.5 rounded-full">Tips</span>
+                                    class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 mb-3">Tips & Trik</span>
+                                <h3
+                                    class="font-display text-lg text-slate-900 dark:text-white leading-snug mb-2 hover:text-brand-600 dark:hover:text-brand-400 transition">
+                                    5 Alat Digital Gratis untuk Menghemat Waktu Kerja Harian
+                                </h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed">
+                                    Daftar perangkat lunak sederhana tanpa biaya yang dapat Anda manfaatkan untuk desain materi, rekapan stok, dan penyusunan naskah promosi.
+                                </p>
                             </div>
-                            <h3 class="font-bold text-gray-900 dark:text-white mb-2">5 Tools AI Gratis untuk UMKM Pemula
-                            </h3>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">Temukan berbagai
-                                tools AI yang bisa membantu efisiensi bisnis Anda tanpa menguras kantong.</p>
-                            <a href="post.html?slug=5-tools-ai-gratis-umkm"
-                                class="text-brand-600 dark:text-brand-400 text-sm font-semibold hover:underline">Baca
-                                →</a>
+                        </a>
+                        <div class="px-6 pb-6 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                            <span>12 Februari 2026</span>
+                            <span>4 Menit Baca</span>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Post 2 - Kisah Sukses -->
-                    <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
-                        data-category="success">
-                        <img src="https://images.unsplash.com/photo-1596568362037-1c6a8e11fd67?w=400&h=250&fit=crop"
-                            alt="Batik Sukses" class="w-full h-48 object-cover" loading="lazy">
-                        <div class="p-5">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="text-xs text-gray-400">10 Mei 2026</span>
+                    <article
+                        class="blog-card bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800 overflow-hidden reveal card-hover flex flex-col justify-between"
+                        data-category="kisah" style="transition-delay: 100ms;">
+                        <a href="/src/pages/post.html?slug=dari-warung-ke-ekspor-batik-kenanga" class="block">
+                            <img src="https://images.unsplash.com/photo-1596568362037-1c6a8e11fd67?w=400&h=250&fit=crop"
+                                alt="Perjalanan Bisnis Batik Kenanga" class="w-full h-48 object-cover" />
+                            <div class="p-6">
                                 <span
-                                    class="bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 text-xs px-2 py-0.5 rounded-full">Kisah
-                                    Sukses</span>
+                                    class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 mb-3">Kisah Sukses</span>
+                                <h3
+                                    class="font-display text-lg text-slate-900 dark:text-white leading-snug mb-2 hover:text-brand-600 dark:hover:text-brand-400 transition">
+                                    Kisah Batik Kenanga: Memperluas Jangkauan Pasar Luar Kota
+                                </h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed">
+                                    Bagaimana Ibu Kenanga menata ulang etalase toko dan memanfaatkan katalog online untuk menjaring pelanggan dari berbagai daerah.
+                                </p>
                             </div>
-                            <h3 class="font-bold text-gray-900 dark:text-white mb-2">Dari Warung ke Ekspor: Kisah Batik
-                                Kenanga</h3>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">Bagaimana UMKM
-                                batik asal Pekalongan ini menembus pasar internasional dengan bantuan AI.</p>
-                            <a href="post.html?slug=dari-warung-ke-ekspor-batik-kenanga"
-                                class="text-brand-600 dark:text-brand-400 text-sm font-semibold hover:underline">Baca
-                                →</a>
+                        </a>
+                        <div class="px-6 pb-6 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                            <span>10 Februari 2026</span>
+                            <span>6 Menit Baca</span>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Post 3 - Pemasaran -->
-                    <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
-                        data-category="marketing">
-                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=250&fit=crop"
-                            alt="Instagram UMKM" class="w-full h-48 object-cover" loading="lazy">
-                        <div class="p-5">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="text-xs text-gray-400">8 Mei 2026</span>
+                    <article
+                        class="blog-card bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800 overflow-hidden reveal card-hover flex flex-col justify-between"
+                        data-category="pemasaran" style="transition-delay: 200ms;">
+                        <a href="/src/pages/post.html?slug=rumus-caption-instagram-umkm" class="block">
+                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=250&fit=crop"
+                                alt="Naskah Iklan Media Sosial" class="w-full h-48 object-cover" />
+                            <div class="p-6">
                                 <span
-                                    class="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs px-2 py-0.5 rounded-full">Pemasaran</span>
+                                    class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 mb-3">Pemasaran</span>
+                                <h3
+                                    class="font-display text-lg text-slate-900 dark:text-white leading-snug mb-2 hover:text-brand-600 dark:hover:text-brand-400 transition">
+                                    Struktur Naskah Caption yang Menarik Perhatian Calon Pembeli
+                                </h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed">
+                                    Panduan merangkai kalimat pembuka, menjelaskan manfaat produk secara jujur, dan menyertakan ajakan tindakan yang jelas.
+                                </p>
                             </div>
-                            <h3 class="font-bold text-gray-900 dark:text-white mb-2">7 Rumus Caption Instagram yang
-                                Bikin Produk Laris</h3>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">Kunci sukses
-                                berjualan di Instagram terletak pada caption. Pelajari rumusnya di sini!</p>
-                            <a href="post.html?slug=rumus-caption-instagram-umkm"
-                                class="text-brand-600 dark:text-brand-400 text-sm font-semibold hover:underline">Baca
-                                →</a>
+                        </a>
+                        <div class="px-6 pb-6 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                            <span>8 Februari 2026</span>
+                            <span>4 Menit Baca</span>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Post 4 - Keuangan -->
-                    <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
-                        data-category="finance">
-                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=250&fit=crop"
-                            alt="Keuangan UMKM" class="w-full h-48 object-cover" loading="lazy">
-                        <div class="p-5">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="text-xs text-gray-400">5 Mei 2026</span>
+                    <article
+                        class="blog-card bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800 overflow-hidden reveal card-hover flex flex-col justify-between"
+                        data-category="keuangan">
+                        <a href="/src/pages/post.html?slug=kelola-keuangan-umkm-dengan-ai" class="block">
+                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=250&fit=crop"
+                                alt="Pencatatan Keuangan Usaha" class="w-full h-48 object-cover" />
+                            <div class="p-6">
                                 <span
-                                    class="bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs px-2 py-0.5 rounded-full">Keuangan</span>
+                                    class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 mb-3">Keuangan</span>
+                                <h3
+                                    class="font-display text-lg text-slate-900 dark:text-white leading-snug mb-2 hover:text-brand-600 dark:hover:text-brand-400 transition">
+                                    Memisahkan Rekening Pribadi dan Usaha dengan Disiplin
+                                </h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed">
+                                    Kiat praktis mencatat arus kas masuk dan keluar secara konsisten agar kondisi kesehatan finansial usaha Anda selalu terpantau.
+                                </p>
                             </div>
-                            <h3 class="font-bold text-gray-900 dark:text-white mb-2">Kelola Keuangan UMKM Tanpa Ribet
-                                dengan AI</h3>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">Mulai dari
-                                pencatatan hingga analisis keuangan, semua bisa dilakukan otomatis dengan AI.</p>
-                            <a href="post.html?slug=kelola-keuangan-umkm-dengan-ai"
-                                class="text-brand-600 dark:text-brand-400 text-sm font-semibold hover:underline">Baca
-                                →</a>
+                        </a>
+                        <div class="px-6 pb-6 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                            <span>6 Februari 2026</span>
+                            <span>5 Menit Baca</span>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Post 5 - Teknologi -->
-                    <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
-                        data-category="technology">
-                        <img src="https://images.unsplash.com/photo-1531746790095-e5995aba4f58?w=400&h=250&fit=crop"
-                            alt="Chatbot AI" class="w-full h-48 object-cover" loading="lazy">
-                        <div class="p-5">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="text-xs text-gray-400">2 Mei 2026</span>
+                    <article
+                        class="blog-card bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800 overflow-hidden reveal card-hover flex flex-col justify-between"
+                        data-category="teknologi" style="transition-delay: 100ms;">
+                        <a href="/src/pages/post.html?slug=keuntungan-chatbot-ai-bisnis-online" class="block">
+                            <img src="https://images.unsplash.com/photo-1531746790095-e5995aba4f58?w=400&h=250&fit=crop"
+                                alt="Layanan Respon Pesan Pelanggan" class="w-full h-48 object-cover" />
+                            <div class="p-6">
                                 <span
-                                    class="bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-xs px-2 py-0.5 rounded-full">Teknologi</span>
+                                    class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 mb-3">Teknologi</span>
+                                <h3
+                                    class="font-display text-lg text-slate-900 dark:text-white leading-snug mb-2 hover:text-brand-600 dark:hover:text-brand-400 transition">
+                                    Manfaat Menyiapkan Format Jawaban Cepat untuk Layanan Chat
+                                </h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed">
+                                    Bagaimana template respon yang runtut dapat mempercepat penanganan transaksi dan memberikan rasa aman bagi calon pembeli.
+                                </p>
                             </div>
-                            <h3 class="font-bold text-gray-900 dark:text-white mb-2">Keuntungan Pakai Chatbot AI untuk
-                                Bisnis Online</h3>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">Layani pelanggan 24
-                                jam tanpa henti dengan chatbot AI. Ini manfaat yang bisa Anda dapatkan.</p>
-                            <a href="post.html?slug=keuntungan-chatbot-ai-bisnis-online"
-                                class="text-brand-600 dark:text-brand-400 text-sm font-semibold hover:underline">Baca
-                                →</a>
+                        </a>
+                        <div class="px-6 pb-6 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                            <span>4 Februari 2026</span>
+                            <span>4 Menit Baca</span>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Post 6 - Pemasaran -->
-                    <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
-                        data-category="marketing">
-                        <img src="https://images.unsplash.com/photo-1603796846097-bee99e4a601f?w=400&h=250&fit=crop"
-                            alt="Konten Viral" class="w-full h-48 object-cover" loading="lazy">
-                        <div class="p-5">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="text-xs text-gray-400">28 April 2026</span>
+                    <article
+                        class="blog-card bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800 overflow-hidden reveal card-hover flex flex-col justify-between"
+                        data-category="pemasaran" style="transition-delay: 200ms;">
+                        <a href="/src/pages/post.html?slug=strategi-konten-viral-umkm" class="block">
+                            <img src="https://images.unsplash.com/photo-1603796846097-bee99e4a601f?w=400&h=250&fit=crop"
+                                alt="Konten Video Pendek Usaha" class="w-full h-48 object-cover" />
+                            <div class="p-6">
                                 <span
-                                    class="bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 text-xs px-2 py-0.5 rounded-full">Pemasaran</span>
+                                    class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 mb-3">Pemasaran</span>
+                                <h3
+                                    class="font-display text-lg text-slate-900 dark:text-white leading-snug mb-2 hover:text-brand-600 dark:hover:text-brand-400 transition">
+                                    Mengangkat Cerita di Balik Layar Produksi Menjadi Konten Menarik
+                                </h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed">
+                                    Menampilkan kejujuran proses pengemasan dan pemilihan bahan baku sebagai nilai tambah otentik yang disukai audiens media sosial.
+                                </p>
                             </div>
-                            <h3 class="font-bold text-gray-900 dark:text-white mb-2">Strategi Konten Viral untuk UMKM di
-                                2026</h3>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">Tips membuat konten
-                                yang engaging dan berpotensi viral di media sosial.</p>
-                            <a href="post.html?slug=strategi-konten-viral-umkm"
-                                class="text-brand-600 dark:text-brand-400 text-sm font-semibold hover:underline">Baca
-                                →</a>
+                        </a>
+                        <div class="px-6 pb-6 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                            <span>2 Februari 2026</span>
+                            <span>5 Menit Baca</span>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Post 7 - Tips -->
-                    <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
+                    <article
+                        class="blog-card bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800 overflow-hidden reveal card-hover flex flex-col justify-between"
                         data-category="tips">
-                        <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=400&h=250&fit=crop"
-                            alt="Kerajinan Tangan" class="w-full h-48 object-cover" loading="lazy">
-                        <div class="p-5">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="text-xs text-gray-400">25 April 2026</span>
+                        <a href="/src/pages/post.html?slug=optimasi-seo-toko-online-umkm" class="block">
+                            <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=400&h=250&fit=crop"
+                                alt="Judul dan Kata Kunci Produk" class="w-full h-48 object-cover" />
+                            <div class="p-6">
                                 <span
-                                    class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs px-2 py-0.5 rounded-full">Tips</span>
+                                    class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 mb-3">Tips & Trik</span>
+                                <h3
+                                    class="font-display text-lg text-slate-900 dark:text-white leading-snug mb-2 hover:text-brand-600 dark:hover:text-brand-400 transition">
+                                    Cara Menuliskan Judul Produk agar Mudah Ditemukan di Mesin Pencari
+                                </h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed">
+                                    Menyusun kata kunci yang sering diketikkan pembeli seperti ukuran, bahan, dan fungsi pada judul etalase toko Anda.
+                                </p>
                             </div>
-                            <h3 class="font-bold text-gray-900 dark:text-white mb-2">Optimasi SEO Sederhana untuk Toko
-                                Online UMKM</h3>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">Pelajari cara mudah
-                                meningkatkan visibilitas toko online Anda di mesin pencari.</p>
-                            <a href="post.html?slug=optimasi-seo-toko-online-umkm"
-                                class="text-brand-600 dark:text-brand-400 text-sm font-semibold hover:underline">Baca
-                                →</a>
+                        </a>
+                        <div class="px-6 pb-6 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                            <span>30 Januari 2026</span>
+                            <span>4 Menit Baca</span>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Post 8 - Kisah Sukses -->
-                    <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
-                        data-category="success">
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=250&fit=crop"
-                            alt="Restoran Sukses" class="w-full h-48 object-cover" loading="lazy">
-                        <div class="p-5">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="text-xs text-gray-400">20 April 2026</span>
+                    <article
+                        class="blog-card bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800 overflow-hidden reveal card-hover flex flex-col justify-between"
+                        data-category="kisah" style="transition-delay: 100ms;">
+                        <a href="/src/pages/post.html?slug=warung-makan-omzet-2x-lipat-ai" class="block">
+                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=250&fit=crop"
+                                alt="Inovasi Usaha Kuliner" class="w-full h-48 object-cover" />
+                            <div class="p-6">
                                 <span
-                                    class="bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 text-xs px-2 py-0.5 rounded-full">Kisah
-                                    Sukses</span>
+                                    class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 mb-3">Kisah Sukses</span>
+                                <h3
+                                    class="font-display text-lg text-slate-900 dark:text-white leading-snug mb-2 hover:text-brand-600 dark:hover:text-brand-400 transition">
+                                    Adaptasi Warung Bu Dewi: Dari Pesanan Meja ke Layanan Antar
+                                </h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed">
+                                    Menggunakan foto menu yang bersih dan pencatatan pesanan terstruktur untuk memperluas jangkauan pembeli di sekitar perkantoran.
+                                </p>
                             </div>
-                            <h3 class="font-bold text-gray-900 dark:text-white mb-2">Warung Makan Ini Raup Omzet 2x
-                                Lipat Pakai AI</h3>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">Kisah inspiratif
-                                warung makan sederhana yang berhasil meningkatkan penjualan dengan bantuan AI.</p>
-                            <a href="post.html?slug=warung-makan-omzet-2x-lipat-ai"
-                                class="text-brand-600 dark:text-brand-400 text-sm font-semibold hover:underline">Baca
-                                →</a>
+                        </a>
+                        <div class="px-6 pb-6 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                            <span>28 Januari 2026</span>
+                            <span>5 Menit Baca</span>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Post 9 - Teknologi -->
-                    <div class="post-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-slate-700 card-hover reveal"
-                        data-category="technology">
-                        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=250&fit=crop"
-                            alt="Teknologi AI UMKM" class="w-full h-48 object-cover" loading="lazy">
-                        <div class="p-5">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="text-xs text-gray-400">15 April 2026</span>
+                    <article
+                        class="blog-card bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800 overflow-hidden reveal card-hover flex flex-col justify-between"
+                        data-category="teknologi" style="transition-delay: 200ms;">
+                        <a href="/src/pages/post.html?slug=cara-memulai-ai-untuk-umkm-pemula" class="block">
+                            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=250&fit=crop"
+                                alt="Langkah Awal Digitalisasi" class="w-full h-48 object-cover" />
+                            <div class="p-6">
                                 <span
-                                    class="bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-xs px-2 py-0.5 rounded-full">Teknologi</span>
+                                    class="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 mb-3">Teknologi</span>
+                                <h3
+                                    class="font-display text-lg text-slate-900 dark:text-white leading-snug mb-2 hover:text-brand-600 dark:hover:text-brand-400 transition">
+                                    Langkah Mudah Memulai Otomasi Sederhana untuk Usaha Rumahan
+                                </h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed">
+                                    Mengenal pemanfaatan alat digital dasar tanpa rasa takut atau bingung untuk mempercepat pekerjaan harian Anda.
+                                </p>
                             </div>
-                            <h3 class="font-bold text-gray-900 dark:text-white mb-2">Cara Memulai dengan AI untuk UMKM
-                                Pemula</h3>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">Panduan langkah
-                                demi langkah untuk memulai menggunakan AI di bisnis UMKM Anda.</p>
-                            <a href="post.html?slug=cara-memulai-ai-untuk-umkm-pemula"
-                                class="text-brand-600 dark:text-brand-400 text-sm font-semibold hover:underline">Baca
-                                →</a>
+                        </a>
+                        <div class="px-6 pb-6 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                            <span>25 Januari 2026</span>
+                            <span>4 Menit Baca</span>
                         </div>
-                    </div>
-                </div>
+                    </article>
 
-                <!-- Empty State -->
-                <div id="empty-state" class="text-center py-16 hidden">
-                    <div
-                        class="w-16 h-16 bg-gray-100 dark:bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-                        </svg>
-                    </div>
-                    <p class="text-gray-500 dark:text-gray-400 font-medium">Belum ada artikel untuk kategori ini.</p>
-                    <p class="text-gray-400 dark:text-gray-500 text-sm mt-1">Silakan cek kategori lain.</p>
-                </div>
-
-                <!-- Pagination -->
-                <div class="flex justify-center gap-2 mt-12 reveal" aria-label="Pagination">
-                    <button type="button" class="px-4 py-2 rounded-lg bg-brand-600 text-white font-semibold" aria-current="page">1</button>
-                    <button type="button" class="px-4 py-2 rounded-lg bg-white dark:bg-slate-800 text-gray-600 dark:text-gray-300 font-semibold border border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700 transition">2</button>
-                    <button type="button" class="px-4 py-2 rounded-lg bg-white dark:bg-slate-800 text-gray-600 dark:text-gray-300 font-semibold border border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700 transition">3</button>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- ═══════════════════════════════════════════════
-       FOOTER
-  ════════════════════════════════════════════════ -->
     <div id="component-footer" data-component="footer" data-src="/src/components/footer.html"></div>
 
-
-<script src="/src/js/blog.js"></script>
+    <script src="/src/js/components.js"></script>
+    <script src="/src/js/blog.js"></script>
 </body>
 
 </html>

@@ -2,36 +2,75 @@
   class="fixed top-0 inset-x-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all duration-300 dark:bg-slate-900/80">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
-      <!-- Logo -->
-      <a href="../../index.html" class="flex items-center gap-3 group">
+      <a href="/index.html" class="flex items-center gap-3 group">
         <div
-          class="w-9 h-9 rounded-xl bg-brand-600 flex items-center justify-center group-hover:scale-105 transition-transform">
-          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </div>
-        <span class="font-display text-xl text-gray-900 dark:text-white">UMKMGo</span>
+        <span class="font-display text-2xl text-gray-900 dark:text-white tracking-tight group-hover:text-brand-600 transition-colors">UMKMGo</span>
       </a>
 
-      <!-- Desktop Nav with Back Button -->
-      <div class="flex items-center gap-3">
-        <a href="../../index.html"
-          class="hidden sm:inline-flex px-4 py-2 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-slate-700 transition">Kembali</a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="/index.html#fitur"
+          class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-600 transition-colors">Fitur</a>
+        <a href="/index.html#cara-kerja"
+          class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-600 transition-colors">Cara Kerja</a>
+        <a href="/src/pages/services.html"
+          class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-600 transition-colors">Layanan</a>
+        <a href="/src/pages/tools.html"
+          class="text-sm font-medium text-brand-600 dark:text-brand-400 transition-colors">Tools</a>
+        <a href="/index.html#demo"
+          class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-600 transition-colors">Coba Demo</a>
+        <a href="/src/pages/blog.html"
+          class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-600 transition-colors">Blog</a>
+        <a href="/index.html#faq"
+          class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-600 transition-colors">FAQ</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
         <button id="theme-toggle" type="button"
           class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 transition-colors"
           aria-label="Toggle Dark Mode">
-          <!-- Sun Icon -->
           <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd"
               d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
               clip-rule="evenodd" />
           </svg>
-          <!-- Moon Icon -->
           <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
           </svg>
         </button>
+
+        <button id="mobile-menu-btn"
+          class="md:hidden p-2 text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 rounded-lg transition-colors"
+          aria-label="Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
       </div>
+    </div>
+  </div>
+
+  <div id="mobile-menu"
+    class="md:hidden hidden bg-white dark:bg-slate-900 border-t border-gray-100 dark:border-slate-800 absolute w-full shadow-lg">
+    <div class="px-4 py-4 space-y-2">
+      <a href="/index.html#fitur"
+        class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-brand-600">Fitur</a>
+      <a href="/index.html#cara-kerja"
+        class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-brand-600">Cara Kerja</a>
+      <a href="/src/pages/services.html"
+        class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-brand-600">Layanan</a>
+      <a href="/src/pages/tools.html"
+        class="block px-3 py-2 text-base font-medium text-brand-600 dark:text-brand-400 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800">Tools</a>
+      <a href="/index.html#demo"
+        class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-brand-600">Coba Demo</a>
+      <a href="/src/pages/blog.html"
+        class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-brand-600">Blog</a>
+      <a href="/index.html#faq"
+        class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-brand-600">FAQ</a>
     </div>
   </div>
 </header>

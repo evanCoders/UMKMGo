@@ -4,17 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UMKMGo — Detail Artikel</title>
-  <meta name="description" content="Baca artikel UMKMGo lengkap dengan insight dan panduan." />
-
-  <!-- Tailwind CSS -->
+  <title>Detail Artikel Wawasan — UMKMGo</title>
+  <meta name="description" content="Baca ulasan lengkap strategi pemasaran dan pengelolaan usaha UMKM di UMKMGo." />
+  <link rel="icon" href="/public/favicon.svg" />
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap"
     rel="stylesheet" />
-<link rel="stylesheet" href="/src/css/post.css">
+  <link rel="stylesheet" href="/src/css/post.css">
 
   <script>
     tailwind.config = {
@@ -30,6 +27,7 @@
               700: "#0F766E",
               800: "#115E59",
               900: "#134E4A",
+              950: "#042F2E",
             },
           },
           fontFamily: {
@@ -40,84 +38,77 @@
       },
     };
   </script>
-
 </head>
 
-<body>
-  <!-- NAVBAR -->
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-200 antialiased transition-colors duration-300">
   <div id="component-navbar" data-component="navbar" data-src="/src/components/navbar-post.html"></div>
 
   <main class="pt-28 pb-16">
     <section class="px-4">
       <div class="max-w-4xl mx-auto">
-        <!-- Breadcrumb + Back -->
         <div class="flex items-center gap-3 mb-8 reveal">
-          <a href="blog.html"
-            class="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 font-semibold hover:underline text-sm">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <a href="/src/pages/blog.html"
+            class="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 font-semibold hover:underline text-xs sm:text-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
-            Kembali ke Blog
+            Kembali ke Daftar Artikel
           </a>
         </div>
 
-        <!-- Article Card -->
         <article id="article-card"
-          class="hidden bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-slate-700 overflow-hidden">
-          <img id="cover-img" class="w-full h-72 md:h-96 object-cover" alt="Cover artikel" />
+          class="hidden bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800 overflow-hidden">
+          <img id="cover-img" class="w-full h-64 sm:h-80 md:h-96 object-cover" alt="Cover artikel" />
 
-          <div class="p-6 md:p-10">
+          <div class="p-6 sm:p-8 md:p-12">
             <div class="flex items-center gap-3 mb-4">
               <span id="category-badge"
-                class="text-xs font-bold px-3 py-1 rounded-full bg-brand-100 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300">Kategori</span>
-              <span id="date-text" class="text-sm text-gray-500 dark:text-gray-400">Tanggal</span>
+                class="text-xs font-semibold px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-300 border border-brand-200/60 dark:border-brand-800/40">Kategori</span>
+              <span id="date-text" class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Tanggal</span>
             </div>
 
             <h1 id="title-text"
-              class="font-display text-3xl md:text-4xl text-gray-900 dark:text-white leading-tight mb-6">Judul Artikel
+              class="font-display text-2xl sm:text-3xl md:text-4xl text-slate-900 dark:text-white leading-tight mb-6">Judul Artikel
             </h1>
 
-            <div class="flex items-center gap-3 mb-8 pb-8 border-b border-gray-100 dark:border-slate-700">
-              <img id="author-avatar" class="w-10 h-10 rounded-full" alt="Author"
-                src="https://ui-avatars.com/api/?name=UMKMGo&background=0D9488&color=fff" />
+            <div class="flex items-center gap-3 mb-8 pb-8 border-b border-slate-100 dark:border-slate-800">
+              <img id="author-avatar" class="w-10 h-10 rounded-full" alt="Penulis"
+                src="https://ui-avatars.com/api/?name=Tim+UMKMGo&background=0D9488&color=fff" />
               <div>
-                <p id="author-name" class="text-sm font-bold text-gray-900 dark:text-white">Tim UMKMGo</p>
-                <p id="author-role" class="text-xs text-gray-500 dark:text-gray-400">Penulis</p>
+                <p id="author-name" class="text-sm font-bold text-slate-900 dark:text-white">Tim Redaksi UMKMGo</p>
+                <p id="author-role" class="text-xs text-slate-500 dark:text-slate-400">Penyusun Wawasan</p>
               </div>
             </div>
 
-            <div id="content-area" class="prose max-w-none text-gray-700 dark:text-gray-200 reveal"></div>
+            <div id="content-area" class="prose max-w-none text-slate-700 dark:text-slate-300 leading-relaxed reveal"></div>
           </div>
         </article>
 
-        <!-- Empty State -->
         <div id="empty-state"
-          class="hidden bg-white dark:bg-slate-800 rounded-2xl shadow border border-gray-100 dark:border-slate-700 p-10 text-center">
+          class="hidden bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800 p-10 text-center">
           <div
-            class="mx-auto w-16 h-16 rounded-full bg-brand-50 dark:bg-brand-900/30 flex items-center justify-center mb-5">
-            <svg class="w-8 h-8 text-brand-600 dark:text-brand-400" fill="none" stroke="currentColor" stroke-width="1.5"
+            class="mx-auto w-16 h-16 rounded-full bg-brand-50 dark:bg-brand-950/60 border border-brand-200/60 dark:border-brand-800/40 flex items-center justify-center mb-5 text-brand-600 dark:text-brand-400">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5"
               viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Artikel tidak ditemukan</h2>
-          <p class="text-gray-600 dark:text-gray-300 mb-6">Coba buka daftar artikel di blog.</p>
-          <a href="blog.html"
-            class="inline-flex items-center px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl transition">
-            Buka Blog
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Artikel Tidak Ditemukan</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm">Silakan pilih artikel lain dari halaman indeks blog kami.</p>
+          <a href="/src/pages/blog.html"
+            class="inline-flex items-center px-6 py-3 bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white font-semibold rounded-xl text-sm shadow-sm transition">
+            Lihat Semua Artikel
           </a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ═══════════════════════════════════════════════
-       FOOTER
-  ════════════════════════════════════════════════ -->
   <div id="component-footer" data-component="footer" data-src="/src/components/footer.html"></div>
 
-<script src="/src/js/post.js"></script>
+  <script src="/src/js/components.js"></script>
+  <script src="/src/js/post.js"></script>
 </body>
 
 </html>
