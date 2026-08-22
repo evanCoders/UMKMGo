@@ -1,3 +1,10 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/tools", "destination": "/src/pages/tools.html" },
+    { "source": "/blog", "destination": "/src/pages/blog.html" },
+    { "source": "/services", "destination": "/src/pages/services.html" },
+    { "source": "/post", "destination": "/src/pages/post.html" },
+    { "source": "/thanks", "destination": "/src/pages/thanks.html" }
+  ]
 }
